@@ -8,10 +8,20 @@
 	<!-- TODO project name  -->
 	<name>quickstart</name>
 	<description></description>
-	<!--
-		TODO <organization> <name>company name</name> <url>company url</url>
-		</organization>
-	-->
+
+	<repositories>
+		<repository>
+			<id>gson</id>
+			<url>http://google-gson.googlecode.com/svn/mavenrepo</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+		</repository>
+	</repositories>
+
 	<licenses>
 		<license>
 			<name>The Apache Software License, Version 2.0</name>
@@ -32,11 +42,15 @@
 			<artifactId>wicket</artifactId>
 			<version>${wicket.version}</version>
 		</dependency>
-		<!--
-			OPTIONAL <dependency> <groupId>org.apache.wicket</groupId>
-			<artifactId>wicket-extensions</artifactId>
-			<version>${wicket.version}</version> </dependency>
-		-->
+
+		<!-- GSON DEPENDENCIES-->
+        <dependency>
+        	<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>1.6</version>
+			<scope>runtime</scope>
+		</dependency>
+		
 
 		<!-- LOGGING DEPENDENCIES - LOG4J -->
 		<dependency>
@@ -133,4 +147,5 @@
 			</plugin>
 		</plugins>
 	</build>
-	</project>
+
+</project>
