@@ -1,8 +1,7 @@
-
 apply plugin: 'java'    // adds Java plugin for common Java tasks like 'compile'
 apply plugin: 'jetty'   // adds Jetty plugin for testing without needing a special web server
 apply plugin: 'idea'    // adds IDEA plugin to enable the creation of an IntellJ project
-apply plugin: 'eclipse' // adds IDEA plugin to enable the creation of an Eclipse project
+apply plugin: 'eclipse' // adds Eclipse plugin to enable the creation of an Eclipse project
 
 /* This sets the needed maven repositories */
 repositories {
@@ -11,9 +10,9 @@ repositories {
 }
 
 /*
-  It's a basic concept of Wicket that html files are located alongside
+  It's a basic concept of Wicket, that html files are located alongside
   Java files within the src folder. The Gradle Java plugin, however, does not
-  copy those html files to the compile target location by default.
+  copy by default those html files to the compile target location.
 
   The following lines are therefore needed to ensure, that the html files,
   which are located alongside Java files, are copied to the target folder
@@ -40,7 +39,7 @@ dependencies {
   */
   compile(
           [group: 'org.apache.wicket', name: 'wicket', version: '1.4.15'],
-          [group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.5.8'],          
+          [group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.5.8'],
 
           /*
           * There is a problem with the public gson maven repository.
