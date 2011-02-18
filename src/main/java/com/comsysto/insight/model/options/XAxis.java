@@ -1,7 +1,6 @@
 package com.comsysto.insight.model.options;
 
 import java.util.List;
-import java.util.Map;
 
 public class XAxis {
 
@@ -58,7 +57,7 @@ public class XAxis {
   private Integer tickPixelInterval;// ,
   private TickPosition tickPosition;// "outside",
   private Integer tickWidth;// 1,
-  private XAxis.Title title;
+  private XAxisTitle title;
   private Type type;// "linear"
 
   public Boolean getAllowDecimals() {
@@ -373,11 +372,11 @@ public class XAxis {
     this.tickWidth = tickWidth;
   }
 
-  public XAxis.Title getTitle() {
+  public XAxisTitle getTitle() {
     return title;
   }
 
-  public void setTitle(XAxis.Title title) {
+  public void setTitle(XAxisTitle title) {
     this.title = title;
   }
 
@@ -389,53 +388,6 @@ public class XAxis {
     this.type = type;
   }
 
-  public class Title {
-
-    private Align align;
-    private String text;
-    private Map<String, String> style;
-    private Integer margin;
-    private Integer rotation;
-
-    public Align getAlign() {
-      return align;
-    }
-
-    public void setAlign(Align align) {
-      this.align = align;
-    }
-
-    public String getText() {
-      return text;
-    }
-
-    public void setText(String text) {
-      this.text = text;
-    }
-
-    public Map<String, String> getStyle() {
-      return style;
-    }
-
-    public void setStyle(Map<String, String> style) {
-      this.style = style;
-    }
-
-    public Integer getMargin() {
-      return margin;
-    }
-
-    public void setMargin(Integer margin) {
-      this.margin = margin;
-    }
-
-    public Integer getRotation() {
-      return rotation;
-    }
-
-    public void setRotation(Integer rotation) {
-      this.rotation = rotation;
-    }
-  }
 
 }
+

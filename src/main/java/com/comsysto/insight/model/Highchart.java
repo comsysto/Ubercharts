@@ -1,12 +1,17 @@
 package com.comsysto.insight.model;
 
 import com.comsysto.insight.model.charts.Chart;
-import com.comsysto.insight.model.options.Series;
 import com.comsysto.insight.model.options.XAxis;
+import com.comsysto.insight.model.options.series.generic.ISeries;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
 
-import java.util.ArrayList;
+import java.lang.reflect.Type;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Highchart {
@@ -18,17 +23,27 @@ public class Highchart {
   // 4. make "builder-pattern light" structure of all objects
   // 5. write some documentation
 
+
+  static Gson gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapter(ISeries.class, new ISeriesSerializer()).create();
+
   private Chart chart;
   private XAxis xAxis = new XAxis();
-  private List<Series> series = new ArrayList<Series>();
+
+
+  //private List<ISeries> series;
+  private List<ISeries> series = new LinkedList<ISeries>();
+  ;
 
   public Highchart(Chart pChart) {
     chart = pChart;
   }
 
+
   public String toJson() {
+
+
     String json = "";
-    Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
     json = gson.toJson(this);
 
     // dump JSON object
@@ -41,16 +56,34 @@ public class Highchart {
     return chart;
   }
 
-  public Highchart addSeries(Series... pSeries) {
-    for (Series s : pSeries) {
+  public Highchart addSeries(ISeries... pSeries) {
+
+    for (ISeries s : pSeries) {
       series.add(s);
     }
+
     return this;
   }
 
-  public Highchart setSeries(Series... pSeries) {
+  public Highchart setSeries(ISeries... pSeries) {
     series.clear();
     addSeries(pSeries);
     return this;
   }
+
+  public XAxis getXAxis() {
+    return xAxis;
+  }
+
+  private static class ISeriesSerializer implements JsonSerializer<ISeries> {
+
+    Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    JsonParser parser = new JsonParser();
+
+    public JsonElement serialize(ISeries src, Type typeOfSrc, JsonSerializationContext context) {
+      return parser.parse(gson.toJson(src));
+    }
+
+  }
+
 }
