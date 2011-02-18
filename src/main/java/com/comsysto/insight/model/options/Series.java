@@ -2,95 +2,77 @@ package com.comsysto.insight.model.options;
 
 import java.util.List;
 
+/**
+ * Date: Feb 18, 2011
+ * Time: 6:06:55 PM
+ *
+ * @author Mohammed El Batya
+ */
 public class Series {
 
-  private final List<?> data;
-  private final String name;
-  private final String stack;
-  private final Type type;
-  private final Integer xAxis;
-  private final Integer yAxis;
+  private List<?> data;
+  private String name = "";
+  private String stack = "";
+  private Type type = Type.line;
+  private Integer xAxis = 0;
+  private Integer yAxis = 0;
 
-  private Series(Builder builder) {
-    this.data = builder.data;
-    this.name = builder.name;
-    this.stack = builder.stack;
-    this.type = builder.type;
-    this.xAxis = builder.xAxis;
-    this.yAxis = builder.yAxis;
-  }
 
-  public List<?> getData() {
-    return data;
+  public Series(String pName) {
+    name = pName;
   }
 
   public String getName() {
     return name;
   }
 
+  public Series setName(String pName) {
+    name = pName;
+    return this;
+  }
+
   public String getStack() {
     return stack;
+  }
+
+  public Series setStack(String pStack) {
+    stack = pStack;
+    return this;
   }
 
   public Type getType() {
     return type;
   }
 
+  public Series setType(Type pType) {
+    type = pType;
+    return this;
+  }
+
   public Integer getxAxis() {
     return xAxis;
+  }
+
+  public Series setxAxis(Integer pXAxis) {
+    xAxis = pXAxis;
+    return this;
   }
 
   public Integer getyAxis() {
     return yAxis;
   }
 
-
-  public static class Builder {
-
-    // optional
-    private List<?> data;
-    private String name = "";
-    private String stack;
-    private Type type = Type.line;
-    private Integer xAxis = 0;
-    private Integer yAxis = 0;
-
-    public Builder() {
-    }
-
-    public Builder data(List<?> data) {
-      this.data = data;
-      return this;
-    }
-
-    public Builder name(String name) {
-      this.name = name;
-      return this;
-    }
-
-    public Builder stack(String stack) {
-      this.stack = stack;
-      return this;
-    }
-
-    public Builder type(Type type) {
-      this.type = type;
-      return this;
-    }
-
-    public Builder xAxis(Integer xAxis) {
-      this.xAxis = xAxis;
-      return this;
-    }
-
-    public Builder yAxis(Integer yAxis) {
-      this.yAxis = yAxis;
-      return this;
-    }
-
-    public Series build() {
-      return new Series(this);
-    }
+  public Series setyAxis(Integer pYAxis) {
+    yAxis = pYAxis;
+    return this;
   }
 
+  public List<?> getData() {
+    return data;
+  }
+
+  public Series setData(List<?> pData) {
+    data = pData;
+    return this;
+  }
 }
