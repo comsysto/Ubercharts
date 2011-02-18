@@ -18,6 +18,7 @@ public class HighchartsPanel extends Panel implements IHeaderContributor {
 
 		final WebMarkupContainer chartDiv = new WebMarkupContainer("highchart");
 		chartDiv.setOutputMarkupId(true);
+
         add(chartDiv);
 		
         // store ID into chart.renderTo
