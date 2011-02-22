@@ -24,7 +24,7 @@ public class Highchart {
   // 5. write some documentation
 
 
-  static Gson gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapter(ISeries.class, new ISeriesSerializer()).create();
+  static Gson gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapter(ISeries.class, new DeepSeriesSerializer<ISeries>(true)).create();
 
   private Chart chart;
   private XAxis xAxis = new XAxis();
@@ -32,7 +32,7 @@ public class Highchart {
 
   //private List<ISeries> series;
   private List<ISeries> series = new LinkedList<ISeries>();
-  ;
+
 
   public Highchart(Chart pChart) {
     chart = pChart;
@@ -75,15 +75,27 @@ public class Highchart {
     return xAxis;
   }
 
-  private static class ISeriesSerializer implements JsonSerializer<ISeries> {
+  private static class DeepSeriesSerializer<T> implements JsonSerializer<T> {
 
-    Gson gson = new GsonBuilder().setPrettyPrinting().create();
-    JsonParser parser = new JsonParser();
+    private Gson mGson;
+    private JsonParser mParser = new JsonParser();
 
-    public JsonElement serialize(ISeries src, Type typeOfSrc, JsonSerializationContext context) {
-      return parser.parse(gson.toJson(src));
+
+    DeepSeriesSerializer(boolean pGoDeeper) {
+
+      GsonBuilder builder = new GsonBuilder().setPrettyPrinting();
+      if (pGoDeeper) {
+        builder.registerTypeAdapter(Object[].class, new DeepSeriesSerializer<Object[]>(false));
+      }
+      mGson = builder.create();
+
+    }
+
+    public JsonElement serialize(T src, Type typeOfSrc, JsonSerializationContext context) {
+      return mParser.parse(mGson.toJson(src));
     }
 
   }
+
 
 }

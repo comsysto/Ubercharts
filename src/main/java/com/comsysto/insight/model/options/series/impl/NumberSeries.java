@@ -10,9 +10,18 @@ import java.util.Collection;
  *
  * @author Mohammed El Batya
  */
-public class NumberSeries extends AbstractSeries<Collection<? extends Number>, NumberSeries> {
+public class NumberSeries extends AbstractSeries<Number[], NumberSeries> {
 
   public NumberSeries(String pName) {
     super(pName);
+  }
+
+  public NumberSeries setData(Number[] pNumbers) {
+    data = pNumbers;
+    return this;
+  }
+
+  public NumberSeries setData(Collection<Number> pNumbers) {
+    return setData((Number[]) pNumbers.toArray());
   }
 }

@@ -10,7 +10,7 @@ import com.comsysto.insight.model.options.Type;
  */
 abstract public class AbstractSeries<DataType, ImplementationType extends AbstractSeries> implements ISeries<DataType, ImplementationType> {
 
-  private DataType data;
+  protected DataType data;
   private String name = "";
   private String stack = "";
   private Type type = Type.line;
@@ -49,20 +49,20 @@ abstract public class AbstractSeries<DataType, ImplementationType extends Abstra
     return (ImplementationType) this;
   }
 
-  public Integer getxAxis() {
+  public Integer getXAxis() {
     return xAxis;
   }
 
-  public ImplementationType setxAxis(Integer pXAxis) {
+  public ImplementationType setXAxis(Integer pXAxis) {
     xAxis = pXAxis;
     return (ImplementationType) this;
   }
 
-  public Integer getyAxis() {
+  public Integer getYAxis() {
     return yAxis;
   }
 
-  public ImplementationType setyAxis(Integer pYAxis) {
+  public ImplementationType setYAxis(Integer pYAxis) {
     yAxis = pYAxis;
     return (ImplementationType) this;
   }
@@ -71,8 +71,6 @@ abstract public class AbstractSeries<DataType, ImplementationType extends Abstra
     return data;
   }
 
-  public ImplementationType setData(DataType pData) {
-    data = pData;
-    return (ImplementationType) this;
-  }
+  abstract protected ImplementationType setData(DataType pData);
+
 }

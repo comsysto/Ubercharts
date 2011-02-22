@@ -8,7 +8,7 @@ import com.comsysto.insight.model.options.Type;
  *
  * @author Mohammed El Batya
  */
-public interface ISeries<DataType, ImplementationType extends AbstractSeries> {
+public interface ISeries<DataType, ImplementationType extends ISeries> {
 
   String getName();
 
@@ -22,15 +22,14 @@ public interface ISeries<DataType, ImplementationType extends AbstractSeries> {
 
   ImplementationType setType(Type pType);
 
-  Integer getxAxis();
+  Integer getXAxis();
 
-  ImplementationType setxAxis(Integer pXAxis);
+  ImplementationType setXAxis(Integer pXAxis);
 
-  Integer getyAxis();
+  Integer getYAxis();
 
-  ImplementationType setyAxis(Integer pYAxis);
+  ImplementationType setYAxis(Integer pYAxis);
 
   DataType getData();
 
-  ImplementationType setData(DataType pData);
 }
