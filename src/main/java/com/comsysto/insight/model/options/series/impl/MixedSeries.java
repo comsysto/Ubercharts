@@ -6,7 +6,7 @@ import com.comsysto.insight.model.options.series.generic.AbstractSeries;
 import java.util.Collection;
 
 /**
- * This class is temporary deprecated, because there are serialisation problems with json. <p/> The deprecated
+ * This class is temporary deprecated, because there are serialisation problems with gson. <p/> The deprecated
  * annotation will be removed when the serialisation issues are solved. <p/> Date: Feb 18, 2011 Time: 9:50:16 PM
  *
  * @author Mohammed El Batya
@@ -14,16 +14,37 @@ import java.util.Collection;
 @Deprecated
 public class MixedSeries extends AbstractSeries<Object[]> {
 
+
+  /**
+   *
+   */
+  @Deprecated
+  public MixedSeries() {
+  }
+
+  /** @param pName  */
+  @Deprecated
   public MixedSeries(String pName) {
     super(pName);
   }
 
+  /**
+   * @param pMixedData
+   *
+   * @return
+   */
+  @Deprecated
   public MixedSeries setData(Object[] pMixedData) {
     data = pMixedData;
     return this;
   }
 
-
+  /**
+   * @param pMixedData
+   *
+   * @return
+   */
+  @Deprecated
   public MixedSeries setData(Collection<?> pMixedData) {
 
     for (Object data : pMixedData) {
@@ -38,11 +59,22 @@ public class MixedSeries extends AbstractSeries<Object[]> {
     return setData(pMixedData.toArray());
   }
 
-
+  /**
+   * @param pObject
+   *
+   * @return
+   */
+  @Deprecated
   private boolean isNumberOrPoint(Object pObject) {
     return (pObject instanceof Number || pObject instanceof Point);
   }
 
+  /**
+   * @param pObject
+   *
+   * @return
+   */
+  @Deprecated
   private boolean isValidArray(Object pObject) {
 
     boolean isValid;

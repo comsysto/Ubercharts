@@ -37,7 +37,6 @@ public class NumberSeries extends AbstractSeries<Number[]> {
    *
    * @return this object for convenient chaining, not a copy
    * @see NumberSeries
-   * @see ISeries#setData(Object)
    */
   public ISeries<Number[]> setData(Number[] pNumbers) {
     data = pNumbers;
@@ -52,7 +51,6 @@ public class NumberSeries extends AbstractSeries<Number[]> {
    *
    * @return this object for convenient chaining, not a copy
    * @see NumberSeries
-   * @see ISeries#setData(Object)
    */
   public ISeries<Number[]> setData(Collection<Number> pNumbers) {
     return setData((Number[]) pNumbers.toArray());

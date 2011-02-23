@@ -3,17 +3,17 @@ package com.comsysto.insight;
 import com.comsysto.insight.component.HighchartsPanel;
 import com.comsysto.insight.model.Highchart;
 import com.comsysto.insight.model.charts.LineChart;
+import com.comsysto.insight.model.options.Point;
 import com.comsysto.insight.model.options.series.generic.ISeries;
 import com.comsysto.insight.model.options.series.impl.CoordinateSeries;
 import com.comsysto.insight.model.options.series.impl.LabeledNumberSeries;
 import com.comsysto.insight.model.options.series.impl.MixedSeries;
 import com.comsysto.insight.model.options.series.impl.NumberSeries;
+import com.comsysto.insight.model.options.series.impl.PointSeries;
 import org.apache.wicket.PageParameters;
 import org.apache.wicket.markup.html.WebPage;
 
-/**
- * Homepage
- */
+/** Homepage */
 public class HomePage extends WebPage {
 
   private static final long serialVersionUID = 1L;
@@ -45,8 +45,9 @@ public class HomePage extends WebPage {
 
     ISeries d = new CoordinateSeries("Coords").setData(new Number[]{3.9, 4.2, 5.7, 7.5, 2.3}, new Number[]{3.9, 4.2, 5.7, 7.5, 2.3});
 
+    ISeries e = new PointSeries("Points").setData(new Point[]{new Point(1, 5), new Point(3, 4), new Point(6, 7)});
 
-    pHighchart.addSeries(a, b, c, d);
+    pHighchart.addSeries(a, b, c, d, e);
 
     // Add Panel
     add(new HighchartsPanel("chart", pHighchart));
