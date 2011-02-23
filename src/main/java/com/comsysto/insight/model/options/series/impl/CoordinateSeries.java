@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Implementation of {@link CoordinateSeries} which represents an array of X/Y-Coordinates to be plotted on the chart.
+ * Implementation of {@link AbstractSeries} which represents an array of X/Y-Coordinates to be plotted on the chart.
  *
  * For more information read href="http://www.highcharts.com/ref/#series.
  *
@@ -41,7 +41,7 @@ public class CoordinateSeries extends AbstractSeries<Number[][]> {
   }
 
   /**
-   * Sets two arrays to represent X and Y values for coordinates to be plotted on the chart. Both array must have the
+   * Sets two arrays to represent X and Y values for coordinates to be plotted on the chart. Both arrays must have the
    * same length or an {@link IllegalArgumentException} will be thrown. Every X-Value will be paired with a Y-Value,
    * stored at the same array index.
    *

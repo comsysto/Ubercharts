@@ -6,7 +6,9 @@ import com.comsysto.insight.model.options.series.generic.AbstractSeries;
 import java.util.Collection;
 
 /**
- * Implementation of {@link AbstractSeries}, which represents an array of {@link Point}s to be plotted on the chart.
+ * Implementation of {@link AbstractSeries} which represents an array of X/Y-Coordinates to be plotted on the chart.
+ *
+ * For more information read href="http://www.highcharts.com/ref/#series.
  *
  * Date: Feb 18, 2011 Time: 9:47:50 PM
  *
