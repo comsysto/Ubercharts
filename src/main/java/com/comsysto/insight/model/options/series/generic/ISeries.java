@@ -23,14 +23,14 @@ import com.comsysto.insight.model.options.Type;
 public interface ISeries<DataType> {
 
   /**
-   * Gets the name of the series as shown in the legend, tooltip etc.
+   * Gets the name of the series as shown in the legend, tooltip etc. The default value is "".
    *
    * @return the name of the series as shown in the legend, tooltip etc
    */
   String getName();
 
   /**
-   * Sets the name of the series as shown in the legend, tooltip etc.
+   * Sets the name of the series as shown in the legend, tooltip etc. The default value is "".
    *
    * @param pName the name of the series as shown in the legend, tooltip etc
    *
@@ -39,14 +39,16 @@ public interface ISeries<DataType> {
   ISeries<DataType> setName(String pName);
 
   /**
-   * Gets the stack identifier for a stacked chart. Series with the same stack identifier will be stacked together.
+   * Gets the stack identifier for a stacked chart. Series with the same stack identifier will be stacked together. The
+   * default value is "".
    *
    * @return stack identifier for a stacked chart
    */
   String getStack();
 
   /**
-   * Sets the stack identifier for a stacked chart. Series with the same stack identifier will be stacked together.
+   * Sets the stack identifier for a stacked chart. Series with the same stack identifier will be stacked together. The
+   * default value is "".
    *
    * @param pStack the stack identifier for a stacked chart
    *
@@ -55,26 +57,29 @@ public interface ISeries<DataType> {
   ISeries<DataType> setStack(String pStack);
 
   /**
-   * Gets the type of this series. If this is set, the default type of your chart will be ignored for this series.
+   * Gets the type of this series. If this is set, the default type of your chart will be ignored for this series. The
+   * default value is {@link Type#line}.
    *
    * @return the type of this series.
-   * @see com.comsysto.insight.model.options.Type
+   * @see Type
    */
   Type getType();
 
   /**
-   * Sets the type of this series. If you set this, the default type of your chart will be ignored for this series.
+   * Sets the type of this series. If you set this, the default type of your chart will be ignored for this series. The
+   * default value is {@link Type#line}.
    *
    * @param pType the type of this series
    *
    * @return this object for convenient chaining, not a copy
-   * @see com.comsysto.insight.model.options.Type
+   * @see Type
    */
   ISeries<DataType> setType(Type pType);
 
   /**
    * Gets the id of the connected xAxis. When using dual or multiple xAxes, this number defines which xAxis the
-   * particular series is connected to. It refers to the index of the axis in the xAxis array, which begins with 0.
+   * particular series is connected to. It refers to the index of the axis in the xAxis array, which begins with 0. The
+   * default value 0.
    *
    * @return the id of the connected X-axis
    */
@@ -82,7 +87,8 @@ public interface ISeries<DataType> {
 
   /**
    * Sets the id of the connected xAxis. When using dual or multiple xAxes, this number defines which xAxis the
-   * particular series is connected to. It refers to the index of the axis in the xAxis array, which begins with 0.
+   * particular series is connected to. It refers to the index of the axis in the xAxis array, which begins with 0. The
+   * default value 0.
    *
    * @param pXAxis the id of the connected xAxis
    *
@@ -92,7 +98,8 @@ public interface ISeries<DataType> {
 
   /**
    * Gets the id of the connected yAxis. When using dual or multiple yAxes, this number defines which yAxis the
-   * particular series is connected to. It refers to the index of the axis in the yAxis array, which begins with 0.
+   * particular series is connected to. It refers to the index of the axis in the yAxis array, which begins with 0. The
+   * default value 0.
    *
    * @return the id of the connected yAxis
    */
@@ -100,7 +107,8 @@ public interface ISeries<DataType> {
 
   /**
    * Sets the id of the connected YAxis. When using dual or multiple YAxes, this number defines which xAxis the
-   * particular series is connected to. It refers to the index of the axis in the YAxis array, which begins with 0.
+   * particular series is connected to. It refers to the index of the axis in the YAxis array, which begins with 0. The
+   * default value 0.
    *
    * @param pYAxis the id of the connected yAxis
    *
@@ -113,7 +121,7 @@ public interface ISeries<DataType> {
    *
    * The concrete implementation of this interface defines which kind of data is allowed, read its JavaDocs for detailed
    * information. To see which data are generally supported by Highcharts, look at
-   * href="http://www.highcharts.com/ref/#series.
+   * href="http://www.highcharts.com/ref/#series. The default value null.
    *
    * @return an array of data points for the series
    */
@@ -124,7 +132,7 @@ public interface ISeries<DataType> {
    *
    * The concrete implementation of this interface defines which kind of data is allowed, read its JavaDocs for detailed
    * information. To see which data are generally supported by Highcharts, look at
-   * href="http://www.highcharts.com/ref/#series.
+   * href="http://www.highcharts.com/ref/#series. The default value null.
    *
    * @param pData an array of data points for this series
    *
