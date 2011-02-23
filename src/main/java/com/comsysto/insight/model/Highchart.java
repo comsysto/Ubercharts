@@ -24,7 +24,9 @@ public class Highchart {
   // 5. write some documentation
 
 
-  static Gson gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapter(ISeries.class, new DeepSeriesSerializer<ISeries>(true)).create();
+  private static Gson gson = new GsonBuilder().setPrettyPrinting()
+    .registerTypeAdapter(ISeries.class, new SeriesSerializer()).create();
+
 
   private Chart chart;
   private XAxis xAxis = new XAxis();
@@ -75,27 +77,48 @@ public class Highchart {
     return xAxis;
   }
 
-  private static class DeepSeriesSerializer<T> implements JsonSerializer<T> {
+
+  private static class SeriesSerializer implements JsonSerializer<ISeries> {
 
     private Gson mGson;
     private JsonParser mParser = new JsonParser();
 
 
-    DeepSeriesSerializer(boolean pGoDeeper) {
+    SeriesSerializer() {
+
+      GsonBuilder builder = new GsonBuilder().registerTypeAdapter(Object[].class, new ObjectArraySerializer(1)).setPrettyPrinting();
+      mGson = builder.create();
+
+    }
+
+    public JsonElement serialize(ISeries src, Type typeOfSrc, JsonSerializationContext context) {
+      System.out.println("Series");
+      System.out.println(mGson.toJson(src));
+      return mParser.parse(mGson.toJson(src));
+    }
+  }
+
+
+  private static class ObjectArraySerializer implements JsonSerializer<Object[]> {
+
+    private Gson mGson;
+    private JsonParser mParser = new JsonParser();
+
+
+    ObjectArraySerializer(int depth) {
 
       GsonBuilder builder = new GsonBuilder().setPrettyPrinting();
-      if (pGoDeeper) {
-        builder.registerTypeAdapter(Object[].class, new DeepSeriesSerializer<Object[]>(false));
+      if (depth > 0) {
+        builder.registerTypeAdapter(Object[].class, new ObjectArraySerializer(depth - 1));
       }
       mGson = builder.create();
 
     }
 
-    public JsonElement serialize(T src, Type typeOfSrc, JsonSerializationContext context) {
-      return mParser.parse(mGson.toJson(src));
+    public JsonElement serialize(Object[] src, Type typeOfSrc, JsonSerializationContext context) {
+      System.out.println("BAAAA: " + mParser.parse(mGson.toJson(src)).toString());
+      return mParser.parse(mGson.toJson(src, typeOfSrc));
     }
-
   }
-
 
 }

@@ -12,7 +12,7 @@ import java.util.Collection;
  *
  * @author Mohammed El Batya
  */
-public class PointSeries extends AbstractSeries<Point[], PointSeries> {
+public class PointSeries extends AbstractSeries<Point[]> {
 
   public PointSeries(String pName) {
     super(pName);

@@ -8,7 +8,7 @@ import com.comsysto.insight.model.options.Type;
  *
  * @author Mohammed El Batya
  */
-abstract public class AbstractSeries<DataType, ImplementationType extends AbstractSeries> implements ISeries<DataType, ImplementationType> {
+abstract public class AbstractSeries<DataType> implements ISeries<DataType> {
 
   protected DataType data;
   private String name = "";
@@ -26,51 +26,49 @@ abstract public class AbstractSeries<DataType, ImplementationType extends Abstra
     return name;
   }
 
-  public ImplementationType setName(String pName) {
+  public ISeries<DataType> setName(String pName) {
     name = pName;
-    return (ImplementationType) this;
+    return (ISeries<DataType>) this;
   }
 
   public String getStack() {
     return stack;
   }
 
-  public ImplementationType setStack(String pStack) {
+  public ISeries<DataType> setStack(String pStack) {
     stack = pStack;
-    return (ImplementationType) this;
+    return (ISeries<DataType>) this;
   }
 
   public Type getType() {
     return type;
   }
 
-  public ImplementationType setType(Type pType) {
+  public ISeries<DataType> setType(Type pType) {
     type = pType;
-    return (ImplementationType) this;
+    return (ISeries<DataType>) this;
   }
 
   public Integer getXAxis() {
     return xAxis;
   }
 
-  public ImplementationType setXAxis(Integer pXAxis) {
+  public ISeries<DataType> setXAxis(Integer pXAxis) {
     xAxis = pXAxis;
-    return (ImplementationType) this;
+    return (ISeries<DataType>) this;
   }
 
   public Integer getYAxis() {
     return yAxis;
   }
 
-  public ImplementationType setYAxis(Integer pYAxis) {
+  public ISeries<DataType> setYAxis(Integer pYAxis) {
     yAxis = pYAxis;
-    return (ImplementationType) this;
+    return (ISeries<DataType>) this;
   }
 
   public DataType getData() {
     return data;
   }
-
-  abstract protected ImplementationType setData(DataType pData);
 
 }

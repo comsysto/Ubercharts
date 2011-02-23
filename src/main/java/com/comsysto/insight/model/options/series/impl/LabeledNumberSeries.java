@@ -11,7 +11,7 @@ import java.util.Map;
  *
  * @author Mohammed El Batya
  */
-public class LabeledNumberSeries extends AbstractSeries<Object[][], LabeledNumberSeries> {
+public class LabeledNumberSeries extends AbstractSeries<Object[][]> {
 
   public LabeledNumberSeries(String pName) {
     super(pName);

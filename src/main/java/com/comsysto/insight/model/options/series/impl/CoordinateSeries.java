@@ -10,7 +10,7 @@ import java.util.Map;
  *
  * @author Mohammed El Batya
  */
-public class CoordinateSeries extends AbstractSeries<Number[][], CoordinateSeries> {
+public class CoordinateSeries extends AbstractSeries<Number[][]> {
 
   public CoordinateSeries(String pName) {
     super(pName);

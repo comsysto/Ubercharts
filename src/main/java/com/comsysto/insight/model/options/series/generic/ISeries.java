@@ -8,28 +8,30 @@ import com.comsysto.insight.model.options.Type;
  *
  * @author Mohammed El Batya
  */
-public interface ISeries<DataType, ImplementationType extends ISeries> {
+public interface ISeries<DataType> {
 
   String getName();
 
-  ImplementationType setName(String pName);
+  ISeries<DataType> setName(String pName);
 
   String getStack();
 
-  ImplementationType setStack(String pStack);
+  ISeries<DataType> setStack(String pStack);
 
   Type getType();
 
-  ImplementationType setType(Type pType);
+  ISeries<DataType> setType(Type pType);
 
   Integer getXAxis();
 
-  ImplementationType setXAxis(Integer pXAxis);
+  ISeries<DataType> setXAxis(Integer pXAxis);
 
   Integer getYAxis();
 
-  ImplementationType setYAxis(Integer pYAxis);
+  ISeries<DataType> setYAxis(Integer pYAxis);
 
   DataType getData();
+
+  ISeries<DataType> setData(DataType pData);
 
 }

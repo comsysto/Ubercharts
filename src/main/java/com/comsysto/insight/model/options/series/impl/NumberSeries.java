@@ -1,6 +1,7 @@
 package com.comsysto.insight.model.options.series.impl;
 
 import com.comsysto.insight.model.options.series.generic.AbstractSeries;
+import com.comsysto.insight.model.options.series.generic.ISeries;
 
 import java.util.Collection;
 
@@ -10,18 +11,18 @@ import java.util.Collection;
  *
  * @author Mohammed El Batya
  */
-public class NumberSeries extends AbstractSeries<Number[], NumberSeries> {
+public class NumberSeries extends AbstractSeries<Number[]> {
 
   public NumberSeries(String pName) {
     super(pName);
   }
 
-  public NumberSeries setData(Number[] pNumbers) {
+  public ISeries<Number[]> setData(Number[] pNumbers) {
     data = pNumbers;
     return this;
   }
 
-  public NumberSeries setData(Collection<Number> pNumbers) {
+  public ISeries<Number[]> setData(Collection<Number> pNumbers) {
     return setData((Number[]) pNumbers.toArray());
   }
 }

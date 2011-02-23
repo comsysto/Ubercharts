@@ -11,7 +11,7 @@ import java.util.Collection;
  *
  * @author Mohammed El Batya
  */
-public class MixedSeries extends AbstractSeries<Object[], MixedSeries> {
+public class MixedSeries extends AbstractSeries<Object[]> {
 
   public MixedSeries(String pName) {
     super(pName);
