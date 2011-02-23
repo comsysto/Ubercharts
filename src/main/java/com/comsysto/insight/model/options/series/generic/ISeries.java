@@ -9,7 +9,7 @@ import com.comsysto.insight.model.options.Type;
  * cover all possible variations, supported by Highcharts. Normally, you shouldn't need to implement this interface by
  * your own.
  *
- * Fore more information read href="http://www.highcharts.com/ref/#series.
+ * For more information read href="http://www.highcharts.com/ref/#series.
  *
  * Date: Feb 18, 2011 Time: 9:29:12 PM
  *

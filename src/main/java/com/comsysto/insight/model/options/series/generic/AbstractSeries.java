@@ -43,11 +43,10 @@ abstract public class AbstractSeries<DataType> implements ISeries<DataType> {
    * Everything is set to its default value.
    */
   public AbstractSeries() {
-
   }
 
   /**
-   * Constructor, which sets the name for this series.
+   * Constructor, which sets the name for this series. Everything else is set to its default value.
    *
    * @param pName the name for this series
    *
