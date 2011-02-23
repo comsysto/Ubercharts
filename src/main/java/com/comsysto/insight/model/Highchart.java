@@ -24,8 +24,9 @@ public class Highchart {
   // 5. write some documentation
 
 
-  private static Gson gson = new GsonBuilder().setPrettyPrinting()
-    .registerTypeAdapter(ISeries.class, new SeriesSerializer()).create();
+  private static Gson mGson = new GsonBuilder().setPrettyPrinting()
+    .registerTypeAdapter(ISeries.class, new SeriesSerializer())
+    .create();
 
 
   private Chart chart;
@@ -46,7 +47,7 @@ public class Highchart {
 
     String json = "";
 
-    json = gson.toJson(this);
+    json = mGson.toJson(this);
 
     // dump JSON object
     System.out.println(json);
@@ -86,39 +87,15 @@ public class Highchart {
 
     SeriesSerializer() {
 
-      GsonBuilder builder = new GsonBuilder().registerTypeAdapter(Object[].class, new ObjectArraySerializer(1)).setPrettyPrinting();
+      GsonBuilder builder = new GsonBuilder().setPrettyPrinting();
       mGson = builder.create();
 
     }
 
     public JsonElement serialize(ISeries src, Type typeOfSrc, JsonSerializationContext context) {
-      System.out.println("Series");
-      System.out.println(mGson.toJson(src));
       return mParser.parse(mGson.toJson(src));
     }
   }
 
-
-  private static class ObjectArraySerializer implements JsonSerializer<Object[]> {
-
-    private Gson mGson;
-    private JsonParser mParser = new JsonParser();
-
-
-    ObjectArraySerializer(int depth) {
-
-      GsonBuilder builder = new GsonBuilder().setPrettyPrinting();
-      if (depth > 0) {
-        builder.registerTypeAdapter(Object[].class, new ObjectArraySerializer(depth - 1));
-      }
-      mGson = builder.create();
-
-    }
-
-    public JsonElement serialize(Object[] src, Type typeOfSrc, JsonSerializationContext context) {
-      System.out.println("BAAAA: " + mParser.parse(mGson.toJson(src)).toString());
-      return mParser.parse(mGson.toJson(src, typeOfSrc));
-    }
-  }
 
 }

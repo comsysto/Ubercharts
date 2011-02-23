@@ -3,8 +3,7 @@ package com.comsysto.insight.model.options.series.generic;
 import com.comsysto.insight.model.options.Type;
 
 /**
- * Date: Feb 18, 2011
- * Time: 6:06:55 PM
+ * Date: Feb 18, 2011 Time: 6:06:55 PM
  *
  * @author Mohammed El Batya
  */

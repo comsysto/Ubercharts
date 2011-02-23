@@ -6,11 +6,12 @@ import com.comsysto.insight.model.options.series.generic.AbstractSeries;
 import java.util.Collection;
 
 /**
- * Date: Feb 18, 2011
- * Time: 9:50:16 PM
+ * This class is temporary deprecated, because there are serialisation problems with json. <p/> The deprecated
+ * annotation will be removed when the serialisation issues are solved. <p/> Date: Feb 18, 2011 Time: 9:50:16 PM
  *
  * @author Mohammed El Batya
  */
+@Deprecated
 public class MixedSeries extends AbstractSeries<Object[]> {
 
   public MixedSeries(String pName) {
