@@ -11,6 +11,7 @@ import com.comsysto.insight.model.charts.PieChart;
 import com.comsysto.insight.model.charts.ScatterChart;
 import com.comsysto.insight.model.charts.SplineChart;
 import com.comsysto.insight.model.options.Point;
+import com.comsysto.insight.model.options.Title;
 import com.comsysto.insight.model.options.series.generic.ISeries;
 import com.comsysto.insight.model.options.series.impl.CoordinateSeries;
 import com.comsysto.insight.model.options.series.impl.LabeledNumberSeries;
@@ -55,28 +56,28 @@ public class HomePage extends WebPage {
     ISeries e = new PointSeries("Points").setData(new Point[]{new Point(1, 5), new Point(3, 4), new Point(6, 7)});
 
     Highchart highchart1 = new Highchart(new AreaChart());
-    highchart1.addSeries(a, c, d, e).getXAxis().setCategories(categories);
+    highchart1.addSeries(a, c, d, e).setTitle(new Title("AreaChart")).getXAxis().setCategories(categories);
 
     Highchart highchart2 = new Highchart(new AreaSplineChart());
-    highchart2.addSeries(a, c, d, e).getXAxis().setCategories(categories);
+    highchart2.addSeries(a, c, d, e).setTitle(new Title("AreaSplineChart")).getXAxis().setCategories(categories);
 
     Highchart highchart3 = new Highchart(new BarChart());
-    highchart3.addSeries(a, c, d, e).getXAxis().setCategories(categories);
+    highchart3.addSeries(a, c, d, e).setTitle(new Title("BarChart")).getXAxis().setCategories(categories);
 
     Highchart highchart4 = new Highchart(new ColumnChart());
-    highchart4.addSeries(a, c, d, e).getXAxis().setCategories(categories);
+    highchart4.addSeries(a, c, d, e).setTitle(new Title("ColumnChart")).getXAxis().setCategories(categories);
 
     Highchart highchart5 = new Highchart(new LineChart());
-    highchart5.addSeries(a, c, d, e).getXAxis().setCategories(categories);
+    highchart5.addSeries(a, c, d, e).setTitle(new Title("LineChart")).getXAxis().setCategories(categories);
 
     Highchart highchart6 = new Highchart(new PieChart());
-    highchart6.addSeries(a, c, d, e).getXAxis().setCategories(categories);
+    highchart6.addSeries(a, c, d, e).setTitle(new Title("PieChart")).getXAxis().setCategories(categories);
 
     Highchart highchart7 = new Highchart(new ScatterChart());
-    highchart7.addSeries(a, c, d, e).getXAxis().setCategories(categories);
+    highchart7.addSeries(a, c, d, e).setTitle(new Title("ScatterChart")).getXAxis().setCategories(categories);
 
     Highchart highchart8 = new Highchart(new SplineChart());
-    highchart8.addSeries(a, c, d, e).getXAxis().setCategories(categories);
+    highchart8.addSeries(a, c, d, e).setTitle(new Title("SplineChart")).getXAxis().setCategories(categories);
 
 
     // Add Panel

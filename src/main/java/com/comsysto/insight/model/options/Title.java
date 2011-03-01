@@ -14,6 +14,10 @@ public class Title {
   private final Integer x;
   private final Integer y;
 
+  public Title(String pTitle) {
+    this(new Builder().text(pTitle));
+  }
+
   private Title(Builder builder) {
     this.align = builder.align;
     this.floating = builder.floating;

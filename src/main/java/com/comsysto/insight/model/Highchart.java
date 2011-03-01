@@ -1,6 +1,7 @@
 package com.comsysto.insight.model;
 
 import com.comsysto.insight.model.charts.Chart;
+import com.comsysto.insight.model.options.Title;
 import com.comsysto.insight.model.options.XAxis;
 import com.comsysto.insight.model.options.series.generic.ISeries;
 import com.google.gson.Gson;
@@ -31,6 +32,7 @@ public class Highchart {
 
   private Chart chart;
   private XAxis xAxis = new XAxis();
+  private Title title;
 
 
   //private List<ISeries> series;
@@ -78,6 +80,14 @@ public class Highchart {
     return xAxis;
   }
 
+  public Title getTitle() {
+    return title;
+  }
+
+  public Highchart setTitle(Title pTitle) {
+    title = pTitle;
+    return this;
+  }
 
   private static class SeriesSerializer implements JsonSerializer<ISeries> {
 
