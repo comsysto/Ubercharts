@@ -58,7 +58,7 @@ public interface ISeries<DataType> {
 
   /**
    * Gets the type of this series. If this is set, the default type of your chart will be ignored for this series. The
-   * default value is {@link Type#line}.
+   * default value is null.
    *
    * @return the type of this series.
    * @see Type
@@ -67,7 +67,7 @@ public interface ISeries<DataType> {
 
   /**
    * Sets the type of this series. If you set this, the default type of your chart will be ignored for this series. The
-   * default value is {@link Type#line}.
+   * default value is null.
    *
    * @param pType the type of this series
    *

@@ -7,15 +7,14 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Date: Feb 18, 2011
- * Time: 3:16:33 PM
+ * Date: Feb 18, 2011 Time: 3:16:33 PM
  *
  * @author Mohammed El Batya
  */
 public class Chart {
 
   protected Chart(Type pType) {
-    type = pType;
+    defaultSeriesType = pType;
   }
 
   private Boolean alignTicks;// = Boolean.TRUE;
@@ -25,7 +24,7 @@ public class Chart {
   private Integer borderRadius = 5;
   private Integer borderWidth = 0;
   private String className = "";
-  private String defaultSeriesType;
+  private Type defaultSeriesType;
 
   // NOT SUPPORTED
   //events: {...
@@ -61,7 +60,6 @@ public class Chart {
   private Integer spacingBottom; //: 15,
   private Integer spacingLeft; //: 10,
   private Map<String, String> style;
-  private Type type; //: "line",
   private Integer width; //: null,
   private ZoomType zoomType;
 
@@ -122,11 +120,11 @@ public class Chart {
     className = pClassName;
   }
 
-  public String getDefaultSeriesType() {
+  public Type getDefaultSeriesType() {
     return defaultSeriesType;
   }
 
-  public void setDefaultSeriesType(String pDefaultSeriesType) {
+  public void setDefaultSeriesType(Type pDefaultSeriesType) {
     defaultSeriesType = pDefaultSeriesType;
   }
 
@@ -322,11 +320,4 @@ public class Chart {
     zoomType = pZoomType;
   }
 
-  public Type getType() {
-    return type;
-  }
-
-  public void setType(Type pType) {
-    type = pType;
-  }
 }

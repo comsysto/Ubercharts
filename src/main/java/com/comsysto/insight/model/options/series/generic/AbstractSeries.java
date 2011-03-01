@@ -29,7 +29,7 @@ abstract public class AbstractSeries<DataType> implements ISeries<DataType> {
   private String stack = "";
 
   /** {@link ISeries#getType()} */
-  private Type type = Type.line;
+  private Type type;
 
   /** {@link ISeries#getXAxis()} */
   private Integer xAxis = 0;
