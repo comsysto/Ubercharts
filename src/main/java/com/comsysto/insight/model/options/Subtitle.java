@@ -2,27 +2,20 @@ package com.comsysto.insight.model.options;
 
 import java.util.Map;
 
-public class Subtitle {
+public class Subtitle extends BasicTitle {
 
-    private Align fAlign;
     private Boolean fFloating;
-    private String fText;
-    private Map<String, String> fStyle;
     private VerticalAlign fVerticalAlign;
     private Integer fX;
     private Integer fY;
 
+
     public Subtitle(String pText) {
-        fText = pText;
+        super(pText);
     }
 
-    public Align getAlign() {
-        return fAlign;
-    }
-
-    public Subtitle setAlign(Align pAlign) {
-        fAlign = pAlign;
-        return this;
+    public Subtitle(String pText, Align pAlign, Map<String, String> pStyle) {
+        super(pText, pAlign, pStyle);
     }
 
     public Boolean getFloating() {
@@ -34,23 +27,6 @@ public class Subtitle {
         return this;
     }
 
-    public String getText() {
-        return fText;
-    }
-
-    public Subtitle setText(String pText) {
-        fText = pText;
-        return this;
-    }
-
-    public Map<String, String> getStyle() {
-        return fStyle;
-    }
-
-    public Subtitle setStyle(Map<String, String> pStyle) {
-        fStyle = pStyle;
-        return this;
-    }
 
     public VerticalAlign getVerticalAlign() {
         return fVerticalAlign;

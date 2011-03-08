@@ -3,10 +3,10 @@ package com.comsysto.insight;
 import com.comsysto.insight.component.HighchartsPanel;
 import com.comsysto.insight.model.Highchart;
 import com.comsysto.insight.model.charts.*;
+import com.comsysto.insight.model.options.ChartTitle;
 import com.comsysto.insight.model.options.Credits;
 import com.comsysto.insight.model.options.Point;
 import com.comsysto.insight.model.options.Subtitle;
-import com.comsysto.insight.model.options.Title;
 import com.comsysto.insight.model.options.series.generic.ISeries;
 import com.comsysto.insight.model.options.series.impl.*;
 import org.apache.wicket.PageParameters;
@@ -49,31 +49,31 @@ public class HomePage extends WebPage {
         ISeries e = new PointSeries("Points").setData(new Point[]{new Point(1, 5), new Point(3, 4), new Point(6, 7)});
 
         Highchart highchart1 = new Highchart(new AreaChart(), a, c, d, e);
-        highchart1.setTitle(new Title("AreaChart")).setCredits(credits).getXAxis().setCategories(categories);
+        highchart1.setTitle(new ChartTitle("AreaChart")).setCredits(credits).getXAxis().setCategories(categories);
 
         Highchart highchart2 = new Highchart(new AreaSplineChart(), a, c, d, e);
-        highchart2.setTitle(new Title("AreaSplineChart")).setCredits(credits).getXAxis().setCategories(categories);
+        highchart2.setTitle(new ChartTitle("AreaSplineChart")).setCredits(credits).getXAxis().setCategories(categories);
 
         Highchart highchart3 = new Highchart(new BarChart(), a, c, d, e);
-        highchart3.setTitle(new Title("BarChart")).setCredits(credits).getXAxis().setCategories(categories);
+        highchart3.setTitle(new ChartTitle("BarChart")).setCredits(credits).getXAxis().setCategories(categories);
 
         Highchart highchart4 = new Highchart(new ColumnChart(), a, c, d, e);
-        highchart4.setTitle(new Title("ColumnChart")).setCredits(credits).getXAxis().setCategories(categories);
+        highchart4.setTitle(new ChartTitle("ColumnChart")).setCredits(credits).getXAxis().setCategories(categories);
 
         Highchart highchart5 = new Highchart(new LineChart(), a, c, d, e);
-        highchart5.setTitle(new Title("LineChart")).setCredits(credits).getXAxis().setCategories(categories);
+        highchart5.setTitle(new ChartTitle("LineChart")).setCredits(credits).getXAxis().setCategories(categories);
 
         Highchart highchart6 = new Highchart(new PieChart(), a, c, d, e);
-        highchart6.setTitle(new Title("PieChart")).setCredits(credits).getXAxis().setCategories(categories);
+        highchart6.setTitle(new ChartTitle("PieChart")).setCredits(credits).getXAxis().setCategories(categories);
 
         Highchart highchart7 = new Highchart(new ScatterChart(), a, c, d, e);
-        highchart7.setTitle(new Title("ScatterChart")).setCredits(credits).getXAxis().setCategories(categories);
+        highchart7.setTitle(new ChartTitle("ScatterChart")).setCredits(credits).getXAxis().setCategories(categories);
 
         Highchart highchart8 = new Highchart(new SplineChart(), a, c, d, e);
-        highchart8.setTitle(new Title("SplineChart")).setCredits(credits).getXAxis().setCategories(categories);
+        highchart8.setTitle(new ChartTitle("SplineChart")).setCredits(credits).getXAxis().setCategories(categories);
 
         Highchart highchart9 = new Highchart(new LineChart(), b);
-        highchart9.setTitle(new Title("LineChart")).setSubtitle(new Subtitle("Mixed Series")).setCredits(credits).getXAxis().setCategories(categories);
+        highchart9.setTitle(new ChartTitle("LineChart")).setSubtitle(new Subtitle("Mixed Series")).setCredits(credits).getXAxis().setCategories(categories);
 
 
         // Add Panel

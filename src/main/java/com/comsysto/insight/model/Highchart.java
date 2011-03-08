@@ -36,7 +36,7 @@ public class Highchart {
     private List<ISeries> series = new LinkedList<ISeries>();
     private Subtitle subtitle;
     private String[] symbols;
-    private Title title;
+    private ChartTitle title;
     private Tooltip tooltip;
     private XAxis xAxis = new XAxis();
     private YAxis yAxis = new YAxis();
@@ -190,11 +190,11 @@ public class Highchart {
         return this;
     }
 
-    public Title getTitle() {
+    public ChartTitle getTitle() {
         return title;
     }
 
-    public Highchart setTitle(Title pTitle) {
+    public Highchart setTitle(ChartTitle pTitle) {
         title = pTitle;
         return this;
     }
