@@ -5,8 +5,8 @@ apply plugin: 'eclipse' // adds Eclipse plugin to enable the creation of an Ecli
 
 /* This sets the needed maven repositories */
 repositories {
-  mavenCentral() // The default maven repo
-  mavenRepo urls: "http://google-gson.googlecode.com/svn/mavenrepo" // The maven repo for gson
+    mavenCentral() // The default maven repo
+    mavenRepo urls: "http://google-gson.googlecode.com/svn/mavenrepo" // The maven repo for gson
 }
 
 /*
@@ -19,47 +19,38 @@ repositories {
   alongside the appropriate class files.
 */
 sourceSets {
-  main {
-    java {
-      srcDir 'src/main/java'
+    main {
+        java {
+            srcDir 'src/main/java'
+        }
+        resources {
+            srcDir 'src/main/resources'
+            srcDir 'src/main/java'
+        }
     }
-    resources {
-      srcDir 'src/main/resources'
-      srcDir 'src/main/java'
-    }
-  }
 }
 
 
 
 dependencies {
 
-  /*
-   These are the dependencies, which are needed to compile and run the project.
-  */
-  compile(
-          [group: 'org.apache.wicket', name: 'wicket', version: '1.4.15'],
-          [group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.5.8'],
+    /*
+     These are the dependencies, which are needed to compile and run the project.
+    */
+    compile(
+            [group: 'org.apache.wicket', name: 'wicket', version: '1.4.15'],
+            [group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.5.8'],
+            [group: 'org.codehaus.jackson', name: 'jackson-mapper-asl', version: '1.6.4']
+    )
 
-          /*
-          * There is a problem with the public gson maven repository.
-          * The following line will be disabled until the repo gets fixed.
-          *
-          * [group: 'com.google.code', name: 'gson', version: '1.6'],
-          *
-          *  Instead, the gson jar will be loaded from the local libs folder.
-          */
-          [fileTree(dir: 'libs', include: '*.jar')]
-  )
-
-  /*
-   These are the dependencies, which are needed to test the project.
-  */
-  testCompile(
-          [group: 'org.mortbay.jetty', name: 'jetty-util', version: '6.1.25'],
-          [group: 'org.mortbay.jetty', name: 'jetty-management', version: '6.1.25'],
-          [group: 'junit', name: 'junit', version: '4.8.1'],
-  )
+    /*
+     These are the dependencies, which are needed to test the project.
+    */
+    testCompile(
+            [group: 'org.mortbay.jetty', name: 'jetty-util', version: '6.1.25'],
+            [group: 'org.mortbay.jetty', name: 'jetty-management', version: '6.1.25'],
+            [group: 'junit', name: 'junit', version: '4.8.1'],
+    )
 }
 
 
