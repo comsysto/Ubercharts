@@ -11,7 +11,7 @@ public class Credits {
     private Map<String, String> style;
     private String text;
 
-    private Credits(String pText) {
+    public Credits(String pText) {
         this.enabled = true;
         this.text = pText;
     }
