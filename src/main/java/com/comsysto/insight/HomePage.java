@@ -73,7 +73,10 @@ public class HomePage extends WebPage {
         highchart8.setTitle(new ChartTitle("SplineChart")).setCredits(credits).getXAxis().setCategories(categories);
 
         Highchart highchart9 = new Highchart(new LineChart(), b);
-        highchart9.setTitle(new ChartTitle("LineChart")).setSubtitle(new Subtitle("Mixed Series")).setCredits(credits).getXAxis().setCategories(categories);
+        highchart9.setTitle(new ChartTitle("LineChart"));
+        highchart9.setSubtitle(new Subtitle("Mixed Series"));
+        highchart9.getXAxis().setCategories(categories);
+        highchart9.setCredits(credits);
 
 
         // Add Panel

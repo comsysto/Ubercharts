@@ -2,7 +2,7 @@ package com.comsysto.insight.model.options;
 
 import java.util.List;
 
-public class XAxis {
+public class Axis {
 
     private Boolean allowDecimals;// true,
     private String alternateGridColor;// null,

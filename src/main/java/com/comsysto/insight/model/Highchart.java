@@ -38,8 +38,8 @@ public class Highchart {
     private String[] symbols;
     private ChartTitle title;
     private Tooltip tooltip;
-    private XAxis xAxis = new XAxis();
-    private YAxis yAxis = new YAxis();
+    private Axis xAxis = new Axis();
+    private Axis yAxis = new Axis();
     private Exporting exporting;
     private Navigation navigation;
 
@@ -208,20 +208,20 @@ public class Highchart {
         return this;
     }
 
-    public XAxis getXAxis() {
+    public Axis getXAxis() {
         return xAxis;
     }
 
-    public Highchart setXAxis(XAxis pXAxis) {
+    public Highchart setXAxis(Axis pXAxis) {
         xAxis = pXAxis;
         return this;
     }
 
-    public YAxis getYAxis() {
+    public Axis getYAxis() {
         return yAxis;
     }
 
-    public Highchart setYAxis(YAxis pYAxis) {
+    public Highchart setYAxis(Axis pYAxis) {
         yAxis = pYAxis;
         return this;
     }
