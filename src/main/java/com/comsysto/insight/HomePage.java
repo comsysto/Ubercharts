@@ -5,6 +5,7 @@ import com.comsysto.insight.model.Highchart;
 import com.comsysto.insight.model.charts.*;
 import com.comsysto.insight.model.options.Credits;
 import com.comsysto.insight.model.options.Point;
+import com.comsysto.insight.model.options.Subtitle;
 import com.comsysto.insight.model.options.Title;
 import com.comsysto.insight.model.options.series.generic.ISeries;
 import com.comsysto.insight.model.options.series.impl.*;
@@ -72,7 +73,7 @@ public class HomePage extends WebPage {
         highchart8.setTitle(new Title("SplineChart")).setCredits(credits).getXAxis().setCategories(categories);
 
         Highchart highchart9 = new Highchart(new LineChart(), b);
-        highchart9.setTitle(new Title("LineChart(Mixed Series)")).setCredits(credits).getXAxis().setCategories(categories);
+        highchart9.setTitle(new Title("LineChart")).setSubtitle(new Subtitle("Mixed Series")).setCredits(credits).getXAxis().setCategories(categories);
 
 
         // Add Panel
