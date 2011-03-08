@@ -3,10 +3,7 @@ package com.comsysto.insight;
 import com.comsysto.insight.component.HighchartsPanel;
 import com.comsysto.insight.model.Highchart;
 import com.comsysto.insight.model.charts.*;
-import com.comsysto.insight.model.options.ChartTitle;
-import com.comsysto.insight.model.options.Credits;
-import com.comsysto.insight.model.options.Point;
-import com.comsysto.insight.model.options.Subtitle;
+import com.comsysto.insight.model.options.*;
 import com.comsysto.insight.model.options.series.generic.ISeries;
 import com.comsysto.insight.model.options.series.impl.*;
 import org.apache.wicket.PageParameters;
@@ -75,7 +72,8 @@ public class HomePage extends WebPage {
         Highchart highchart9 = new Highchart(new LineChart(), b);
         highchart9.setTitle(new ChartTitle("LineChart"));
         highchart9.setSubtitle(new Subtitle("Mixed Series"));
-        highchart9.getXAxis().setCategories(categories);
+        highchart9.getXAxis().setCategories(categories).setTitle(new AxisTitle("Time"));
+        highchart9.getYAxis().setTitle(new AxisTitle("Amount"));
         highchart9.setCredits(credits);
 
 

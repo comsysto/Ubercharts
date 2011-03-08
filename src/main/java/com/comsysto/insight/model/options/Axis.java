@@ -64,328 +64,369 @@ public class Axis {
         return allowDecimals;
     }
 
-    public void setAllowDecimals(Boolean allowDecimals) {
+    public Axis setAllowDecimals(Boolean allowDecimals) {
         this.allowDecimals = allowDecimals;
+        return this;
     }
 
     public String getAlternateGridColor() {
         return alternateGridColor;
     }
 
-    public void setAlternateGridColor(String alternateGridColor) {
+    public Axis setAlternateGridColor(String alternateGridColor) {
         this.alternateGridColor = alternateGridColor;
+        return this;
     }
 
     public List<String> getCategories() {
         return categories;
     }
 
-    public void setCategories(List<String> categories) {
+    public Axis setCategories(List<String> categories) {
         this.categories = categories;
+        return this;
     }
 
     public Boolean getEndOnTick() {
         return endOnTick;
     }
 
-    public void setEndOnTick(Boolean endOnTick) {
+    public Axis setEndOnTick(Boolean endOnTick) {
         this.endOnTick = endOnTick;
+        return this;
     }
 
     public String getGridLineColor() {
         return gridLineColor;
     }
 
-    public void setGridLineColor(String gridLineColor) {
+    public Axis setGridLineColor(String gridLineColor) {
         this.gridLineColor = gridLineColor;
+        return this;
     }
 
     public Dashstyles getGridLineDashStyle() {
         return gridLineDashStyle;
     }
 
-    public void setGridLineDashStyle(Dashstyles gridLineDashStyle) {
+    public Axis setGridLineDashStyle(Dashstyles gridLineDashStyle) {
         this.gridLineDashStyle = gridLineDashStyle;
+        return this;
     }
 
     public Integer getGridLineWidth() {
         return gridLineWidth;
     }
 
-    public void setGridLineWidth(Integer gridLineWidth) {
+    public Axis setGridLineWidth(Integer gridLineWidth) {
         this.gridLineWidth = gridLineWidth;
+        return this;
     }
 
     public String getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public Axis setId(String id) {
         this.id = id;
+        return this;
     }
 
     public Labels getLabels() {
         return labels;
     }
 
-    public void setLabels(Labels labels) {
+    public Axis setLabels(Labels labels) {
         this.labels = labels;
+        return this;
     }
 
     public String getLineColor() {
         return lineColor;
     }
 
-    public void setLineColor(String lineColor) {
+    public Axis setLineColor(String lineColor) {
         this.lineColor = lineColor;
+        return this;
     }
 
     public Integer getLineWidth() {
         return lineWidth;
     }
 
-    public void setLineWidth(Integer lineWidth) {
+    public Axis setLineWidth(Integer lineWidth) {
         this.lineWidth = lineWidth;
+        return this;
     }
 
     public Integer getLinkedTo() {
         return linkedTo;
     }
 
-    public void setLinkedTo(Integer linkedTo) {
+    public Axis setLinkedTo(Integer linkedTo) {
         this.linkedTo = linkedTo;
+        return this;
     }
 
     public Integer getMax() {
         return max;
     }
 
-    public void setMax(Integer max) {
+    public Axis setMax(Integer max) {
         this.max = max;
+        return this;
     }
 
     public Double getMaxPadding() {
         return maxPadding;
     }
 
-    public void setMaxPadding(Double maxPadding) {
+    public Axis setMaxPadding(Double maxPadding) {
         this.maxPadding = maxPadding;
+        return this;
     }
 
     public Integer getMaxZoom() {
         return maxZoom;
     }
 
-    public void setMaxZoom(Integer maxZoom) {
+    public Axis setMaxZoom(Integer maxZoom) {
         this.maxZoom = maxZoom;
+        return this;
     }
 
     public Integer getMin() {
         return min;
     }
 
-    public void setMin(Integer min) {
+    public Axis setMin(Integer min) {
         this.min = min;
+        return this;
     }
 
     public String getMinorGridLineColor() {
         return minorGridLineColor;
     }
 
-    public void setMinorGridLineColor(String minorGridLineColor) {
+    public Axis setMinorGridLineColor(String minorGridLineColor) {
         this.minorGridLineColor = minorGridLineColor;
+        return this;
     }
 
     public Dashstyles getMinorGridLineDashStyle() {
         return minorGridLineDashStyle;
     }
 
-    public void setMinorGridLineDashStyle(Dashstyles minorGridLineDashStyle) {
+    public Axis setMinorGridLineDashStyle(Dashstyles minorGridLineDashStyle) {
         this.minorGridLineDashStyle = minorGridLineDashStyle;
+        return this;
     }
 
     public Integer getMinorGridLineWidth() {
         return minorGridLineWidth;
     }
 
-    public void setMinorGridLineWidth(Integer minorGridLineWidth) {
+    public Axis setMinorGridLineWidth(Integer minorGridLineWidth) {
         this.minorGridLineWidth = minorGridLineWidth;
+        return this;
     }
 
     public String getMinorTickColor() {
         return minorTickColor;
     }
 
-    public void setMinorTickColor(String minorTickColor) {
+    public Axis setMinorTickColor(String minorTickColor) {
         this.minorTickColor = minorTickColor;
+        return this;
     }
 
     public Integer getMinorTickInterval() {
         return minorTickInterval;
     }
 
-    public void setMinorTickInterval(Integer minorTickInterval) {
+    public Axis setMinorTickInterval(Integer minorTickInterval) {
         this.minorTickInterval = minorTickInterval;
+        return this;
     }
 
     public Integer getMinorTickLength() {
         return minorTickLength;
     }
 
-    public void setMinorTickLength(Integer minorTickLength) {
+    public Axis setMinorTickLength(Integer minorTickLength) {
         this.minorTickLength = minorTickLength;
+        return this;
     }
 
     public TickPosition getMinorTickPosition() {
         return minorTickPosition;
     }
 
-    public void setMinorTickPosition(TickPosition minorTickPosition) {
+    public Axis setMinorTickPosition(TickPosition minorTickPosition) {
         this.minorTickPosition = minorTickPosition;
+        return this;
     }
 
     public Integer getMinorTickWidth() {
         return minorTickWidth;
     }
 
-    public void setMinorTickWidth(Integer minorTickWidth) {
+    public Axis setMinorTickWidth(Integer minorTickWidth) {
         this.minorTickWidth = minorTickWidth;
+        return this;
     }
 
     public Double getMinPadding() {
         return minPadding;
     }
 
-    public void setMinPadding(Double minPadding) {
+    public Axis setMinPadding(Double minPadding) {
         this.minPadding = minPadding;
+        return this;
     }
 
     public Integer getOffset() {
         return offset;
     }
 
-    public void setOffset(Integer offset) {
+    public Axis setOffset(Integer offset) {
         this.offset = offset;
+        return this;
     }
 
     public Boolean getOpposite() {
         return opposite;
     }
 
-    public void setOpposite(Boolean opposite) {
+    public Axis setOpposite(Boolean opposite) {
         this.opposite = opposite;
+        return this;
     }
 
     public Boolean getReversed() {
         return reversed;
     }
 
-    public void setReversed(Boolean reversed) {
+    public Axis setReversed(Boolean reversed) {
         this.reversed = reversed;
+        return this;
     }
 
     public Boolean getShowFirstLabel() {
         return showFirstLabel;
     }
 
-    public void setShowFirstLabel(Boolean showFirstLabel) {
+    public Axis setShowFirstLabel(Boolean showFirstLabel) {
         this.showFirstLabel = showFirstLabel;
+        return this;
     }
 
     public Boolean getShowLastLabel() {
         return showLastLabel;
     }
 
-    public void setShowLastLabel(Boolean showLastLabel) {
+    public Axis setShowLastLabel(Boolean showLastLabel) {
         this.showLastLabel = showLastLabel;
+        return this;
     }
 
     public Integer getStartOfWeek() {
         return startOfWeek;
     }
 
-    public void setStartOfWeek(Integer startOfWeek) {
+    public Axis setStartOfWeek(Integer startOfWeek) {
         this.startOfWeek = startOfWeek;
+        return this;
     }
 
     public Boolean getStartOnTick() {
         return startOnTick;
     }
 
-    public void setStartOnTick(Boolean startOnTick) {
+    public Axis setStartOnTick(Boolean startOnTick) {
         this.startOnTick = startOnTick;
+        return this;
     }
 
     public String getTickColor() {
         return tickColor;
     }
 
-    public void setTickColor(String tickColor) {
+    public Axis setTickColor(String tickColor) {
         this.tickColor = tickColor;
+        return this;
     }
 
     public Integer getTickInterval() {
         return tickInterval;
     }
 
-    public void setTickInterval(Integer tickInterval) {
+    public Axis setTickInterval(Integer tickInterval) {
         this.tickInterval = tickInterval;
+        return this;
     }
 
     public Integer getTickLength() {
         return tickLength;
     }
 
-    public void setTickLength(Integer tickLength) {
+    public Axis setTickLength(Integer tickLength) {
         this.tickLength = tickLength;
+        return this;
     }
 
     public String getTickmarkPlacement() {
         return tickmarkPlacement;
     }
 
-    public void setTickmarkPlacement(String tickmarkPlacement) {
+    public Axis setTickmarkPlacement(String tickmarkPlacement) {
         this.tickmarkPlacement = tickmarkPlacement;
+        return this;
     }
 
     public Integer getTickPixelInterval() {
         return tickPixelInterval;
     }
 
-    public void setTickPixelInterval(Integer tickPixelInterval) {
+    public Axis setTickPixelInterval(Integer tickPixelInterval) {
         this.tickPixelInterval = tickPixelInterval;
+        return this;
     }
 
     public TickPosition getTickPosition() {
         return tickPosition;
     }
 
-    public void setTickPosition(TickPosition tickPosition) {
+    public Axis setTickPosition(TickPosition tickPosition) {
         this.tickPosition = tickPosition;
+        return this;
     }
 
     public Integer getTickWidth() {
         return tickWidth;
     }
 
-    public void setTickWidth(Integer tickWidth) {
+    public Axis setTickWidth(Integer tickWidth) {
         this.tickWidth = tickWidth;
+        return this;
     }
 
     public AxisTitle getTitle() {
         return fTitle;
     }
 
-    public void setTitle(AxisTitle pTitle) {
+    public Axis setTitle(AxisTitle pTitle) {
         this.fTitle = pTitle;
+        return this;
     }
 
     public Type getType() {
         return type;
     }
 
-    public void setType(Type type) {
+    public Axis setType(Type type) {
         this.type = type;
+        return this;
     }
 
 

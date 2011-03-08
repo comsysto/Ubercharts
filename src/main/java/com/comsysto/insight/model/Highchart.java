@@ -3,6 +3,7 @@ package com.comsysto.insight.model;
 import com.comsysto.insight.model.charts.Chart;
 import com.comsysto.insight.model.options.*;
 import com.comsysto.insight.model.options.series.generic.ISeries;
+import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
@@ -208,6 +209,7 @@ public class Highchart {
         return this;
     }
 
+    @JsonProperty("xAxis")
     public Axis getXAxis() {
         return xAxis;
     }
@@ -217,6 +219,7 @@ public class Highchart {
         return this;
     }
 
+    @JsonProperty("yAxis")
     public Axis getYAxis() {
         return yAxis;
     }
