@@ -101,7 +101,7 @@ public class MixedSeries extends AbstractSeries<Object[]> {
      * <p/>
      * It is valid if it is an array with the length of 2 and containing a Number/Number-Pair or a String/Number-Pair.
      * <p/>
-     * If valid {@code true} will be returned, otherwise {@code false}.
+     * If valid, {@code true} will be returned, otherwise {@code false}.
      *
      * @param pObject the object to be checked
      * @return {@code true} if valid, otherwise {@code false}.
