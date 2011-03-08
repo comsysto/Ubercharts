@@ -43,15 +43,23 @@ public class Highchart {
     private Exporting exporting;
     private Navigation navigation;
 
-
-    public Highchart(Chart pChart) {
-        chart = pChart;
+    public Highchart() {
         mapper.getSerializationConfig().setSerializationInclusion(JsonSerialize.Inclusion.NON_NULL);
+    }
+
+    public Highchart(Chart pChart, ISeries... pSeries) {
+        this();
+        chart = pChart;
+        setSeries(pSeries);
+    }
+
+    public Highchart(Chart pChart, List<ISeries> pSeries) {
+        this(pChart);
+        setSeries(pSeries);
     }
 
 
     public String toJson() {
-
 
         String json = "";
 
@@ -67,9 +75,6 @@ public class Highchart {
         return json;
     }
 
-    public Chart getChart() {
-        return chart;
-    }
 
     public Highchart addSeries(ISeries... pSeries) {
 
@@ -86,13 +91,103 @@ public class Highchart {
         return this;
     }
 
+    public Chart getChart() {
+        return chart;
+    }
+
+    public Highchart setChart(Chart pChart) {
+        chart = pChart;
+        return this;
+    }
+
+    public String[] getColors() {
+        return colors;
+    }
+
+    public Highchart setColors(String[] pColors) {
+        colors = pColors;
+        return this;
+    }
+
+    public Credits getCredits() {
+        return credits;
+    }
+
+    public Highchart setCredits(Credits pCredits) {
+        credits = pCredits;
+        return this;
+    }
+
+    public Labels getLabels() {
+        return labels;
+    }
+
+    public Highchart setLabels(Labels pLabels) {
+        labels = pLabels;
+        return this;
+    }
+
+    public Legend getLegend() {
+        return legend;
+    }
+
+    public Highchart setLegend(Legend pLegend) {
+        legend = pLegend;
+        return this;
+    }
+
+    public Loading getLoading() {
+        return loading;
+    }
+
+    public Highchart setLoading(Loading pLoading) {
+        loading = pLoading;
+        return this;
+    }
+
+    public PlotOptions getPlotOptions() {
+        return plotOptions;
+    }
+
+    public Highchart setPlotOptions(PlotOptions pPlotOptions) {
+        plotOptions = pPlotOptions;
+        return this;
+    }
+
+    public Point getPoint() {
+        return point;
+    }
+
+    public Highchart setPoint(Point pPoint) {
+        point = pPoint;
+        return this;
+    }
 
     public List<ISeries> getSeries() {
         return series;
     }
 
-    public XAxis getXAxis() {
-        return xAxis;
+    public Highchart setSeries(List<ISeries> pSeries) {
+        series = pSeries;
+        return this;
+    }
+
+    public Subtitle getSubtitle() {
+        return subtitle;
+    }
+
+    public Highchart setSubtitle(Subtitle pSubtitle) {
+        subtitle = pSubtitle;
+        return this;
+    }
+
+    public String[] getSymbols() {
+        return symbols;
+    }
+
+    public Highchart setSymbols(String[] pSymbols) {
+        symbols = pSymbols;
+        return this;
     }
 
     public Title getTitle() {
@@ -104,116 +199,48 @@ public class Highchart {
         return this;
     }
 
-
-    public ObjectMapper getMapper() {
-        return mapper;
-    }
-
-    public void setMapper(ObjectMapper mapper) {
-        this.mapper = mapper;
-    }
-
-    public String[] getColors() {
-        return colors;
-    }
-
-    public void setColors(String[] colors) {
-        this.colors = colors;
-    }
-
-    public Credits getCredits() {
-        return credits;
-    }
-
-    public void setCredits(Credits credits) {
-        this.credits = credits;
-    }
-
-    public Labels getLabels() {
-        return labels;
-    }
-
-    public void setLabels(Labels labels) {
-        this.labels = labels;
-    }
-
-    public Legend getLegend() {
-        return legend;
-    }
-
-    public void setLegend(Legend legend) {
-        this.legend = legend;
-    }
-
-    public Loading getLoading() {
-        return loading;
-    }
-
-    public void setLoading(Loading loading) {
-        this.loading = loading;
-    }
-
-    public PlotOptions getPlotOptions() {
-        return plotOptions;
-    }
-
-    public void setPlotOptions(PlotOptions plotOptions) {
-        this.plotOptions = plotOptions;
-    }
-
-    public Point getPoint() {
-        return point;
-    }
-
-    public void setPoint(Point point) {
-        this.point = point;
-    }
-
-    public Subtitle getSubtitle() {
-        return subtitle;
-    }
-
-    public void setSubtitle(Subtitle subtitle) {
-        this.subtitle = subtitle;
-    }
-
-    public String[] getSymbols() {
-        return symbols;
-    }
-
-    public void setSymbols(String[] symbols) {
-        this.symbols = symbols;
-    }
-
     public Tooltip getTooltip() {
         return tooltip;
     }
 
-    public void setTooltip(Tooltip tooltip) {
-        this.tooltip = tooltip;
+    public Highchart setTooltip(Tooltip pTooltip) {
+        tooltip = pTooltip;
+        return this;
+    }
+
+    public XAxis getXAxis() {
+        return xAxis;
+    }
+
+    public Highchart setXAxis(XAxis pXAxis) {
+        xAxis = pXAxis;
+        return this;
     }
 
     public YAxis getYAxis() {
         return yAxis;
     }
 
-    public void setYAxis(YAxis yAxis) {
-        this.yAxis = yAxis;
+    public Highchart setYAxis(YAxis pYAxis) {
+        yAxis = pYAxis;
+        return this;
     }
 
     public Exporting getExporting() {
         return exporting;
     }
 
-    public void setExporting(Exporting exporting) {
-        this.exporting = exporting;
+    public Highchart setExporting(Exporting pExporting) {
+        exporting = pExporting;
+        return this;
     }
 
     public Navigation getNavigation() {
         return navigation;
     }
 
-    public void setNavigation(Navigation navigation) {
-        this.navigation = navigation;
+    public Highchart setNavigation(Navigation pNavigation) {
+        navigation = pNavigation;
+        return this;
     }
 }
