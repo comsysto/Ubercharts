@@ -5,7 +5,6 @@ import com.comsysto.insight.model.options.Title;
 import com.comsysto.insight.model.options.XAxis;
 import com.comsysto.insight.model.options.series.generic.ISeries;
 import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.map.SerializationConfig;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 import java.io.IOException;
@@ -22,7 +21,7 @@ public class Highchart {
     // 5. write some documentation
 
 
-    private ObjectMapper mapper = new ObjectMapper().configure(SerializationConfig.Feature.WRITE_NULL_PROPERTIES, false);
+    private ObjectMapper mapper = new ObjectMapper();
 
 
     private Chart chart;
