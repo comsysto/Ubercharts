@@ -2,68 +2,63 @@ package com.comsysto.insight.model.options;
 
 public class Position {
 
-  private final Align align;
-  private final Integer x;
-  private final VerticalAlign verticalAlign;
-  private final Integer y;
+    private Align fAlign;
+    private VerticalAlign fVerticalAlign;
+    private Integer fX;
+    private Integer fY;
 
-  private Position(Builder builder) {
-    this.align = builder.align;
-    this.x = builder.x;
-    this.verticalAlign = builder.verticalAlign;
-    this.y = builder.y;
-  }
-
-  public Align getAlign() {
-    return align;
-  }
-
-  public Integer getX() {
-    return x;
-  }
-
-  public VerticalAlign getVerticalAlign() {
-    return verticalAlign;
-  }
-
-  public Integer getY() {
-    return y;
-  }
-
-  public static class Builder {
-
-    // optional
-    private Align align = Align.right;
-    private Integer x = 10;
-    private VerticalAlign verticalAlign = VerticalAlign.bottom;
-    private Integer y = -5;
-
-    public Builder() {
+    public Position() {
     }
 
-    public Builder align(Align align) {
-      this.align = align;
-      return this;
+    public Position(Align pAlign) {
+        fAlign = pAlign;
     }
 
-    public Builder x(Integer x) {
-      this.x = x;
-      return this;
+    public Position(Align pAlign, VerticalAlign pVerticalAlign) {
+        fAlign = pAlign;
+        fVerticalAlign = pVerticalAlign;
     }
 
-    public Builder verticalAlign(VerticalAlign verticalAlign) {
-      this.verticalAlign = verticalAlign;
-      return this;
+    public Position(Align pAlign, VerticalAlign pVerticalAlign, Integer pX, Integer pY) {
+        fAlign = pAlign;
+        fVerticalAlign = pVerticalAlign;
+        fX = pX;
+        fY = pY;
     }
 
-    public Builder y(Integer y) {
-      this.y = y;
-      return this;
+    public Align getAlign() {
+        return fAlign;
     }
 
-    public Position build() {
-      return new Position(this);
+    public Position setAlign(Align pAlign) {
+        fAlign = pAlign;
+        return this;
     }
-  }
 
+    public VerticalAlign getVerticalAlign() {
+        return fVerticalAlign;
+    }
+
+    public Position setVerticalAlign(VerticalAlign pVerticalAlign) {
+        fVerticalAlign = pVerticalAlign;
+        return this;
+    }
+
+    public Integer getX() {
+        return fX;
+    }
+
+    public Position setX(Integer pX) {
+        fX = pX;
+        return this;
+    }
+
+    public Integer getY() {
+        return fY;
+    }
+
+    public Position setY(Integer pY) {
+        fY = pY;
+        return this;
+    }
 }
