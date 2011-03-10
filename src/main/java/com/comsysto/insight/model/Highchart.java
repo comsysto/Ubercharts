@@ -13,21 +13,11 @@ import java.util.List;
 
 public class Highchart {
 
-    // TODO: refactor this
-    // 1. find minimal configuration needed to render a chart (AFAIK chart, series and xAxis is minimum)
-    // 2. group similar charts by type (e.g. column and bar charts are same (?))
-    // 3. all attributes should be private
-    // 4. make "builder-pattern light" structure of all objects
-    // 5. write some documentation
-
-
     private ObjectMapper mapper = new ObjectMapper();
-
 
     private Chart chart;
     private String[] colors;
     private Credits credits;
-    //private Global global;
     private Labels labels;
     //private Lang lang;
     private Legend legend;
