@@ -75,6 +75,7 @@ public class HomePage extends WebPage {
         highchart9.getXAxis().setCategories(categories).setTitle(new AxisTitle("Time"));
         highchart9.getYAxis().setTitle(new AxisTitle("Amount"));
         highchart9.setCredits(credits);
+        highchart9.getChart().setZoomType(ZoomType.x);
 
 
         // Add Panel
