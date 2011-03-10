@@ -3,7 +3,6 @@ package com.comsysto.insight.model.charts;
 import com.comsysto.insight.model.options.Type;
 import com.comsysto.insight.model.options.ZoomType;
 
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -13,51 +12,48 @@ import java.util.Map;
  */
 public class Chart {
 
-    protected Chart(Type pType) {
+    public Chart(Type pType) {
         defaultSeriesType = pType;
     }
 
-    private Boolean alignTicks;// = Boolean.TRUE;
-    private Boolean animation;// = Boolean.TRUE;
-    private String backgroundColor; //"#FFFFFF";
-    private String borderColor; //"#4572A7";
-    private Integer borderRadius = 5;
-    private Integer borderWidth = 0;
-    private String className = "";
+    private Boolean alignTicks;
+    private Boolean animation;
+    private String backgroundColor;
+    private String borderColor;
+    private Integer borderRadius;
+    private Integer borderWidth;
+    private String className;
     private Type defaultSeriesType;
 
     // events: not supported
 
     private Integer height;
-    private Boolean ignoreHiddenSeries; //: true,
-    private Boolean inverted; //: false,
-    private List<Integer> margin; //: [null],
-    private Integer marginTop; //: null,
-    private Integer marginRight; //: 50,
-    private Integer marginBottom; //: 70,
-    private Integer marginLeft; //: 80,
-    private String plotBackgroundColor; //: null,
-    private String plotBackgroundImage;// : null,
-    private String plotBorderColor; //: "#C0C0C0",
-    private Integer plotBorderWidth; //: 0,
-
-    //CAUTION: Requires that plotBackgroundColor be set
-    private Boolean plotShadow; //: false,
-
-    private Boolean reflow; //: true,
-    private String renderTo; //: null,
-    private Boolean shadow; //: false,
-    private Boolean showAxes; //: false,
-    private Integer spacingTop; //: 10,
-    private Integer spacingRight; //: 10,
-    private Integer spacingBottom; //: 15,
-    private Integer spacingLeft; //: 10,
+    private Boolean ignoreHiddenSeries;
+    private Boolean inverted;
+    private Integer[] margin;
+    private Integer marginTop;
+    private Integer marginRight;
+    private Integer marginBottom;
+    private Integer marginLeft;
+    private String plotBackgroundColor;
+    private String plotBackgroundImage;
+    private String plotBorderColor;
+    private Integer plotBorderWidth;
+    private Boolean plotShadow;
+    private Boolean reflow;
+    private String renderTo;
+    private Boolean shadow;
+    private Boolean showAxes;
+    private Integer spacingTop;
+    private Integer spacingRight;
+    private Integer spacingBottom;
+    private Integer spacingLeft;
     private Map<String, String> style;
 
     /** use {@link #defaultSeriesType} instead */
     @Deprecated
     private String type;
-    private Integer width; //: null,
+    private Integer width;
     private ZoomType zoomType;
 
 
@@ -65,240 +61,270 @@ public class Chart {
         return alignTicks;
     }
 
-    public void setAlignTicks(Boolean pAlignTicks) {
+    public Chart setAlignTicks(Boolean pAlignTicks) {
         alignTicks = pAlignTicks;
+        return this;
     }
 
     public Boolean getAnimation() {
         return animation;
     }
 
-    public void setAnimation(Boolean pAnimation) {
+    public Chart setAnimation(Boolean pAnimation) {
         animation = pAnimation;
+        return this;
     }
 
     public String getBackgroundColor() {
         return backgroundColor;
     }
 
-    public void setBackgroundColor(String pBackgroundColor) {
+    public Chart setBackgroundColor(String pBackgroundColor) {
         backgroundColor = pBackgroundColor;
+        return this;
     }
 
     public String getBorderColor() {
         return borderColor;
     }
 
-    public void setBorderColor(String pBorderColor) {
+    public Chart setBorderColor(String pBorderColor) {
         borderColor = pBorderColor;
+        return this;
     }
 
     public Integer getBorderRadius() {
         return borderRadius;
     }
 
-    public void setBorderRadius(Integer pBorderRadius) {
+    public Chart setBorderRadius(Integer pBorderRadius) {
         borderRadius = pBorderRadius;
+        return this;
     }
 
     public Integer getBorderWidth() {
         return borderWidth;
     }
 
-    public void setBorderWidth(Integer pBorderWidth) {
+    public Chart setBorderWidth(Integer pBorderWidth) {
         borderWidth = pBorderWidth;
+        return this;
     }
 
     public String getClassName() {
         return className;
     }
 
-    public void setClassName(String pClassName) {
+    public Chart setClassName(String pClassName) {
         className = pClassName;
+        return this;
     }
 
     public Type getDefaultSeriesType() {
         return defaultSeriesType;
     }
 
-    public void setDefaultSeriesType(Type pDefaultSeriesType) {
+    public Chart setDefaultSeriesType(Type pDefaultSeriesType) {
         defaultSeriesType = pDefaultSeriesType;
+        return this;
     }
 
     public Integer getHeight() {
         return height;
     }
 
-    public void setHeight(Integer pHeight) {
+    public Chart setHeight(Integer pHeight) {
         height = pHeight;
+        return this;
     }
 
     public Boolean getIgnoreHiddenSeries() {
         return ignoreHiddenSeries;
     }
 
-    public void setIgnoreHiddenSeries(Boolean pIgnoreHiddenSeries) {
+    public Chart setIgnoreHiddenSeries(Boolean pIgnoreHiddenSeries) {
         ignoreHiddenSeries = pIgnoreHiddenSeries;
+        return this;
     }
 
     public Boolean getInverted() {
         return inverted;
     }
 
-    public void setInverted(Boolean pInverted) {
+    public Chart setInverted(Boolean pInverted) {
         inverted = pInverted;
+        return this;
     }
 
-    public List<Integer> getArgin() {
+    public Integer[] getMargin() {
         return margin;
     }
 
-    public void setArgin(List<Integer> pArgin) {
-        margin = pArgin;
+    public Chart setMargin(Integer[] pMargin) {
+        margin = pMargin;
+        return this;
     }
 
-    public Integer getArginTop() {
+    public Integer getMarginTop() {
         return marginTop;
     }
 
-    public void setArginTop(Integer pArginTop) {
-        marginTop = pArginTop;
+    public Chart setMarginTop(Integer pMarginTop) {
+        marginTop = pMarginTop;
+        return this;
     }
 
-    public Integer getArginRight() {
+    public Integer getMarginRight() {
         return marginRight;
     }
 
-    public void setArginRight(Integer pArginRight) {
-        marginRight = pArginRight;
+    public Chart setMarginRight(Integer pMarginRight) {
+        marginRight = pMarginRight;
+        return this;
     }
 
-    public Integer getArginBottom() {
+    public Integer getMarginBottom() {
         return marginBottom;
     }
 
-    public void setArginBottom(Integer pArginBottom) {
-        marginBottom = pArginBottom;
+    public Chart setMarginBottom(Integer pMarginBottom) {
+        marginBottom = pMarginBottom;
+        return this;
     }
 
-    public Integer getArginLeft() {
+    public Integer getMarginLeft() {
         return marginLeft;
     }
 
-    public void setArginLeft(Integer pArginLeft) {
-        marginLeft = pArginLeft;
+    public Chart setMarginLeft(Integer pMarginLeft) {
+        marginLeft = pMarginLeft;
+        return this;
     }
 
     public String getPlotBackgroundColor() {
         return plotBackgroundColor;
     }
 
-    public void setPlotBackgroundColor(String pPlotBackgroundColor) {
+    public Chart setPlotBackgroundColor(String pPlotBackgroundColor) {
         plotBackgroundColor = pPlotBackgroundColor;
+        return this;
     }
 
     public String getPlotBackgroundImage() {
         return plotBackgroundImage;
     }
 
-    public void setPlotBackgroundImage(String pPlotBackgroundImage) {
+    public Chart setPlotBackgroundImage(String pPlotBackgroundImage) {
         plotBackgroundImage = pPlotBackgroundImage;
+        return this;
     }
 
     public String getPlotBorderColor() {
         return plotBorderColor;
     }
 
-    public void setPlotBorderColor(String pPlotBorderColor) {
+    public Chart setPlotBorderColor(String pPlotBorderColor) {
         plotBorderColor = pPlotBorderColor;
+        return this;
     }
 
     public Integer getPlotBorderWidth() {
         return plotBorderWidth;
     }
 
-    public void setPlotBorderWidth(Integer pPlotBorderWidth) {
+    public Chart setPlotBorderWidth(Integer pPlotBorderWidth) {
         plotBorderWidth = pPlotBorderWidth;
+        return this;
     }
 
     public Boolean getPlotShadow() {
         return plotShadow;
     }
 
-    public void setPlotShadow(Boolean pPlotShadow) {
+    public Chart setPlotShadow(Boolean pPlotShadow) {
         plotShadow = pPlotShadow;
+        return this;
     }
 
     public Boolean getReflow() {
         return reflow;
     }
 
-    public void setReflow(Boolean pReflow) {
+    public Chart setReflow(Boolean pReflow) {
         reflow = pReflow;
+        return this;
     }
 
     public String getRenderTo() {
         return renderTo;
     }
 
-    public void setRenderTo(String pRenderTo) {
+    public Chart setRenderTo(String pRenderTo) {
         renderTo = pRenderTo;
+        return this;
     }
 
     public Boolean getShadow() {
         return shadow;
     }
 
-    public void setShadow(Boolean pShadow) {
+    public Chart setShadow(Boolean pShadow) {
         shadow = pShadow;
+        return this;
     }
 
     public Boolean getShowAxes() {
         return showAxes;
     }
 
-    public void setShowAxes(Boolean pShowAxes) {
+    public Chart setShowAxes(Boolean pShowAxes) {
         showAxes = pShowAxes;
+        return this;
     }
 
     public Integer getSpacingTop() {
         return spacingTop;
     }
 
-    public void setSpacingTop(Integer pSpacingTop) {
+    public Chart setSpacingTop(Integer pSpacingTop) {
         spacingTop = pSpacingTop;
+        return this;
     }
 
     public Integer getSpacingRight() {
         return spacingRight;
     }
 
-    public void setSpacingRight(Integer pSpacingRight) {
+    public Chart setSpacingRight(Integer pSpacingRight) {
         spacingRight = pSpacingRight;
+        return this;
     }
 
     public Integer getSpacingBottom() {
         return spacingBottom;
     }
 
-    public void setSpacingBottom(Integer pSpacingBottom) {
+    public Chart setSpacingBottom(Integer pSpacingBottom) {
         spacingBottom = pSpacingBottom;
+        return this;
     }
 
     public Integer getSpacingLeft() {
         return spacingLeft;
     }
 
-    public void setSpacingLeft(Integer pSpacingLeft) {
+    public Chart setSpacingLeft(Integer pSpacingLeft) {
         spacingLeft = pSpacingLeft;
+        return this;
     }
 
     public Map<String, String> getStyle() {
         return style;
     }
 
-    public void setStyle(Map<String, String> pStyle) {
+    public Chart setStyle(Map<String, String> pStyle) {
         style = pStyle;
+        return this;
     }
 
     /** use {@link #getDefaultSeriesType()} instead */
@@ -309,24 +335,27 @@ public class Chart {
 
     /** use {@link #setDefaultSeriesType(Type)} instead */
     @Deprecated
-    public void setType(String type) {
+    public Chart setType(String type) {
         this.type = type;
+        return this;
     }
 
     public Integer getWidth() {
         return width;
     }
 
-    public void setWidth(Integer pWidth) {
+    public Chart setWidth(Integer pWidth) {
         width = pWidth;
+        return this;
     }
 
     public ZoomType getZoomType() {
         return zoomType;
     }
 
-    public void setZoomType(ZoomType pZoomType) {
+    public Chart setZoomType(ZoomType pZoomType) {
         zoomType = pZoomType;
+        return this;
     }
 
 }
