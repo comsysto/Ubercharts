@@ -9,8 +9,9 @@ public class Point {
 
     private String mColor;
     private String mId;
+    private Marker mMarker;
     private String mName;
-    private boolean mSliced;
+    private Boolean mSliced;
     private Number mX;
     private Number mY;
 
@@ -37,6 +38,15 @@ public class Point {
         return this;
     }
 
+    public Marker getMarker() {
+        return mMarker;
+    }
+
+    public Point setMarker(Marker pMarker) {
+        mMarker = pMarker;
+        return this;
+    }
+
     public String getName() {
         return mName;
     }
@@ -46,11 +56,11 @@ public class Point {
         return this;
     }
 
-    public boolean isSliced() {
+    public Boolean isSliced() {
         return mSliced;
     }
 
-    public Point setSliced(boolean pSliced) {
+    public Point setSliced(Boolean pSliced) {
         mSliced = pSliced;
         return this;
     }
