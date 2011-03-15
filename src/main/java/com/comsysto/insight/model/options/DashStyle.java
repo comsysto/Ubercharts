@@ -1,6 +1,6 @@
 package com.comsysto.insight.model.options;
 
-public enum DashStyleTemp {
+public enum DashStyle {
 
     Solid,
     ShortDash,

@@ -12,7 +12,7 @@ import org.codehaus.jackson.annotate.JsonProperty;
 public class PlotLine {
 
     private String mColor;
-    private DashStyleTemp mDashStyle;
+    private DashStyle mDashStyle;
     private Integer mId;
     private PlotLabel mPlotLabel;
     private Integer mValue;
@@ -28,11 +28,11 @@ public class PlotLine {
         return this;
     }
 
-    public DashStyleTemp getDashStyle() {
+    public DashStyle getDashStyle() {
         return mDashStyle;
     }
 
-    public PlotLine setDashStyle(DashStyleTemp pDashStyle) {
+    public PlotLine setDashStyle(DashStyle pDashStyle) {
         mDashStyle = pDashStyle;
         return this;
     }
