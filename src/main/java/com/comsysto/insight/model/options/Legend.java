@@ -5,301 +5,234 @@ import java.util.Map;
 
 public class Legend {
 
-  private final Align align;
-  private final String backgroundColor;
-  private final String borderColor;
-  private final Integer borderRadius;
-  private final Integer borderWidth;
-  private final Boolean enabled;
-  private final Boolean floating;
-  private final Map<String, String> itemHiddenStyle;
-  private final Map<String, String> itemHoverStyle;
-  private final Map<String, String> itemStyle;
-  private final Integer itemWidth;
-  private final Layout layout;
+    private Align mAlign;
+    private String mBackgroundColor;
+    private String mBorderColor;
+    private Integer mBorderRadius;
+    private Integer mBorderWidth;
+    private Boolean mEnabled;
+    private Boolean mFloating;
+    private Map<String, String> mItemHiddenStyle;
+    private Map<String, String> mItemHoverStyle;
+    private Map<String, String> mItemStyle;
+    private Integer mItemWidth;
+    private Layout mLayout;
+    private Integer mLineHeight;
+    private Integer mMargin;
+    private Boolean mReversed;
+    private Boolean mShadow;
+    private Map<String, String> mStyle;
+    private Integer mSymbolPadding;
+    private Integer mSymbolWidth;
+    private VerticalAlign mVerticalAlign;
+    private Integer mWidth;
+    private Integer mX;
+    private Integer mY;
 
-  // TODO: not supported yet
-  // labelFormatter;
-
-  private final Integer lineHeight;
-  private final Integer margin;
-  private final Boolean reversed;
-  private final Boolean shadow;
-  private final Map<String, String> style;
-  private final Integer symbolPadding;
-  private final Integer symbolWidth;
-  private final VerticalAlign verticalAlign;
-  private final Integer width;
-  private final Integer x;
-  private final Integer y;
-
-  private Legend(Builder builder) {
-
-    this.align = builder.align;
-    this.backgroundColor = builder.backgroundColor;
-    this.borderColor = builder.borderColor;
-    this.borderRadius = builder.borderRadius;
-    this.borderWidth = builder.borderWidth;
-    this.enabled = builder.enabled;
-    this.floating = builder.floating;
-    this.itemHiddenStyle = builder.itemHiddenStyle;
-    this.itemHoverStyle = builder.itemHoverStyle;
-    this.itemStyle = builder.itemStyle;
-    this.itemWidth = builder.itemWidth;
-    this.layout = builder.layout;
-    this.lineHeight = builder.lineHeight;
-    this.margin = builder.margin;
-    this.reversed = builder.reversed;
-    this.shadow = builder.shadow;
-    this.style = builder.style;
-    this.symbolPadding = builder.symbolPadding;
-    this.symbolWidth = builder.symbolWidth;
-    this.verticalAlign = builder.verticalAlign;
-    this.width = builder.width;
-    this.x = builder.x;
-    this.y = builder.y;
-  }
-
-  public Align getAlign() {
-    return align;
-  }
-
-  public String getBackgroundColor() {
-    return backgroundColor;
-  }
-
-  public String getBorderColor() {
-    return borderColor;
-  }
-
-  public Integer getBorderRadius() {
-    return borderRadius;
-  }
-
-  public Integer getBorderWidth() {
-    return borderWidth;
-  }
-
-  public Boolean getEnabled() {
-    return enabled;
-  }
-
-  public Boolean getFloating() {
-    return floating;
-  }
-
-  public Map<String, String> getItemHiddenStyle() {
-    return itemHiddenStyle;
-  }
-
-  public Map<String, String> getItemHoverStyle() {
-    return itemHoverStyle;
-  }
-
-  public Map<String, String> getItemStyle() {
-    return itemStyle;
-  }
-
-  public Integer getItemWidth() {
-    return itemWidth;
-  }
-
-  public Layout getLayout() {
-    return layout;
-  }
-
-  public Integer getLineHeight() {
-    return lineHeight;
-  }
-
-  public Integer getMargin() {
-    return margin;
-  }
-
-  public Boolean getReversed() {
-    return reversed;
-  }
-
-  public Boolean getShadow() {
-    return shadow;
-  }
-
-  public Map<String, String> getStyle() {
-    return style;
-  }
-
-  public Integer getSymbolPadding() {
-    return symbolPadding;
-  }
-
-  public Integer getSymbolWidth() {
-    return symbolWidth;
-  }
-
-  public VerticalAlign getVerticalAlign() {
-    return verticalAlign;
-  }
-
-  public Integer getWidth() {
-    return width;
-  }
-
-  public Integer getX() {
-    return x;
-  }
-
-  public Integer getY() {
-    return y;
-  }
-
-
-  public static class Builder {
-
-    // optional
-    private Align align = Align.center;
-    private String backgroundColor;
-    private String borderColor = "#909090";
-    private Integer borderRadius = 5;
-    private Integer borderWidth = 1;
-    private Boolean enabled = Boolean.TRUE;
-    private Boolean floating = Boolean.FALSE;
-    private Map<String, String> itemHiddenStyle;
-    private Map<String, String> itemHoverStyle;
-    private Map<String, String> itemStyle;
-    private Integer itemWidth = null;
-    private Layout layout = Layout.horizontal;
-    private Integer lineHeight = 16;
-    private Integer margin = 15;
-    private Boolean reversed = Boolean.FALSE;
-    private Boolean shadow = Boolean.FALSE;
-    private Map<String, String> style;
-    private Integer symbolPadding = 5;
-    private Integer symbolWidth = 30;
-    private VerticalAlign verticalAlign = VerticalAlign.bottom;
-    private Integer width = null;
-    private Integer x = 15;
-    private Integer y = 0;
-
-    public Builder() {
+    public Align getAlign() {
+        return mAlign;
     }
 
-    public Builder align(Align align) {
-      this.align = align;
-      return this;
+    public Legend setAlign(Align pAlign) {
+        mAlign = pAlign;
+        return this;
     }
 
-    public Builder backgroundColor(String backgroundColor) {
-      this.backgroundColor = backgroundColor;
-      return this;
+    public String getBackgroundColor() {
+        return mBackgroundColor;
     }
 
-    public Builder borderColor(String borderColor) {
-      this.borderColor = borderColor;
-      return this;
+    public Legend setBackgroundColor(String pBackgroundColor) {
+        mBackgroundColor = pBackgroundColor;
+        return this;
     }
 
-    public Builder borderRadius(Integer borderRadius) {
-      this.borderRadius = borderRadius;
-      return this;
+    public String getBorderColor() {
+        return mBorderColor;
     }
 
-    public Builder borderWidth(Integer borderWidth) {
-      this.borderWidth = borderWidth;
-      return this;
+    public Legend setBorderColor(String pBorderColor) {
+        mBorderColor = pBorderColor;
+        return this;
     }
 
-    public Builder enabled(Boolean enabled) {
-      this.enabled = enabled;
-      return this;
+    public Integer getBorderRadius() {
+        return mBorderRadius;
     }
 
-    public Builder floating(Boolean floating) {
-      this.floating = floating;
-      return this;
+    public Legend setBorderRadius(Integer pBorderRadius) {
+        mBorderRadius = pBorderRadius;
+        return this;
     }
 
-    public Builder itemHiddenStyle(Map<String, String> itemHiddenStyle) {
-      this.itemHiddenStyle = itemHiddenStyle;
-      return this;
+    public Integer getBorderWidth() {
+        return mBorderWidth;
     }
 
-    public Builder itemHoverStyle(Map<String, String> itemHoverStyle) {
-      this.itemHoverStyle = itemHoverStyle;
-      return this;
+    public Legend setBorderWidth(Integer pBorderWidth) {
+        mBorderWidth = pBorderWidth;
+        return this;
     }
 
-    public Builder itemStyle(Map<String, String> itemStyle) {
-      this.itemStyle = itemStyle;
-      return this;
+    public Boolean getEnabled() {
+        return mEnabled;
     }
 
-    public Builder itemWidth(Integer itemWidth) {
-      this.itemWidth = itemWidth;
-      return this;
+    public Legend setEnabled(Boolean pEnabled) {
+        mEnabled = pEnabled;
+        return this;
     }
 
-    public Builder layout(Layout layout) {
-      this.layout = layout;
-      return this;
+    public Boolean getFloating() {
+        return mFloating;
     }
 
-    public Builder lineHeight(Integer lineHeight) {
-      this.lineHeight = lineHeight;
-      return this;
+    public Legend setFloating(Boolean pFloating) {
+        mFloating = pFloating;
+        return this;
     }
 
-    public Builder margin(Integer margin) {
-      this.margin = margin;
-      return this;
+    public Map<String, String> getItemHiddenStyle() {
+        return mItemHiddenStyle;
     }
 
-    public Builder reversed(Boolean reversed) {
-      this.reversed = reversed;
-      return this;
+    public Legend setItemHiddenStyle(Map<String, String> pItemHiddenStyle) {
+        mItemHiddenStyle = pItemHiddenStyle;
+        return this;
     }
 
-    public Builder shadow(Boolean shadow) {
-      this.shadow = shadow;
-      return this;
+    public Map<String, String> getItemHoverStyle() {
+        return mItemHoverStyle;
     }
 
-    public Builder style(Map<String, String> style) {
-      this.style = style;
-      return this;
+    public Legend setItemHoverStyle(Map<String, String> pItemHoverStyle) {
+        mItemHoverStyle = pItemHoverStyle;
+        return this;
     }
 
-    public Builder symbolPadding(Integer symbolPadding) {
-      this.symbolPadding = symbolPadding;
-      return this;
+    public Map<String, String> getItemStyle() {
+        return mItemStyle;
     }
 
-    public Builder symbolWidth(Integer symbolWidth) {
-      this.symbolWidth = symbolWidth;
-      return this;
+    public Legend setItemStyle(Map<String, String> pItemStyle) {
+        mItemStyle = pItemStyle;
+        return this;
     }
 
-    public Builder verticalAlign(VerticalAlign verticalAlign) {
-      this.verticalAlign = verticalAlign;
-      return this;
+    public Integer getItemWidth() {
+        return mItemWidth;
     }
 
-    public Builder width(Integer width) {
-      this.width = width;
-      return this;
+    public Legend setItemWidth(Integer pItemWidth) {
+        mItemWidth = pItemWidth;
+        return this;
     }
 
-    public Builder x(Integer x) {
-      this.x = x;
-      return this;
+    public Layout getLayout() {
+        return mLayout;
     }
 
-    public Builder y(Integer y) {
-      this.y = y;
-      return this;
+    public Legend setLayout(Layout pLayout) {
+        mLayout = pLayout;
+        return this;
     }
 
-    public Legend build() {
-      return new Legend(this);
+    public Integer getLineHeight() {
+        return mLineHeight;
     }
-  }
+
+    public Legend setLineHeight(Integer pLineHeight) {
+        mLineHeight = pLineHeight;
+        return this;
+    }
+
+    public Integer getMargin() {
+        return mMargin;
+    }
+
+    public Legend setMargin(Integer pMargin) {
+        mMargin = pMargin;
+        return this;
+    }
+
+    public Boolean getReversed() {
+        return mReversed;
+    }
+
+    public Legend setReversed(Boolean pReversed) {
+        mReversed = pReversed;
+        return this;
+    }
+
+    public Boolean getShadow() {
+        return mShadow;
+    }
+
+    public Legend setShadow(Boolean pShadow) {
+        mShadow = pShadow;
+        return this;
+    }
+
+    public Map<String, String> getStyle() {
+        return mStyle;
+    }
+
+    public Legend setStyle(Map<String, String> pStyle) {
+        mStyle = pStyle;
+        return this;
+    }
+
+    public Integer getSymbolPadding() {
+        return mSymbolPadding;
+    }
+
+    public Legend setSymbolPadding(Integer pSymbolPadding) {
+        mSymbolPadding = pSymbolPadding;
+        return this;
+    }
+
+    public Integer getSymbolWidth() {
+        return mSymbolWidth;
+    }
+
+    public Legend setSymbolWidth(Integer pSymbolWidth) {
+        mSymbolWidth = pSymbolWidth;
+        return this;
+    }
+
+    public VerticalAlign getVerticalAlign() {
+        return mVerticalAlign;
+    }
+
+    public Legend setVerticalAlign(VerticalAlign pVerticalAlign) {
+        mVerticalAlign = pVerticalAlign;
+        return this;
+    }
+
+    public Integer getWidth() {
+        return mWidth;
+    }
+
+    public Legend setWidth(Integer pWidth) {
+        mWidth = pWidth;
+        return this;
+    }
+
+    public Integer getX() {
+        return mX;
+    }
+
+    public Legend setX(Integer pX) {
+        mX = pX;
+        return this;
+    }
+
+    public Integer getY() {
+        return mY;
+    }
+
+    public Legend setY(Integer pY) {
+        mY = pY;
+        return this;
+    }
 }
