@@ -19,7 +19,6 @@ public class Highchart {
     private String[] colors;
     private Credits credits;
     private Labels labels;
-    //private Lang lang;
     private Legend legend;
     private Loading loading;
     private PlotOptions plotOptions;
@@ -179,6 +178,16 @@ public class Highchart {
     public Highchart setSymbols(String[] pSymbols) {
         symbols = pSymbols;
         return this;
+    }
+
+    public Highchart setSymbols(Symbol[] pSymbols) {
+        String[] symbols = new String[pSymbols.length];
+
+        for (int i = 0; i < symbols.length; i++) {
+            symbols[i] = pSymbols[i].toString();
+        }
+
+        return setSymbols(symbols);
     }
 
     public ChartTitle getTitle() {
