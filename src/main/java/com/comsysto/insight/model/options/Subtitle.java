@@ -4,10 +4,10 @@ import java.util.Map;
 
 public class Subtitle extends BasicTitle {
 
-    private Boolean fFloating;
-    private VerticalAlign fVerticalAlign;
-    private Integer fX;
-    private Integer fY;
+    private Boolean mFloating;
+    private VerticalAlign mVerticalAlign;
+    private Integer mX;
+    private Integer mY;
 
 
     public Subtitle(String pText) {
@@ -19,39 +19,39 @@ public class Subtitle extends BasicTitle {
     }
 
     public Boolean getFloating() {
-        return fFloating;
+        return mFloating;
     }
 
     public Subtitle setFloating(Boolean pFloating) {
-        fFloating = pFloating;
+        mFloating = pFloating;
         return this;
     }
 
 
     public VerticalAlign getVerticalAlign() {
-        return fVerticalAlign;
+        return mVerticalAlign;
     }
 
     public Subtitle setVerticalAlign(VerticalAlign pVerticalAlign) {
-        fVerticalAlign = pVerticalAlign;
+        mVerticalAlign = pVerticalAlign;
         return this;
     }
 
     public Integer getX() {
-        return fX;
+        return mX;
     }
 
     public Subtitle setX(Integer pX) {
-        fX = pX;
+        mX = pX;
         return this;
     }
 
     public Integer getY() {
-        return fY;
+        return mY;
     }
 
     public Subtitle setY(Integer pY) {
-        fY = pY;
+        mY = pY;
         return this;
     }
 }

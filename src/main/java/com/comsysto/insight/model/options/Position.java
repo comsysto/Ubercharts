@@ -2,63 +2,63 @@ package com.comsysto.insight.model.options;
 
 public class Position {
 
-    private Align fAlign;
-    private VerticalAlign fVerticalAlign;
-    private Integer fX;
-    private Integer fY;
+    private Align mAlign;
+    private VerticalAlign mVerticalAlign;
+    private Integer mX;
+    private Integer mY;
 
     public Position() {
     }
 
     public Position(Align pAlign) {
-        fAlign = pAlign;
+        mAlign = pAlign;
     }
 
     public Position(Align pAlign, VerticalAlign pVerticalAlign) {
-        fAlign = pAlign;
-        fVerticalAlign = pVerticalAlign;
+        mAlign = pAlign;
+        mVerticalAlign = pVerticalAlign;
     }
 
     public Position(Align pAlign, VerticalAlign pVerticalAlign, Integer pX, Integer pY) {
-        fAlign = pAlign;
-        fVerticalAlign = pVerticalAlign;
-        fX = pX;
-        fY = pY;
+        mAlign = pAlign;
+        mVerticalAlign = pVerticalAlign;
+        mX = pX;
+        mY = pY;
     }
 
     public Align getAlign() {
-        return fAlign;
+        return mAlign;
     }
 
     public Position setAlign(Align pAlign) {
-        fAlign = pAlign;
+        mAlign = pAlign;
         return this;
     }
 
     public VerticalAlign getVerticalAlign() {
-        return fVerticalAlign;
+        return mVerticalAlign;
     }
 
     public Position setVerticalAlign(VerticalAlign pVerticalAlign) {
-        fVerticalAlign = pVerticalAlign;
+        mVerticalAlign = pVerticalAlign;
         return this;
     }
 
     public Integer getX() {
-        return fX;
+        return mX;
     }
 
     public Position setX(Integer pX) {
-        fX = pX;
+        mX = pX;
         return this;
     }
 
     public Integer getY() {
-        return fY;
+        return mY;
     }
 
     public Position setY(Integer pY) {
-        fY = pY;
+        mY = pY;
         return this;
     }
 }

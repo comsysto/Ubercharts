@@ -10,44 +10,44 @@ import java.util.Map;
  */
 public class BasicTitle {
 
-    private String fText;
-    private Align fAlign;
-    private Map<String, String> fStyle;
+    private String mText;
+    private Align mAlign;
+    private Map<String, String> mStyle;
 
     public BasicTitle(String pText) {
-        fText = pText;
+        mText = pText;
     }
 
     public BasicTitle(String pText, Align pAlign, Map<String, String> pStyle) {
-        fText = pText;
-        fAlign = pAlign;
-        fStyle = pStyle;
+        mText = pText;
+        mAlign = pAlign;
+        mStyle = pStyle;
     }
 
     public String getText() {
-        return fText;
+        return mText;
     }
 
     public BasicTitle setText(String pText) {
-        fText = pText;
+        mText = pText;
         return this;
     }
 
     public Align getAlign() {
-        return fAlign;
+        return mAlign;
     }
 
     public BasicTitle setAlign(Align pAlign) {
-        fAlign = pAlign;
+        mAlign = pAlign;
         return this;
     }
 
     public Map<String, String> getStyle() {
-        return fStyle;
+        return mStyle;
     }
 
     public BasicTitle setStyle(Map<String, String> pStyle) {
-        fStyle = pStyle;
+        mStyle = pStyle;
         return this;
     }
 
