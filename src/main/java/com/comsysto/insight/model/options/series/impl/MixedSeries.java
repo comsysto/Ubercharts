@@ -18,15 +18,11 @@ import java.util.Collection;
 public class MixedSeries extends AbstractSeries<Object[]> {
 
 
-    /**
-     * {@link AbstractSeries#AbstractSeries()}
-     */
+    /** {@link AbstractSeries#AbstractSeries()} */
     public MixedSeries() {
     }
 
-    /**
-     * {@link AbstractSeries#AbstractSeries(String)}
-     */
+    /** {@link AbstractSeries#AbstractSeries(String)} */
     public MixedSeries(String pName) {
         super(pName);
     }
@@ -36,7 +32,7 @@ public class MixedSeries extends AbstractSeries<Object[]> {
      * @return
      */
     public MixedSeries setData(Object[] pMixedData) {
-        data = pMixedData;
+        mData = pMixedData;
         return this;
     }
 

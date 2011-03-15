@@ -7,9 +7,9 @@ import java.util.Collection;
 
 /**
  * Implementation of {@link AbstractSeries} which represents an array of X/Y-Coordinates to be plotted on the chart.
- *
+ * <p/>
  * For more information read href="http://www.highcharts.com/ref/#series.
- *
+ * <p/>
  * Date: Feb 18, 2011 Time: 9:47:50 PM
  *
  * @author Mohammed El Batya
@@ -17,39 +17,37 @@ import java.util.Collection;
  */
 public class PointSeries extends AbstractSeries<Point[]> {
 
-  /** {@link AbstractSeries#AbstractSeries()} */
-  public PointSeries() {
-  }
+    /** {@link AbstractSeries#AbstractSeries()} */
+    public PointSeries() {
+    }
 
-  /** {@link AbstractSeries#AbstractSeries(String)} */
-  public PointSeries(String pName) {
-    super(pName);
-  }
-
-
-  /**
-   * Sets an array of {@link Point}s to this series to be plotted on the chart.
-   *
-   * @param pPoints an array of {@link Point}s
-   *
-   * @return this object for convenient chaining, not a copy
-   * @see Point
-   */
-  public PointSeries setData(Point[] pPoints) {
-    data = pPoints;
-    return this;
-  }
+    /** {@link AbstractSeries#AbstractSeries(String)} */
+    public PointSeries(String pName) {
+        super(pName);
+    }
 
 
-  /**
-   * Sets an {@link Collection} of {@link Point}s to this series to be plotted on the chart.
-   *
-   * @param pPoints an {@link Collection} of {@link Point}s
-   *
-   * @return this object for convenient chaining, not a copy
-   * @see Point
-   */
-  public PointSeries setData(Collection<Point> pPoints) {
-    return setData((Point[]) pPoints.toArray());
-  }
+    /**
+     * Sets an array of {@link Point}s to this series to be plotted on the chart.
+     *
+     * @param pPoints an array of {@link Point}s
+     * @return this object for convenient chaining, not a copy
+     * @see Point
+     */
+    public PointSeries setData(Point[] pPoints) {
+        mData = pPoints;
+        return this;
+    }
+
+
+    /**
+     * Sets an {@link Collection} of {@link Point}s to this series to be plotted on the chart.
+     *
+     * @param pPoints an {@link Collection} of {@link Point}s
+     * @return this object for convenient chaining, not a copy
+     * @see Point
+     */
+    public PointSeries setData(Collection<Point> pPoints) {
+        return setData((Point[]) pPoints.toArray());
+    }
 }
