@@ -7,63 +7,69 @@ package com.comsysto.insight.model.options;
  */
 public class Point {
 
-    private String color;
-    private String id;
-    private String name;
-    private boolean sliced;
-    private Number x;
-    private Number y;
+    private String mColor;
+    private String mId;
+    private String mName;
+    private boolean mSliced;
+    private Number mX;
+    private Number mY;
 
     public Point(Number pX, Number pY) {
-        x = pX;
-        y = pY;
+        mX = pX;
+        mY = pY;
     }
 
     public String getColor() {
-        return color;
+        return mColor;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public Point setColor(String pColor) {
+        mColor = pColor;
+        return this;
     }
 
     public String getId() {
-        return id;
+        return mId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public Point setId(String pId) {
+        mId = pId;
+        return this;
     }
 
     public String getName() {
-        return name;
+        return mName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public Point setName(String pName) {
+        mName = pName;
+        return this;
     }
 
     public boolean isSliced() {
-        return sliced;
+        return mSliced;
     }
 
-    public void setSliced(boolean sliced) {
-        this.sliced = sliced;
+    public Point setSliced(boolean pSliced) {
+        mSliced = pSliced;
+        return this;
     }
 
     public Number getX() {
-        return x;
+        return mX;
     }
 
-    public void setX(Number x) {
-        this.x = x;
+    public Point setX(Number pX) {
+        mX = pX;
+        return this;
     }
 
     public Number getY() {
-        return y;
+        return mY;
     }
 
-    public void setY(Number y) {
-        this.y = y;
+    public Point setY(Number pY) {
+        mY = pY;
+        return this;
     }
 }
