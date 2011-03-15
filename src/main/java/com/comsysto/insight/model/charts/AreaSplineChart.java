@@ -1,6 +1,6 @@
 package com.comsysto.insight.model.charts;
 
-import com.comsysto.insight.model.options.Type;
+import com.comsysto.insight.model.options.ChartType;
 
 /**
  * This is a shorthand for {@code new Chart(Type.areaspline)} or {@code new Chart().setDefaultSeriesType(Type.areaspline)}.
@@ -14,6 +14,6 @@ import com.comsysto.insight.model.options.Type;
 public class AreaSplineChart extends Chart {
 
     public AreaSplineChart() {
-        super(Type.areaspline);
+        super(ChartType.areaspline);
     }
 }

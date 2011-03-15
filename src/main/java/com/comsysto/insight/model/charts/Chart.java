@@ -1,6 +1,6 @@
 package com.comsysto.insight.model.charts;
 
-import com.comsysto.insight.model.options.Type;
+import com.comsysto.insight.model.options.ChartType;
 import com.comsysto.insight.model.options.ZoomType;
 
 import java.util.Map;
@@ -12,7 +12,7 @@ import java.util.Map;
  */
 public class Chart {
 
-    public Chart(Type pType) {
+    public Chart(ChartType pType) {
         defaultSeriesType = pType;
     }
 
@@ -23,7 +23,7 @@ public class Chart {
     private Integer borderRadius;
     private Integer borderWidth;
     private String className;
-    private Type defaultSeriesType;
+    private ChartType defaultSeriesType;
 
     // events: not supported
 
@@ -120,11 +120,11 @@ public class Chart {
         return this;
     }
 
-    public Type getDefaultSeriesType() {
+    public ChartType getDefaultSeriesType() {
         return defaultSeriesType;
     }
 
-    public Chart setDefaultSeriesType(Type pDefaultSeriesType) {
+    public Chart setDefaultSeriesType(ChartType pDefaultSeriesType) {
         defaultSeriesType = pDefaultSeriesType;
         return this;
     }
@@ -333,7 +333,7 @@ public class Chart {
         return type;
     }
 
-    /** use {@link #setDefaultSeriesType(Type)} instead */
+    /** use {@link #setDefaultSeriesType(com.comsysto.insight.model.options.ChartType)} instead */
     @Deprecated
     public Chart setType(String type) {
         this.type = type;

@@ -9,9 +9,6 @@ import com.comsysto.insight.model.options.series.impl.*;
 import org.apache.wicket.PageParameters;
 import org.apache.wicket.markup.html.WebPage;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /** Homepage */
 public class HomePage extends WebPage {
 
@@ -25,13 +22,7 @@ public class HomePage extends WebPage {
     public HomePage(final PageParameters parameters) {
 
 
-        List<String> categories = new ArrayList<String>();
-        categories.add("Jan");
-        categories.add("Feb");
-        categories.add("Mar");
-        categories.add("Apr");
-        categories.add("Mai");
-        categories.add("Jun");
+        String[] categories = new String[]{"Jan", "Feb", "Mar", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
 
         Credits credits = new Credits("comSysto GmbH").setHref("http://www.comsysto.com");
 

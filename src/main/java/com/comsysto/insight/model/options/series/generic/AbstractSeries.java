@@ -1,6 +1,6 @@
 package com.comsysto.insight.model.options.series.generic;
 
-import com.comsysto.insight.model.options.Type;
+import com.comsysto.insight.model.options.ChartType;
 import org.codehaus.jackson.annotate.JsonProperty;
 
 /**
@@ -30,7 +30,7 @@ abstract public class AbstractSeries<DataType> implements ISeries<DataType> {
     private String mStack = "";
 
     /** {@link ISeries#getType()} */
-    private Type mType;
+    private ChartType mType;
 
     /** {@link ISeries#getXAxis()} */
     private Integer mXAxis;
@@ -79,12 +79,12 @@ abstract public class AbstractSeries<DataType> implements ISeries<DataType> {
     }
 
     /** {@link ISeries#getType()} */
-    public Type getType() {
+    public ChartType getType() {
         return mType;
     }
 
-    /** {@link ISeries#setType(com.comsysto.insight.model.options.Type) } */
-    public ISeries<DataType> setType(Type pType) {
+    /** {@link ISeries#setType(com.comsysto.insight.model.options.ChartType) } */
+    public ISeries<DataType> setType(ChartType pType) {
         mType = pType;
         return (ISeries<DataType>) this;
     }

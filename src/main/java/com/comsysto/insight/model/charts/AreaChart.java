@@ -1,6 +1,6 @@
 package com.comsysto.insight.model.charts;
 
-import com.comsysto.insight.model.options.Type;
+import com.comsysto.insight.model.options.ChartType;
 
 /**
  * This is a shorthand for {@code new Chart(Type.area)} or {@code new Chart().setDefaultSeriesType(Type.area)}.
@@ -14,6 +14,6 @@ import com.comsysto.insight.model.options.Type;
 public class AreaChart extends Chart {
 
     public AreaChart() {
-        super(Type.area);
+        super(ChartType.area);
     }
 }

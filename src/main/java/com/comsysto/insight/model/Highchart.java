@@ -18,10 +18,9 @@ public class Highchart {
     private Chart chart;
     private String[] colors;
     private Credits credits;
-    private Labels labels;
+    private ChartLabels labels;
     private Legend legend;
     private Loading loading;
-    private PlotOptions plotOptions;
     private Point point;
     private List<ISeries> series = new LinkedList<ISeries>();
     private Subtitle subtitle;
@@ -108,11 +107,11 @@ public class Highchart {
         return this;
     }
 
-    public Labels getLabels() {
+    public ChartLabels getLabels() {
         return labels;
     }
 
-    public Highchart setLabels(Labels pLabels) {
+    public Highchart setLabels(ChartLabels pLabels) {
         labels = pLabels;
         return this;
     }
@@ -132,15 +131,6 @@ public class Highchart {
 
     public Highchart setLoading(Loading pLoading) {
         loading = pLoading;
-        return this;
-    }
-
-    public PlotOptions getPlotOptions() {
-        return plotOptions;
-    }
-
-    public Highchart setPlotOptions(PlotOptions pPlotOptions) {
-        plotOptions = pPlotOptions;
         return this;
     }
 

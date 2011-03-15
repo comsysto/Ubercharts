@@ -1,6 +1,6 @@
 package com.comsysto.insight.model.charts;
 
-import com.comsysto.insight.model.options.Type;
+import com.comsysto.insight.model.options.ChartType;
 
 /**
  * This is a shorthand for {@code new Chart(Type.bar)} or {@code new Chart().setDefaultSeriesType(Type.bar)}.
@@ -14,6 +14,6 @@ import com.comsysto.insight.model.options.Type;
 public class BarChart extends Chart {
 
     public BarChart() {
-        super(Type.bar);
+        super(ChartType.bar);
     }
 }

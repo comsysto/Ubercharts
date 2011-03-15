@@ -1,434 +1,437 @@
 package com.comsysto.insight.model.options;
 
-import java.util.List;
-
 public class Axis {
 
-    private Boolean allowDecimals;// true,
-    private String alternateGridColor;// null,
+    private Boolean mAllowDecimals;
+    private String mAlternateGridColor;
+    private String[] mCategories;
+    private Boolean mEndOnTick;
+    private String mGridLineColor;
+    private DashStyle mGridLineDashStyle;
+    private Integer mGridLineWidth;
+    private String mId;
+    private AxisLabels mLabels;
+    private String mLineColor;
+    private Integer mLineWidth;
+    private Integer mLinkedTo;
+    private Integer mMax;
+    private Double mMaxPadding;
+    private Integer mMaxZoom;
+    private Integer mMin;
+    private String mMinorGridLineColor;
+    private DashStyle mMinorGridLineDashStyle;
+    private Integer mMinorGridLineWidth;
+    private String mMinorTickColor;
+    private Integer mMinorTickInterval;
+    private Integer mMinorTickLength;
+    private TickPosition mMinorTickPosition;
+    private Integer mMinorTickWidth;
+    private Double mMinPadding;
+    private Integer mOffset;
+    private Boolean mOpposite;
+    private PlotBand[] mPlotBands;
+    private PlotLine[] mPlotLines;
+    private Boolean mReversed;
+    private Boolean mShowFirstLabel;
+    private Boolean mShowLastLabel;
+    private Integer mStartOfWeek;
+    private Boolean mStartOnTick;
+    private String mTickColor;
+    private Integer mTickInterval;
+    private Integer mTickLength;
+    private TickmarkPlacement mTickmarkPlacement;
+    private Integer mTickPixelInterval;
+    private TickPosition mTickPosition;
+    private Integer mTickWidth;
+    private AxisTitle mTitle;
+    private AxisType mType;
 
-    List<String> categories;// [],
-
-    // not supported
-    // dateTimeLabelFormats:
-
-    private Boolean endOnTick;// false,
-
-    // not supported
-    // events: {...},
-
-    private String gridLineColor;// "#C0C0C0",
-    private Dashstyles gridLineDashStyle;// ShortDot,
-    private Integer gridLineWidth;// 0,
-    private String id;// null,
-    private Labels labels;// {...},
-    private String lineColor;// "#C0D0E0",
-    private Integer lineWidth;// 1,
-    private Integer linkedTo;// null,
-    private Integer max;// null,
-    private Double maxPadding;// 0.01,
-    private Integer maxZoom;// ,
-    private Integer min;// null,
-    private String minorGridLineColor;// #E0E0E0,
-    private Dashstyles minorGridLineDashStyle;// Solid,
-    private Integer minorGridLineWidth;// 1,
-    private String minorTickColor;// #A0A0A0,
-    private Integer minorTickInterval;// null,
-    private Integer minorTickLength;// 2,
-    private TickPosition minorTickPosition;// outside,
-    private Integer minorTickWidth;// 0,
-    private Double minPadding;// 0.01,
-    private Integer offset;// 0,
-    private Boolean opposite;// false,
-
-    // not supported
-    // plotBands: [{...}],
-    // plotLines: [{...}],
-
-    private Boolean reversed;// false,
-    private Boolean showFirstLabel;// true,
-    private Boolean showLastLabel;// false,
-    private Integer startOfWeek;// 1,
-    private Boolean startOnTick;// false,
-    private String tickColor;// #C0D0E0,
-    private Integer tickInterval;// null,
-    private Integer tickLength;// 5,
-    private String tickmarkPlacement;// "between",
-    private Integer tickPixelInterval;// ,
-    private TickPosition tickPosition;// "outside",
-    private Integer tickWidth;// 1,
-    private AxisTitle fTitle;
-    private Type type;// "linear"
 
     public Boolean getAllowDecimals() {
-        return allowDecimals;
+        return mAllowDecimals;
     }
 
-    public Axis setAllowDecimals(Boolean allowDecimals) {
-        this.allowDecimals = allowDecimals;
+    public Axis setAllowDecimals(Boolean pAllowDecimals) {
+        mAllowDecimals = pAllowDecimals;
         return this;
     }
 
     public String getAlternateGridColor() {
-        return alternateGridColor;
+        return mAlternateGridColor;
     }
 
-    public Axis setAlternateGridColor(String alternateGridColor) {
-        this.alternateGridColor = alternateGridColor;
+    public Axis setAlternateGridColor(String pAlternateGridColor) {
+        mAlternateGridColor = pAlternateGridColor;
         return this;
     }
 
-    public List<String> getCategories() {
-        return categories;
+    public String[] getCategories() {
+        return mCategories;
     }
 
-    public Axis setCategories(List<String> categories) {
-        this.categories = categories;
+    public Axis setCategories(String[] pCategories) {
+        mCategories = pCategories;
         return this;
     }
 
     public Boolean getEndOnTick() {
-        return endOnTick;
+        return mEndOnTick;
     }
 
-    public Axis setEndOnTick(Boolean endOnTick) {
-        this.endOnTick = endOnTick;
+    public Axis setEndOnTick(Boolean pEndOnTick) {
+        mEndOnTick = pEndOnTick;
         return this;
     }
 
     public String getGridLineColor() {
-        return gridLineColor;
+        return mGridLineColor;
     }
 
-    public Axis setGridLineColor(String gridLineColor) {
-        this.gridLineColor = gridLineColor;
+    public Axis setGridLineColor(String pGridLineColor) {
+        mGridLineColor = pGridLineColor;
         return this;
     }
 
-    public Dashstyles getGridLineDashStyle() {
-        return gridLineDashStyle;
+    public DashStyle getGridLineDashStyle() {
+        return mGridLineDashStyle;
     }
 
-    public Axis setGridLineDashStyle(Dashstyles gridLineDashStyle) {
-        this.gridLineDashStyle = gridLineDashStyle;
+    public Axis setGridLineDashStyle(DashStyle pGridLineDashStyle) {
+        mGridLineDashStyle = pGridLineDashStyle;
         return this;
     }
 
     public Integer getGridLineWidth() {
-        return gridLineWidth;
+        return mGridLineWidth;
     }
 
-    public Axis setGridLineWidth(Integer gridLineWidth) {
-        this.gridLineWidth = gridLineWidth;
+    public Axis setGridLineWidth(Integer pGridLineWidth) {
+        mGridLineWidth = pGridLineWidth;
         return this;
     }
 
     public String getId() {
-        return id;
+        return mId;
     }
 
-    public Axis setId(String id) {
-        this.id = id;
+    public Axis setId(String pId) {
+        mId = pId;
         return this;
     }
 
-    public Labels getLabels() {
-        return labels;
+    public AxisLabels getLabels() {
+        return mLabels;
     }
 
-    public Axis setLabels(Labels labels) {
-        this.labels = labels;
+    public Axis setLabels(AxisLabels pLabels) {
+        mLabels = pLabels;
         return this;
     }
 
     public String getLineColor() {
-        return lineColor;
+        return mLineColor;
     }
 
-    public Axis setLineColor(String lineColor) {
-        this.lineColor = lineColor;
+    public Axis setLineColor(String pLineColor) {
+        mLineColor = pLineColor;
         return this;
     }
 
     public Integer getLineWidth() {
-        return lineWidth;
+        return mLineWidth;
     }
 
-    public Axis setLineWidth(Integer lineWidth) {
-        this.lineWidth = lineWidth;
+    public Axis setLineWidth(Integer pLineWidth) {
+        mLineWidth = pLineWidth;
         return this;
     }
 
     public Integer getLinkedTo() {
-        return linkedTo;
+        return mLinkedTo;
     }
 
-    public Axis setLinkedTo(Integer linkedTo) {
-        this.linkedTo = linkedTo;
+    public Axis setLinkedTo(Integer pLinkedTo) {
+        mLinkedTo = pLinkedTo;
         return this;
     }
 
     public Integer getMax() {
-        return max;
+        return mMax;
     }
 
-    public Axis setMax(Integer max) {
-        this.max = max;
+    public Axis setMax(Integer pMax) {
+        mMax = pMax;
         return this;
     }
 
     public Double getMaxPadding() {
-        return maxPadding;
+        return mMaxPadding;
     }
 
-    public Axis setMaxPadding(Double maxPadding) {
-        this.maxPadding = maxPadding;
+    public Axis setMaxPadding(Double pMaxPadding) {
+        mMaxPadding = pMaxPadding;
         return this;
     }
 
     public Integer getMaxZoom() {
-        return maxZoom;
+        return mMaxZoom;
     }
 
-    public Axis setMaxZoom(Integer maxZoom) {
-        this.maxZoom = maxZoom;
+    public Axis setMaxZoom(Integer pMaxZoom) {
+        mMaxZoom = pMaxZoom;
         return this;
     }
 
     public Integer getMin() {
-        return min;
+        return mMin;
     }
 
-    public Axis setMin(Integer min) {
-        this.min = min;
+    public Axis setMin(Integer pMin) {
+        mMin = pMin;
         return this;
     }
 
     public String getMinorGridLineColor() {
-        return minorGridLineColor;
+        return mMinorGridLineColor;
     }
 
-    public Axis setMinorGridLineColor(String minorGridLineColor) {
-        this.minorGridLineColor = minorGridLineColor;
+    public Axis setMinorGridLineColor(String pMinorGridLineColor) {
+        mMinorGridLineColor = pMinorGridLineColor;
         return this;
     }
 
-    public Dashstyles getMinorGridLineDashStyle() {
-        return minorGridLineDashStyle;
+    public DashStyle getMinorGridLineDashStyle() {
+        return mMinorGridLineDashStyle;
     }
 
-    public Axis setMinorGridLineDashStyle(Dashstyles minorGridLineDashStyle) {
-        this.minorGridLineDashStyle = minorGridLineDashStyle;
+    public Axis setMinorGridLineDashStyle(DashStyle pMinorGridLineDashStyle) {
+        mMinorGridLineDashStyle = pMinorGridLineDashStyle;
         return this;
     }
 
     public Integer getMinorGridLineWidth() {
-        return minorGridLineWidth;
+        return mMinorGridLineWidth;
     }
 
-    public Axis setMinorGridLineWidth(Integer minorGridLineWidth) {
-        this.minorGridLineWidth = minorGridLineWidth;
+    public Axis setMinorGridLineWidth(Integer pMinorGridLineWidth) {
+        mMinorGridLineWidth = pMinorGridLineWidth;
         return this;
     }
 
     public String getMinorTickColor() {
-        return minorTickColor;
+        return mMinorTickColor;
     }
 
-    public Axis setMinorTickColor(String minorTickColor) {
-        this.minorTickColor = minorTickColor;
+    public Axis setMinorTickColor(String pMinorTickColor) {
+        mMinorTickColor = pMinorTickColor;
         return this;
     }
 
     public Integer getMinorTickInterval() {
-        return minorTickInterval;
+        return mMinorTickInterval;
     }
 
-    public Axis setMinorTickInterval(Integer minorTickInterval) {
-        this.minorTickInterval = minorTickInterval;
+    public Axis setMinorTickInterval(Integer pMinorTickInterval) {
+        mMinorTickInterval = pMinorTickInterval;
         return this;
     }
 
     public Integer getMinorTickLength() {
-        return minorTickLength;
+        return mMinorTickLength;
     }
 
-    public Axis setMinorTickLength(Integer minorTickLength) {
-        this.minorTickLength = minorTickLength;
+    public Axis setMinorTickLength(Integer pMinorTickLength) {
+        mMinorTickLength = pMinorTickLength;
         return this;
     }
 
     public TickPosition getMinorTickPosition() {
-        return minorTickPosition;
+        return mMinorTickPosition;
     }
 
-    public Axis setMinorTickPosition(TickPosition minorTickPosition) {
-        this.minorTickPosition = minorTickPosition;
+    public Axis setMinorTickPosition(TickPosition pMinorTickPosition) {
+        mMinorTickPosition = pMinorTickPosition;
         return this;
     }
 
     public Integer getMinorTickWidth() {
-        return minorTickWidth;
+        return mMinorTickWidth;
     }
 
-    public Axis setMinorTickWidth(Integer minorTickWidth) {
-        this.minorTickWidth = minorTickWidth;
+    public Axis setMinorTickWidth(Integer pMinorTickWidth) {
+        mMinorTickWidth = pMinorTickWidth;
         return this;
     }
 
     public Double getMinPadding() {
-        return minPadding;
+        return mMinPadding;
     }
 
-    public Axis setMinPadding(Double minPadding) {
-        this.minPadding = minPadding;
+    public Axis setMinPadding(Double pMinPadding) {
+        mMinPadding = pMinPadding;
         return this;
     }
 
     public Integer getOffset() {
-        return offset;
+        return mOffset;
     }
 
-    public Axis setOffset(Integer offset) {
-        this.offset = offset;
+    public Axis setOffset(Integer pOffset) {
+        mOffset = pOffset;
         return this;
     }
 
     public Boolean getOpposite() {
-        return opposite;
+        return mOpposite;
     }
 
-    public Axis setOpposite(Boolean opposite) {
-        this.opposite = opposite;
+    public Axis setOpposite(Boolean pOpposite) {
+        mOpposite = pOpposite;
+        return this;
+    }
+
+    public PlotBand[] getPlotBands() {
+        return mPlotBands;
+    }
+
+    public Axis setPlotBands(PlotBand[] pPlotBands) {
+        mPlotBands = pPlotBands;
+        return this;
+    }
+
+    public PlotLine[] getPlotLines() {
+        return mPlotLines;
+    }
+
+    public Axis setPlotLines(PlotLine[] pPlotLines) {
+        mPlotLines = pPlotLines;
         return this;
     }
 
     public Boolean getReversed() {
-        return reversed;
+        return mReversed;
     }
 
-    public Axis setReversed(Boolean reversed) {
-        this.reversed = reversed;
+    public Axis setReversed(Boolean pReversed) {
+        mReversed = pReversed;
         return this;
     }
 
     public Boolean getShowFirstLabel() {
-        return showFirstLabel;
+        return mShowFirstLabel;
     }
 
-    public Axis setShowFirstLabel(Boolean showFirstLabel) {
-        this.showFirstLabel = showFirstLabel;
+    public Axis setShowFirstLabel(Boolean pShowFirstLabel) {
+        mShowFirstLabel = pShowFirstLabel;
         return this;
     }
 
     public Boolean getShowLastLabel() {
-        return showLastLabel;
+        return mShowLastLabel;
     }
 
-    public Axis setShowLastLabel(Boolean showLastLabel) {
-        this.showLastLabel = showLastLabel;
+    public Axis setShowLastLabel(Boolean pShowLastLabel) {
+        mShowLastLabel = pShowLastLabel;
         return this;
     }
 
     public Integer getStartOfWeek() {
-        return startOfWeek;
+        return mStartOfWeek;
     }
 
-    public Axis setStartOfWeek(Integer startOfWeek) {
-        this.startOfWeek = startOfWeek;
+    public Axis setStartOfWeek(Integer pStartOfWeek) {
+        mStartOfWeek = pStartOfWeek;
         return this;
     }
 
     public Boolean getStartOnTick() {
-        return startOnTick;
+        return mStartOnTick;
     }
 
-    public Axis setStartOnTick(Boolean startOnTick) {
-        this.startOnTick = startOnTick;
+    public Axis setStartOnTick(Boolean pStartOnTick) {
+        mStartOnTick = pStartOnTick;
         return this;
     }
 
     public String getTickColor() {
-        return tickColor;
+        return mTickColor;
     }
 
-    public Axis setTickColor(String tickColor) {
-        this.tickColor = tickColor;
+    public Axis setTickColor(String pTickColor) {
+        mTickColor = pTickColor;
         return this;
     }
 
     public Integer getTickInterval() {
-        return tickInterval;
+        return mTickInterval;
     }
 
-    public Axis setTickInterval(Integer tickInterval) {
-        this.tickInterval = tickInterval;
+    public Axis setTickInterval(Integer pTickInterval) {
+        mTickInterval = pTickInterval;
         return this;
     }
 
     public Integer getTickLength() {
-        return tickLength;
+        return mTickLength;
     }
 
-    public Axis setTickLength(Integer tickLength) {
-        this.tickLength = tickLength;
+    public Axis setTickLength(Integer pTickLength) {
+        mTickLength = pTickLength;
         return this;
     }
 
-    public String getTickmarkPlacement() {
-        return tickmarkPlacement;
+    public TickmarkPlacement getTickmarkPlacement() {
+        return mTickmarkPlacement;
     }
 
-    public Axis setTickmarkPlacement(String tickmarkPlacement) {
-        this.tickmarkPlacement = tickmarkPlacement;
+    public Axis setTickmarkPlacement(TickmarkPlacement pTickmarkPlacement) {
+        mTickmarkPlacement = pTickmarkPlacement;
         return this;
     }
 
     public Integer getTickPixelInterval() {
-        return tickPixelInterval;
+        return mTickPixelInterval;
     }
 
-    public Axis setTickPixelInterval(Integer tickPixelInterval) {
-        this.tickPixelInterval = tickPixelInterval;
+    public Axis setTickPixelInterval(Integer pTickPixelInterval) {
+        mTickPixelInterval = pTickPixelInterval;
         return this;
     }
 
     public TickPosition getTickPosition() {
-        return tickPosition;
+        return mTickPosition;
     }
 
-    public Axis setTickPosition(TickPosition tickPosition) {
-        this.tickPosition = tickPosition;
+    public Axis setTickPosition(TickPosition pTickPosition) {
+        mTickPosition = pTickPosition;
         return this;
     }
 
     public Integer getTickWidth() {
-        return tickWidth;
+        return mTickWidth;
     }
 
-    public Axis setTickWidth(Integer tickWidth) {
-        this.tickWidth = tickWidth;
+    public Axis setTickWidth(Integer pTickWidth) {
+        mTickWidth = pTickWidth;
         return this;
     }
 
     public AxisTitle getTitle() {
-        return fTitle;
+        return mTitle;
     }
 
     public Axis setTitle(AxisTitle pTitle) {
-        this.fTitle = pTitle;
+        mTitle = pTitle;
         return this;
     }
 
-    public Type getType() {
-        return type;
+    public AxisType getType() {
+        return mType;
     }
 
-    public Axis setType(Type type) {
-        this.type = type;
+    public Axis setType(AxisType pType) {
+        mType = pType;
         return this;
     }
-
-
 }
 

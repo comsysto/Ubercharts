@@ -3,10 +3,10 @@ package com.comsysto.insight.model.options;
 /**
  * Created by IntelliJ IDEA.
  * User: elbatya
- * Date: 08/03/2011
- * Time: 15:24
+ * Date: 15/03/2011
+ * Time: 18:44
  * To change this template use File | Settings | File Templates.
  */
-public class Navigation {
-
+public enum AxisType {
+    linear, datetime
 }
