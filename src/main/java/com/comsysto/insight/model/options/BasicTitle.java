@@ -8,7 +8,7 @@ import java.util.Map;
  * Date: 08/03/2011
  * Time: 16:53
  */
-public class BasicTitle {
+class BasicTitle {
 
     private String mText;
     private Align mAlign;
