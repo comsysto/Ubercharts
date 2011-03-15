@@ -7,7 +7,7 @@ public class Axis {
     private String[] mCategories;
     private Boolean mEndOnTick;
     private String mGridLineColor;
-    private DashStyle mGridLineDashStyle;
+    private DashStyleTemp mGridLineDashStyle;
     private Integer mGridLineWidth;
     private String mId;
     private AxisLabels mLabels;
@@ -19,7 +19,7 @@ public class Axis {
     private Integer mMaxZoom;
     private Integer mMin;
     private String mMinorGridLineColor;
-    private DashStyle mMinorGridLineDashStyle;
+    private DashStyleTemp mMinorGridLineDashStyle;
     private Integer mMinorGridLineWidth;
     private String mMinorTickColor;
     private Integer mMinorTickInterval;
@@ -92,11 +92,11 @@ public class Axis {
         return this;
     }
 
-    public DashStyle getGridLineDashStyle() {
+    public DashStyleTemp getGridLineDashStyle() {
         return mGridLineDashStyle;
     }
 
-    public Axis setGridLineDashStyle(DashStyle pGridLineDashStyle) {
+    public Axis setGridLineDashStyle(DashStyleTemp pGridLineDashStyle) {
         mGridLineDashStyle = pGridLineDashStyle;
         return this;
     }
@@ -200,11 +200,11 @@ public class Axis {
         return this;
     }
 
-    public DashStyle getMinorGridLineDashStyle() {
+    public DashStyleTemp getMinorGridLineDashStyle() {
         return mMinorGridLineDashStyle;
     }
 
-    public Axis setMinorGridLineDashStyle(DashStyle pMinorGridLineDashStyle) {
+    public Axis setMinorGridLineDashStyle(DashStyleTemp pMinorGridLineDashStyle) {
         mMinorGridLineDashStyle = pMinorGridLineDashStyle;
         return this;
     }
