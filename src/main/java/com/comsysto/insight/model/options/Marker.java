@@ -1,101 +1,79 @@
 package com.comsysto.insight.model.options;
 
 
+import java.net.URI;
+
 public class Marker {
 
-  private final Boolean enabled;
-  private final String fillColor;
-  private final String lineColor;
-  private final Integer lineWidth;
-  private final Integer radius;
+    private Boolean mEnabled;
+    private String mFillColor;
+    private String mLineColor;
+    private Integer mLineWidth;
+    private Integer mRadius;
+    private String mSymbol;
 
-  // not supported
-  //states: {},
-
-  private final String symbol;
-
-
-  private Marker(Builder builder) {
-    this.enabled = builder.enabled;
-    this.fillColor = builder.fillColor;
-    this.lineColor = builder.lineColor;
-    this.lineWidth = builder.lineWidth;
-    this.radius = builder.radius;
-    this.symbol = builder.symbol;
-  }
-
-  public Boolean getEnabled() {
-    return enabled;
-  }
-
-  public String getFillColor() {
-    return fillColor;
-  }
-
-  public String getLineColor() {
-    return lineColor;
-  }
-
-  public Integer getLineWidth() {
-    return lineWidth;
-  }
-
-  public Integer getRadius() {
-    return radius;
-  }
-
-  public String getSymbol() {
-    return symbol;
-  }
-
-
-  public static class Builder {
-
-    // optional
-    private Boolean enabled = Boolean.TRUE;
-    private String fillColor;
-    private String lineColor = "#FFFFFF";
-    private Integer lineWidth = 0;
-    private Integer radius = 0;
-    //states: {},
-    private String symbol; // (URL to PNG)
-
-    public Builder() {
+    public Boolean getEnabled() {
+        return mEnabled;
     }
 
-    public Builder enabled(Boolean enabled) {
-      this.enabled = enabled;
-      return this;
+    public void setEnabled(Boolean pEnabled) {
+        mEnabled = pEnabled;
     }
 
-    public Builder fillColor(String fillColor) {
-      this.fillColor = fillColor;
-      return this;
+    public String getFillColor() {
+        return mFillColor;
     }
 
-    public Builder lineColor(String lineColor) {
-      this.lineColor = lineColor;
-      return this;
+    public Marker setFillColor(String pFillColor) {
+        mFillColor = pFillColor;
+        return this;
     }
 
-    public Builder lineWidth(Integer lineWidth) {
-      this.lineWidth = lineWidth;
-      return this;
+    public String getLineColor() {
+        return mLineColor;
     }
 
-    public Builder radius(Integer radius) {
-      this.radius = radius;
-      return this;
+    public Marker setLineColor(String pLineColor) {
+        mLineColor = pLineColor;
+        return this;
     }
 
-    public Builder symbol(String symbol) {
-      this.symbol = symbol;
-      return this;
+    public Integer getLineWidth() {
+        return mLineWidth;
     }
 
-    public Marker build() {
-      return new Marker(this);
+    public Marker setLineWidth(Integer pLineWidth) {
+        mLineWidth = pLineWidth;
+        return this;
     }
-  }
+
+    public Integer getRadius() {
+        return mRadius;
+    }
+
+    public Marker setRadius(Integer pRadius) {
+        mRadius = pRadius;
+        return this;
+    }
+
+    public String getSymbol() {
+        return mSymbol;
+    }
+
+    public Marker setSymbol(String pSymbol) {
+        mSymbol = pSymbol;
+        return this;
+    }
+
+    public Marker setSymbol(URI pURLToSymbol) {
+        mSymbol = "url(" + pURLToSymbol.getPath() + ")";
+        return this;
+    }
+
+    public Marker setSymbol(Symbol pSymbol) {
+        mSymbol = pSymbol.toString();
+        return this;
+    }
+
 
 }
