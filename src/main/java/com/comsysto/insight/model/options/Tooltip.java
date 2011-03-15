@@ -5,139 +5,115 @@ import java.util.Map;
 
 public class Tooltip {
 
-  // Caution: no support for gradient
-  private final String backgroundColor;
-  private final String borderColor;
-  private final Integer borderRadius;
-  private final Integer borderWidth;
+    private String mBackgroundColor;
+    private String mBorderColor;
+    private Integer mBorderRadius;
+    private Integer mBorderWidth;
+    private boolean[] mCrosshairs;
+    private Boolean mEnabled;
+    private Boolean mShadow;
+    private Boolean mShared;
+    private Integer mSnap;
+    private Map<String, String> mStyle;
 
-  // CAUTION: not supported
-  // crosshairs
-
-  private final Boolean enabled;
-
-  // CAUTION: not supported
-  //formatter
-
-  private final Boolean shadow;
-  private final Boolean shared;
-  private final Integer snap;
-  private final Map<String, String> style;
-
-
-  private Tooltip(Builder builder) {
-    this.backgroundColor = builder.backgroundColor;
-    this.borderColor = builder.borderColor;
-    this.borderRadius = builder.borderRadius;
-    this.borderWidth = builder.borderWidth;
-    this.enabled = builder.enabled;
-    this.shadow = builder.shadow;
-    this.shared = builder.shared;
-    this.snap = builder.snap;
-    this.style = builder.style;
-  }
-
-
-  public String getBackgroundColor() {
-    return backgroundColor;
-  }
-
-  public String getBorderColor() {
-    return borderColor;
-  }
-
-  public Integer getBorderRadius() {
-    return borderRadius;
-  }
-
-  public Integer getBorderWidth() {
-    return borderWidth;
-  }
-
-  public Boolean getEnabled() {
-    return enabled;
-  }
-
-  public Boolean getShadow() {
-    return shadow;
-  }
-
-  public Boolean getShared() {
-    return shared;
-  }
-
-  public Integer getSnap() {
-    return snap;
-  }
-
-  public Map<String, String> getStyle() {
-    return style;
-  }
-
-
-  public static class Builder {
-
-    // optional
-    private String backgroundColor;
-    private String borderColor = "auto";
-    private Integer borderRadius = 5;
-    private Integer borderWidth = 2;
-    private Boolean enabled = true;
-    private Boolean shadow = true;
-    private Boolean shared = false;
-    private Integer snap = 10;
-    private Map<String, String> style;
-
-    public Builder() {
+    public String getBackgroundColor() {
+        return mBackgroundColor;
     }
 
-    public Builder backgroundColor(String backgroundColor) {
-      this.backgroundColor = backgroundColor;
-      return this;
+    public Tooltip setBackgroundColor(String pBackgroundColor) {
+        mBackgroundColor = pBackgroundColor;
+        return this;
     }
 
-    public Builder borderColor(String borderColor) {
-      this.borderColor = borderColor;
-      return this;
+    public String getBorderColor() {
+        return mBorderColor;
     }
 
-    public Builder borderRadius(Integer borderRadius) {
-      this.borderRadius = borderRadius;
-      return this;
+    public Tooltip setBorderColor(String pBorderColor) {
+        mBorderColor = pBorderColor;
+        return this;
     }
 
-    public Builder borderWidth(Integer borderWidth) {
-      this.borderWidth = borderWidth;
-      return this;
+    public Integer getBorderRadius() {
+        return mBorderRadius;
     }
 
-    public Builder enabled(Boolean enabled) {
-      this.enabled = enabled;
-      return this;
+    public Tooltip setBorderRadius(Integer pBorderRadius) {
+        mBorderRadius = pBorderRadius;
+        return this;
     }
 
-    public Builder shadow(Boolean shadow) {
-      this.shadow = shadow;
-      return this;
+    public Integer getBorderWidth() {
+        return mBorderWidth;
     }
 
-    public Builder shared(Boolean shared) {
-      this.shared = shared;
-      return this;
+    public Tooltip setBorderWidth(Integer pBorderWidth) {
+        mBorderWidth = pBorderWidth;
+        return this;
     }
 
-    public Builder snap(Integer snap) {
-      this.snap = snap;
-      return this;
+    public boolean[] getCrosshairs() {
+        return mCrosshairs;
     }
 
-    public Builder style(Map<String, String> style) {
-      this.style = style;
-      return this;
+    public Tooltip setCrosshairs(boolean[] pCrosshairs) {
+        mCrosshairs = pCrosshairs;
+        return this;
     }
 
-    public Tooltip build() {
-      return new Tooltip(this);
+    public Tooltip setCrosshairs(boolean pXCrosshair, boolean pYCrosshair) {
+        boolean[] crosshairs = new boolean[2];
+        crosshairs[0] = pXCrosshair;
+        crosshairs[1] = pYCrosshair;
+        return setCrosshairs(crosshairs);
     }
-  }
+
+    public Tooltip setCrosshairs(boolean pCrosshairs) {
+        return setCrosshairs(pCrosshairs, pCrosshairs);
+    }
+
+    public Boolean getEnabled() {
+        return mEnabled;
+    }
+
+    public Tooltip setEnabled(Boolean pEnabled) {
+        mEnabled = pEnabled;
+        return this;
+    }
+
+    public Boolean getShadow() {
+        return mShadow;
+    }
+
+    public Tooltip setShadow(Boolean pShadow) {
+        mShadow = pShadow;
+        return this;
+    }
+
+    public Boolean getShared() {
+        return mShared;
+    }
+
+    public Tooltip setShared(Boolean pShared) {
+        mShared = pShared;
+        return this;
+    }
+
+    public Integer getSnap() {
+        return mSnap;
+    }
+
+    public Tooltip setSnap(Integer pSnap) {
+        mSnap = pSnap;
+        return this;
+    }
+
+    public Map<String, String> getStyle() {
+        return mStyle;
+    }
+
+    public Tooltip setStyle(Map<String, String> pStyle) {
+        mStyle = pStyle;
+        return this;
+    }
 }
