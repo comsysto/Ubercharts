@@ -9,7 +9,6 @@ package com.comsysto.insight.model.options;
  */
 public class Exporting {
 
-
     private ExportingButtons mButtons;
     private Boolean mEnabled;
     private String mFilename;
