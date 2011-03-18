@@ -16,8 +16,9 @@ public class Marker {
         return mEnabled;
     }
 
-    public void setEnabled(Boolean pEnabled) {
+    public Marker setEnabled(Boolean pEnabled) {
         mEnabled = pEnabled;
+        return this;
     }
 
     public String getFillColor() {
