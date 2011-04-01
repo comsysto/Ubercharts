@@ -15,7 +15,7 @@
 */
 apply plugin: 'java'
 apply plugin: 'idea'
-apply plugin: 'jetty'
+apply plugin: 'eclipse'
 
 /* This sets the needed maven repositories */
 repositories {
