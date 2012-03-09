@@ -24,10 +24,11 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Highchart {
+public class Highchart implements Serializable {
 
     private ObjectMapper mapper = new ObjectMapper();
 
