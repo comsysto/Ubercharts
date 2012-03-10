@@ -16,10 +16,11 @@
 
 package com.comsysto.insight.model.options;
 
+import java.io.Serializable;
 import java.util.Map;
 
 
-public class Legend {
+public class Legend implements Serializable {
 
     private Align mAlign;
     private String mBackgroundColor;

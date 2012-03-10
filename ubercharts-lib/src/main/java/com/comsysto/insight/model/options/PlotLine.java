@@ -18,6 +18,8 @@ package com.comsysto.insight.model.options;
 
 import org.codehaus.jackson.annotate.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * Created by IntelliJ IDEA.
  * User: elbatya
@@ -25,7 +27,7 @@ import org.codehaus.jackson.annotate.JsonProperty;
  * Time: 19:08
  * To change this template use File | Settings | File Templates.
  */
-public class PlotLine {
+public class PlotLine implements Serializable {
 
     private String mColor;
     private DashStyle mDashStyle;

@@ -16,12 +16,14 @@
 
 package com.comsysto.insight.model.options;
 
+import java.io.Serializable;
+
 /**
  * Date: Feb 18, 2011 Time: 9:44:10 PM
  *
  * @author Mohammed El Batya
  */
-public class Point {
+public class Point implements Serializable {
 
     private String mColor;
     private String mId;

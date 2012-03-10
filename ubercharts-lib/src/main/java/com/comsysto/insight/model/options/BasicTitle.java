@@ -16,6 +16,7 @@
 
 package com.comsysto.insight.model.options;
 
+import java.io.Serializable;
 import java.util.Map;
 
 /**
@@ -24,7 +25,7 @@ import java.util.Map;
  * Date: 08/03/2011
  * Time: 16:53
  */
-class BasicTitle {
+class BasicTitle implements Serializable {
 
     private String mText;
     private Align mAlign;

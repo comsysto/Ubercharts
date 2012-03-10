@@ -16,13 +16,15 @@
 
 package com.comsysto.insight.model.options;
 
+import java.io.Serializable;
+
 /**
  * Created by IntelliJ IDEA.
  * User: elbatya
  * Date: 18/03/2011
  * Time: 14:04
  */
-public class ButtonOptions {
+public class ButtonOptions implements Serializable {
 
     private Align mAlign;
     private String mBackgroundColor;

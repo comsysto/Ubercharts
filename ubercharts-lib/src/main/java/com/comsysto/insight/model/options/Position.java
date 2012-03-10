@@ -16,7 +16,9 @@
 
 package com.comsysto.insight.model.options;
 
-public class Position {
+import java.io.Serializable;
+
+public class Position implements Serializable {
 
     private Align mAlign;
     private VerticalAlign mVerticalAlign;

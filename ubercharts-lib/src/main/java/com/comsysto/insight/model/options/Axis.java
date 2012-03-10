@@ -16,7 +16,9 @@
 
 package com.comsysto.insight.model.options;
 
-public class Axis {
+import java.io.Serializable;
+
+public class Axis implements Serializable {
 
     private Boolean mAllowDecimals;
     private String mAlternateGridColor;

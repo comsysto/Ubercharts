@@ -17,9 +17,10 @@
 package com.comsysto.insight.model.options;
 
 
+import java.io.Serializable;
 import java.net.URI;
 
-public class Marker {
+public class Marker implements Serializable {
 
     private Boolean mEnabled;
     private String mFillColor;

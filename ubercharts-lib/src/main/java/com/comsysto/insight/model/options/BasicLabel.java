@@ -16,6 +16,7 @@
 
 package com.comsysto.insight.model.options;
 
+import java.io.Serializable;
 import java.util.Map;
 
 /**
@@ -25,7 +26,7 @@ import java.util.Map;
  * Time: 18:58
  * To change this template use File | Settings | File Templates.
  */
-class BasicLabel {
+class BasicLabel implements Serializable {
     private Align mAlign;
     private Integer mRotation;
     private Map<String, String> mStyle;

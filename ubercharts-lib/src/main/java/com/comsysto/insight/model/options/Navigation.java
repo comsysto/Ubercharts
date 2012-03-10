@@ -16,6 +16,7 @@
 
 package com.comsysto.insight.model.options;
 
+import java.io.Serializable;
 import java.util.Map;
 
 /**
@@ -25,7 +26,7 @@ import java.util.Map;
  * Time: 15:24
  * To change this template use File | Settings | File Templates.
  */
-public class Navigation {
+public class Navigation implements Serializable {
 
     private Map<String, String> mMenuStyle;
     private Map<String, String> mMenuItemStyle;

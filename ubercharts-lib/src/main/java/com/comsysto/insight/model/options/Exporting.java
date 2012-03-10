@@ -16,6 +16,8 @@
 
 package com.comsysto.insight.model.options;
 
+import java.io.Serializable;
+
 /**
  * Created by IntelliJ IDEA.
  * User: elbatya
@@ -23,7 +25,7 @@ package com.comsysto.insight.model.options;
  * Time: 15:24
  * To change this template use File | Settings | File Templates.
  */
-public class Exporting {
+public class Exporting implements Serializable {
 
     private ExportingButtons mButtons;
     private Boolean mEnabled;

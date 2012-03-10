@@ -20,6 +20,7 @@ import com.comsysto.insight.model.charts.Chart;
 import com.comsysto.insight.model.options.*;
 import com.comsysto.insight.model.options.series.generic.ISeries;
 import org.codehaus.jackson.annotate.JsonProperty;
+import org.codehaus.jackson.map.JsonSerializer;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
@@ -29,8 +30,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Highchart implements Serializable {
-
-    private ObjectMapper mapper = new ObjectMapper();
 
     private Chart chart;
     private String[] colors;
@@ -50,7 +49,7 @@ public class Highchart implements Serializable {
     private Navigation navigation;
 
     public Highchart() {
-        mapper.getSerializationConfig().setSerializationInclusion(JsonSerialize.Inclusion.NON_NULL);
+
     }
 
     public Highchart(Chart pChart, ISeries... pSeries) {
@@ -70,7 +69,7 @@ public class Highchart implements Serializable {
         String json = "";
 
         try {
-            json = mapper.writeValueAsString(this);
+            json = JsonObjectMapper.getInstance().writeValueAsString(this);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -251,5 +250,19 @@ public class Highchart implements Serializable {
     public Highchart setNavigation(Navigation pNavigation) {
         navigation = pNavigation;
         return this;
+    }
+    
+    private static class JsonObjectMapper {
+
+        private static ObjectMapper mapper;
+
+        public static synchronized ObjectMapper getInstance(){
+            if(mapper == null){
+                mapper = new ObjectMapper();
+                mapper.getSerializationConfig().setSerializationInclusion(JsonSerialize.Inclusion.NON_NULL);
+            }
+            return mapper;
+        }
+
     }
 }

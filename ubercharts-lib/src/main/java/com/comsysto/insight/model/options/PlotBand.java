@@ -18,6 +18,8 @@ package com.comsysto.insight.model.options;
 
 import org.codehaus.jackson.annotate.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * Created by IntelliJ IDEA.
  * User: elbatya
@@ -25,7 +27,7 @@ import org.codehaus.jackson.annotate.JsonProperty;
  * Time: 18:54
  * To change this template use File | Settings | File Templates.
  */
-public class PlotBand {
+public class PlotBand implements Serializable {
 
     private String mColor;
     private Integer mFrom;

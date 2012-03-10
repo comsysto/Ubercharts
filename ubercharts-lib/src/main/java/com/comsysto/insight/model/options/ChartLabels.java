@@ -16,6 +16,7 @@
 
 package com.comsysto.insight.model.options;
 
+import java.io.Serializable;
 import java.util.Map;
 
 /**
@@ -25,7 +26,7 @@ import java.util.Map;
  * Time: 19:28
  * To change this template use File | Settings | File Templates.
  */
-public class ChartLabels {
+public class ChartLabels implements Serializable {
 
     private ChartLabelItem[] mItems;
     private Map<String, String> mStyle;

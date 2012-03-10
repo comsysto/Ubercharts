@@ -18,6 +18,8 @@ package com.comsysto.insight.model.options.series.generic;
 
 import com.comsysto.insight.model.options.ChartType;
 
+import java.io.Serializable;
+
 /**
  * The actual series to be plotted on a chart.
  * <p/>
@@ -36,7 +38,7 @@ import com.comsysto.insight.model.options.ChartType;
  * @see com.comsysto.insight.model.options.series.impl.NumberSeries
  * @see com.comsysto.insight.model.options.series.impl.PointSeries
  */
-public interface ISeries<DataType> {
+public interface ISeries<DataType> extends Serializable {
 
     /**
      * Gets the name of the series as shown in the legend, tooltip etc. The default value is "".

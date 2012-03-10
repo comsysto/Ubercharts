@@ -16,10 +16,11 @@
 
 package com.comsysto.insight.model.options;
 
+import java.io.Serializable;
 import java.util.Map;
 
 
-public class Tooltip {
+public class Tooltip implements Serializable {
 
     private String mBackgroundColor;
     private String mBorderColor;
