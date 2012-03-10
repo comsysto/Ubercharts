@@ -20,7 +20,6 @@ import com.comsysto.insight.model.charts.Chart;
 import com.comsysto.insight.model.options.*;
 import com.comsysto.insight.model.options.series.generic.ISeries;
 import org.codehaus.jackson.annotate.JsonProperty;
-import org.codehaus.jackson.map.JsonSerializer;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
@@ -29,6 +28,7 @@ import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
+@JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
 public class Highchart implements Serializable {
 
     private Chart chart;
@@ -47,6 +47,7 @@ public class Highchart implements Serializable {
     private Axis yAxis = new Axis();
     private Exporting exporting;
     private Navigation navigation;
+    private PlotOptions plotOptions = new PlotOptions();
 
     public Highchart() {
 
@@ -251,7 +252,15 @@ public class Highchart implements Serializable {
         navigation = pNavigation;
         return this;
     }
-    
+
+    public PlotOptions getPlotOptions() {
+        return plotOptions;
+    }
+
+    public void setPlotOptions(PlotOptions plotOptions) {
+        this.plotOptions = plotOptions;
+    }
+
     private static class JsonObjectMapper {
 
         private static ObjectMapper mapper;

@@ -21,50 +21,61 @@ import org.apache.wicket.markup.html.IHeaderResponse;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.panel.Panel;
-import org.apache.wicket.model.AbstractReadOnlyModel;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.LoadableDetachableModel;
 import org.apache.wicket.request.resource.JavaScriptResourceReference;
 
 
 public class HighchartsPanel extends Panel {
 
     private boolean jqueryProvided;
-    private final WebMarkupContainer chartDiv;
+    private WebMarkupContainer chartDiv;
+    private IModel<Highchart> highchartsModel;
 
-    public HighchartsPanel(String id, final IModel<Highchart> highcharts) {
-        super(id);
+    public HighchartsPanel(String id, IModel<Highchart> highchartsModel) {
+        super(id, highchartsModel);
+        this.highchartsModel = highchartsModel;
 
         chartDiv = new WebMarkupContainer("highchart");
         chartDiv.setOutputMarkupId(true);
 
         add(chartDiv);
 
-        // store ID into chart.renderTo
-        highcharts.getObject().getChart().setRenderTo(chartDiv.getMarkupId());
-
         /*
         * we inject the script in the component body and not as a header contribution
         * because the script needs to be called each time the component is refreshed using wicket
         * ajax support.
         */
-        add(new Label("script", new AbstractReadOnlyModel<String>() {
+        add(new Label("script", new LoadableDetachableModel<String>() {
             private static final long serialVersionUID = 1L;
 
             @Override
-            public String getObject() {
-                StringBuffer js = new StringBuffer();
-                js.append("var ").append(chartDiv.getMarkupId()).append(";\n");
-                js.append("$(document).ready(function() {\n");
-                js.append(chartDiv.getMarkupId());
-                js.append(" = new Highcharts.Chart(");
-
-                js.append(highcharts.getObject().toJson());
-
-                js.append(" ); }); ");
-
-                return js.toString();
+            public String load() {
+                return generateHighchartsJS();
             }
         }).setEscapeModelStrings(false));
+
+        setOutputMarkupId(true);
+    }
+
+    private String generateHighchartsJS() {
+        // store ID into chart.renderTo
+        highchartsModel.getObject().getChart().setRenderTo(chartDiv.getMarkupId());
+
+        StringBuffer js = new StringBuffer();
+        js.append("var ").append(chartDiv.getMarkupId()).append(";\n");
+        js.append("$(document).ready(function() {\n");
+        js.append(chartDiv.getMarkupId());
+        js.append(" = new Highcharts.Chart(");
+
+        js.append(highchartsObjectToJson(highchartsModel));
+
+        js.append(" ); }); ");
+        return js.toString();
+    }
+
+    protected String highchartsObjectToJson(IModel<Highchart> highchartsModel) {
+        return highchartsModel.getObject().toJson();
     }
 
     @Override
