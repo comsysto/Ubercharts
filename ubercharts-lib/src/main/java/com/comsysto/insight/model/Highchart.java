@@ -22,13 +22,14 @@ import com.comsysto.insight.model.options.series.generic.ISeries;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
+import org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector;
 
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
-@JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
+@JsonSerialize(include= JsonSerialize.Inclusion.NON_NULL)
 public class Highchart implements Serializable {
 
     private Chart chart;
@@ -268,7 +269,7 @@ public class Highchart implements Serializable {
         public static synchronized ObjectMapper getInstance(){
             if(mapper == null){
                 mapper = new ObjectMapper();
-                mapper.getSerializationConfig().setSerializationInclusion(JsonSerialize.Inclusion.NON_NULL);
+                mapper.setAnnotationIntrospector(new JacksonAnnotationIntrospector());
             }
             return mapper;
         }

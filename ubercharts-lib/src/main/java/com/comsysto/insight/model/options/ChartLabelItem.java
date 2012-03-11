@@ -16,6 +16,8 @@
 
 package com.comsysto.insight.model.options;
 
+import org.codehaus.jackson.map.annotate.JsonSerialize;
+
 import java.io.Serializable;
 import java.util.Map;
 
@@ -26,6 +28,7 @@ import java.util.Map;
  * Time: 19:31
  * To change this template use File | Settings | File Templates.
  */
+@JsonSerialize(include= JsonSerialize.Inclusion.NON_NULL)
 public class ChartLabelItem implements Serializable {
     private String mHtml;
     private Map<String, String> mStyle;

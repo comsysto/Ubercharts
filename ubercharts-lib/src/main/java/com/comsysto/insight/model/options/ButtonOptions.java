@@ -16,6 +16,8 @@
 
 package com.comsysto.insight.model.options;
 
+import org.codehaus.jackson.map.annotate.JsonSerialize;
+
 import java.io.Serializable;
 
 /**
@@ -24,6 +26,7 @@ import java.io.Serializable;
  * Date: 18/03/2011
  * Time: 14:04
  */
+@JsonSerialize(include= JsonSerialize.Inclusion.NON_NULL)
 public class ButtonOptions implements Serializable {
 
     private Align mAlign;

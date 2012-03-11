@@ -18,6 +18,7 @@ package com.comsysto.insight.model.charts;
 
 import com.comsysto.insight.model.options.ChartType;
 import com.comsysto.insight.model.options.ZoomType;
+import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 import java.io.Serializable;
 import java.util.Map;
@@ -27,6 +28,7 @@ import java.util.Map;
  *
  * @author Mohammed El Batya
  */
+@JsonSerialize(include= JsonSerialize.Inclusion.NON_NULL)
 public class Chart implements Serializable {
 
     public Chart(ChartType pType) {

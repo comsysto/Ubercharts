@@ -17,6 +17,7 @@
 package com.comsysto.insight.model.options;
 
 import org.codehaus.jackson.annotate.JsonProperty;
+import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 import java.io.Serializable;
 
@@ -27,6 +28,7 @@ import java.io.Serializable;
  * Time: 18:54
  * To change this template use File | Settings | File Templates.
  */
+@JsonSerialize(include= JsonSerialize.Inclusion.NON_NULL)
 public class PlotBand implements Serializable {
 
     private String mColor;

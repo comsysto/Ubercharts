@@ -1,10 +1,13 @@
 package com.comsysto.insight.model.options;
 
+import org.codehaus.jackson.map.annotate.JsonSerialize;
+
 import java.io.Serializable;
 
 /**
  * @author zutherb
  */
+@JsonSerialize(include= JsonSerialize.Inclusion.NON_NULL)
 public class PlotOptions implements Serializable {
     PlotOption area = new PlotOption();
     PlotOption areaspline = new PlotOption();

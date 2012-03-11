@@ -18,6 +18,7 @@ package com.comsysto.insight.model.options.series.generic;
 
 import com.comsysto.insight.model.options.ChartType;
 import org.codehaus.jackson.annotate.JsonProperty;
+import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 import java.io.Serializable;
 
@@ -36,6 +37,7 @@ import java.io.Serializable;
  * @see com.comsysto.insight.model.options.series.impl.NumberSeries
  * @see com.comsysto.insight.model.options.series.impl.PointSeries
  */
+@JsonSerialize(include= JsonSerialize.Inclusion.NON_NULL)
 abstract public class AbstractSeries<DataType> implements ISeries<DataType> {
 
     /** {@link ISeries#getData()} */

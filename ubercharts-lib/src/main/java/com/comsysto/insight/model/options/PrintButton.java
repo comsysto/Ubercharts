@@ -16,6 +16,8 @@
 
 package com.comsysto.insight.model.options;
 
+import org.codehaus.jackson.map.annotate.JsonSerialize;
+
 import java.io.Serializable;
 
 /**
@@ -25,6 +27,7 @@ import java.io.Serializable;
  * Time: 14:27
  * To change this template use File | Settings | File Templates.
  */
+@JsonSerialize(include= JsonSerialize.Inclusion.NON_NULL)
 public class PrintButton implements Serializable {
     private String mHoverSymbolFill;
     private String mSymbol;

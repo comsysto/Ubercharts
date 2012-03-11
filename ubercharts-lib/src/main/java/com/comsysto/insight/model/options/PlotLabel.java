@@ -16,6 +16,8 @@
 
 package com.comsysto.insight.model.options;
 
+import org.codehaus.jackson.map.annotate.JsonSerialize;
+
 /**
  * Created by IntelliJ IDEA.
  * User: elbatya
@@ -23,6 +25,7 @@ package com.comsysto.insight.model.options;
  * Time: 19:01
  * To change this template use File | Settings | File Templates.
  */
+@JsonSerialize(include= JsonSerialize.Inclusion.NON_NULL)
 public class PlotLabel extends BasicLabel {
 
     private VerticalAlign mVerticalAlign;

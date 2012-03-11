@@ -16,10 +16,12 @@
 
 package com.comsysto.insight.model.options;
 
+import org.codehaus.jackson.map.annotate.JsonSerialize;
+
 import java.io.Serializable;
 import java.util.Map;
 
-
+@JsonSerialize(include= JsonSerialize.Inclusion.NON_NULL)
 public class Legend implements Serializable {
 
     private Align mAlign;

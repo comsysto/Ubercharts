@@ -16,6 +16,8 @@
 
 package com.comsysto.insight.model.options;
 
+import org.codehaus.jackson.map.annotate.JsonSerialize;
+
 import java.io.Serializable;
 import java.util.Map;
 
@@ -26,6 +28,7 @@ import java.util.Map;
  * Time: 18:58
  * To change this template use File | Settings | File Templates.
  */
+@JsonSerialize(include= JsonSerialize.Inclusion.NON_NULL)
 class BasicLabel implements Serializable {
     private Align mAlign;
     private Integer mRotation;

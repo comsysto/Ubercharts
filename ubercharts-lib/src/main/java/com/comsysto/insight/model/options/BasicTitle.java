@@ -16,6 +16,8 @@
 
 package com.comsysto.insight.model.options;
 
+import org.codehaus.jackson.map.annotate.JsonSerialize;
+
 import java.io.Serializable;
 import java.util.Map;
 
@@ -25,6 +27,7 @@ import java.util.Map;
  * Date: 08/03/2011
  * Time: 16:53
  */
+@JsonSerialize(include= JsonSerialize.Inclusion.NON_NULL)
 class BasicTitle implements Serializable {
 
     private String mText;

@@ -17,9 +17,12 @@
 package com.comsysto.insight.model.options;
 
 
+import org.codehaus.jackson.map.annotate.JsonSerialize;
+
 import java.io.Serializable;
 import java.net.URI;
 
+@JsonSerialize(include= JsonSerialize.Inclusion.NON_NULL)
 public class Marker implements Serializable {
 
     private Boolean mEnabled;

@@ -16,6 +16,8 @@
 
 package com.comsysto.insight.model.options;
 
+import org.codehaus.jackson.map.annotate.JsonSerialize;
+
 import java.io.Serializable;
 
 /**
@@ -23,6 +25,7 @@ import java.io.Serializable;
  *
  * @author Mohammed El Batya
  */
+@JsonSerialize(include= JsonSerialize.Inclusion.NON_NULL)
 public class Point implements Serializable {
 
     private String mColor;
