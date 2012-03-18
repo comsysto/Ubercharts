@@ -22,8 +22,8 @@ import com.comsysto.insight.model.charts.*;
 import com.comsysto.insight.model.options.*;
 import com.comsysto.insight.model.options.series.generic.ISeries;
 import com.comsysto.insight.model.options.series.impl.*;
-import org.apache.wicket.PageParameters;
 import org.apache.wicket.markup.html.WebPage;
+import org.apache.wicket.model.Model;
 
 /** Homepage */
 public class HomePage extends WebPage {
@@ -33,24 +33,22 @@ public class HomePage extends WebPage {
     /**
      * Constructor that is invoked when page is invoked without a session.
      *
-     * @param parameters Page parameters
      */
-    public HomePage(final PageParameters parameters) {
-
+    public HomePage() {
 
         String[] categories = new String[]{"Jan", "Feb", "Mar", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
 
         Credits credits = new Credits("comSysto GmbH").setHref("http://www.comsysto.com");
 
-        ISeries a = new NumberSeries("Number").setData(new Number[]{7.0, 6.9, 9.5, 10.2, 12.2, 13.9});
+        ISeries<Number []> a = new NumberSeries("Number").setData(new Number[]{7.0, 6.9, 9.5, 10.2, 12.2, 13.9});
 
-        ISeries b = new MixedSeries("Mixed").setData(new Object[]{-0.2, 0.8, 4.4, new Object[]{"max", 50}, new Integer[]{4, 1}});
+        ISeries<Object []> b = new MixedSeries("Mixed").setData(new Object[]{-0.2, 0.8, 4.4, new Object[]{"max", 50}, new Integer[]{4, 1}});
 
-        ISeries c = new LabeledNumberSeries("LabeledNumber").setData(new Object[][]{new Object[]{"max", 20}, new Object[]{"min", -5}});
+        ISeries<Object [][]> c = new LabeledNumberSeries("LabeledNumber").setData(new Object[][]{new Object[]{"max", 20}, new Object[]{"min", -5}});
 
-        ISeries d = new CoordinateSeries("Coords").setData(new Number[]{3.9, 4.2, 5.7, 7.5, 2.3}, new Number[]{3.9, 4.2, 5.7, 7.5, 2.3});
+        ISeries<Number [][]> d = new CoordinateSeries("Coords").setData(new Number[]{3.9, 4.2, 5.7, 7.5, 2.3}, new Number[]{3.9, 4.2, 5.7, 7.5, 2.3});
 
-        ISeries e = new PointSeries("Points").setData(new Point[]{new Point(1, 5), new Point(3, 4), new Point(6, 7)});
+        ISeries<Point []> e = new PointSeries("Points").setData(new Point[]{new Point(1, 5), new Point(3, 4), new Point(6, 7)});
 
         Highchart highchart1 = new Highchart(new AreaChart(), a, c, d, e);
         highchart1.setTitle(new ChartTitle("AreaChart")).setCredits(credits).getXAxis().setCategories(categories);
@@ -86,15 +84,15 @@ public class HomePage extends WebPage {
 
 
         // Add Panel
-        add(new HighchartsPanel("chart1", highchart1));
-        add(new HighchartsPanel("chart2", highchart2));
-        add(new HighchartsPanel("chart3", highchart3));
-        add(new HighchartsPanel("chart4", highchart4));
-        add(new HighchartsPanel("chart5", highchart5));
-        add(new HighchartsPanel("chart6", highchart6));
-        add(new HighchartsPanel("chart7", highchart7));
-        add(new HighchartsPanel("chart8", highchart8));
-        add(new HighchartsPanel("chart9", highchart9));
+        add(new HighchartsPanel("chart1", Model.of(highchart1)));
+        add(new HighchartsPanel("chart2", Model.of(highchart2)));
+        add(new HighchartsPanel("chart3", Model.of(highchart3)));
+        add(new HighchartsPanel("chart4", Model.of(highchart4)));
+        add(new HighchartsPanel("chart5", Model.of(highchart5)));
+        add(new HighchartsPanel("chart6", Model.of(highchart6)));
+        add(new HighchartsPanel("chart7", Model.of(highchart7)));
+        add(new HighchartsPanel("chart8", Model.of(highchart8)));
+        add(new HighchartsPanel("chart9", Model.of(highchart9)));
     }
 
 

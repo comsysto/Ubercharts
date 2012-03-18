@@ -28,7 +28,9 @@ import org.apache.wicket.request.resource.JavaScriptResourceReference;
 
 public class HighchartsPanel extends Panel {
 
-    private boolean jqueryProvided;
+    private boolean jqueryProvided = false;
+    private boolean highchartProvided = false;
+
     private WebMarkupContainer chartDiv;
     private IModel<Highchart> highchartsModel;
 
@@ -80,15 +82,22 @@ public class HighchartsPanel extends Panel {
 
     @Override
     public void renderHead(IHeaderResponse response) {
-        if (!jqueryProvided) {
+        if (jqueryProvided) {
             response.renderJavaScriptReference(new JavaScriptResourceReference(this.getClass(), "jquery-1.4.4.min.js"));
         }
-        response.renderJavaScriptReference(new JavaScriptResourceReference(this.getClass(), "highcharts.js"));
-        response.renderJavaScriptReference(new JavaScriptResourceReference(this.getClass(), "exporting.js"));
+        if (highchartProvided){
+            response.renderJavaScriptReference(new JavaScriptResourceReference(this.getClass(), "highcharts.js"));
+            response.renderJavaScriptReference(new JavaScriptResourceReference(this.getClass(), "exporting.js"));
+        }
     }
 
-    public HighchartsPanel setJqueryProvided(boolean jqueryProvided) {
+    public HighchartsPanel setJQueryProvided(boolean jqueryProvided) {
         this.jqueryProvided = jqueryProvided;
+        return this;
+    }
+
+    public HighchartsPanel setHighchartProvided(boolean highchartProvided) {
+        this.highchartProvided = highchartProvided;
         return this;
     }
 }

@@ -23,6 +23,8 @@ import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -31,6 +33,8 @@ import java.util.List;
 
 @JsonSerialize(include= JsonSerialize.Inclusion.NON_NULL)
 public class Highchart implements Serializable {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(Highchart.class);
 
     private Chart chart;
     private String[] colors;
@@ -76,8 +80,7 @@ public class Highchart implements Serializable {
             e.printStackTrace();
         }
 
-        // dump JSON object
-        System.out.println(json);
+        LOGGER.info(json);
 
         return json;
     }

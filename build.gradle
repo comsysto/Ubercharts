@@ -16,6 +16,22 @@
 
 apply plugin: 'idea'
 
+subprojects {
 
+    compileDeps = [
+        "org.apache.wicket:wicket-core:1.5.4",
+        "org.slf4j:slf4j-simple:1.6.4",
+        "org.codehaus.jackson:jackson-mapper-asl:1.9.4"
+    ]
+
+    testDeps = [
+        "junit:junit:4.10"
+    ]
+
+    jettyDeps = [
+        "org.mortbay.jetty:jetty-util:6.1.25",
+        "org.mortbay.jetty:jetty-management:6.1.25"
+    ]
+}
 
 

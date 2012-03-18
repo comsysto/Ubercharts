@@ -50,20 +50,15 @@ dependencies {
     /*
      These are the dependencies, which are needed to compile and run the project.
     */
-    compile(
-            project(':ubercharts-lib'),
-            [group: 'org.apache.wicket', name: 'wicket', version: '1.4.15'],
-            [group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.5.8'],
-    )
+    compile project(':ubercharts-lib')
+    compile compileDeps
 
     /*
      These are the dependencies, which are needed to test the project.
     */
-    testCompile(
-            [group: 'org.mortbay.jetty', name: 'jetty-util', version: '6.1.25'],
-            [group: 'org.mortbay.jetty', name: 'jetty-management', version: '6.1.25'],
-            [group: 'junit', name: 'junit', version: '4.8.1'],
-    )
+    testCompile testDeps
+    testCompile jettyDeps
+
 }
 
 
