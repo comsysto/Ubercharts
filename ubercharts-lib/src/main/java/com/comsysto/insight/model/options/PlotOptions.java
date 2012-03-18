@@ -1,5 +1,6 @@
 package com.comsysto.insight.model.options;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 import java.io.Serializable;
@@ -95,6 +96,7 @@ public class PlotOptions implements Serializable {
         if(spline == null)      spline = new PlotOption();
     }
 
+    @JsonIgnore
     public List<PlotOption> getPlotOptions(){
         List<PlotOption> plotOptions = new ArrayList<PlotOption>();
         if(area != null)        plotOptions.add(area);

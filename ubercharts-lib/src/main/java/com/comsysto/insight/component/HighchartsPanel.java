@@ -82,10 +82,10 @@ public class HighchartsPanel extends Panel {
 
     @Override
     public void renderHead(IHeaderResponse response) {
-        if (jqueryProvided) {
+        if (!jqueryProvided) {
             response.renderJavaScriptReference(new JavaScriptResourceReference(this.getClass(), "jquery-1.4.4.min.js"));
         }
-        if (highchartProvided){
+        if (!highchartProvided){
             response.renderJavaScriptReference(new JavaScriptResourceReference(this.getClass(), "highcharts.js"));
             response.renderJavaScriptReference(new JavaScriptResourceReference(this.getClass(), "exporting.js"));
         }
