@@ -52,7 +52,7 @@ public class Highchart implements Serializable {
     private Axis yAxis = new Axis();
     private Exporting exporting;
     private Navigation navigation;
-    private PlotOptions plotOptions = new PlotOptions();
+    private PlotOptions plotOptions;
 
     public Highchart() {
 
@@ -263,6 +263,16 @@ public class Highchart implements Serializable {
 
     public void setPlotOptions(PlotOptions plotOptions) {
         this.plotOptions = plotOptions;
+    }
+
+    public void disableAllAnimations(){
+        if(plotOptions == null){
+            plotOptions = new PlotOptions();
+        }
+        plotOptions.initializeNullPlotOption();
+        for(PlotOption option : plotOptions.getPlotOptions()){
+            option.setAnimation(Boolean.FALSE);
+        }
     }
 
     private static class JsonObjectMapper {

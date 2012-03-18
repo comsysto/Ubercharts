@@ -7,7 +7,7 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
  */
 @JsonSerialize(include= JsonSerialize.Inclusion.NON_NULL)
 public class PlotOption {
-    Boolean animation = Boolean.FALSE;
+    Boolean animation;
 
     public Boolean getAnimation() {
         return animation;

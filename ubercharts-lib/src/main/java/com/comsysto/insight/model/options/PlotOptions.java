@@ -3,20 +3,22 @@ package com.comsysto.insight.model.options;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author zutherb
  */
 @JsonSerialize(include= JsonSerialize.Inclusion.NON_NULL)
 public class PlotOptions implements Serializable {
-    PlotOption area = new PlotOption();
-    PlotOption areaspline = new PlotOption();
-    PlotOption bar = new PlotOption();
-    PlotOption column = new PlotOption();
-    PlotOption line = new PlotOption();
-    PlotOption pie = new PlotOption();
-    PlotOption scatter = new PlotOption();
-    PlotOption spline = new PlotOption();
+    PlotOption area;
+    PlotOption areaspline;
+    PlotOption bar;
+    PlotOption column;
+    PlotOption line;
+    PlotOption pie;
+    PlotOption scatter;
+    PlotOption spline;
 
     public PlotOption getSpline() {
         return spline;
@@ -80,5 +82,29 @@ public class PlotOptions implements Serializable {
 
     public void setArea(PlotOption area) {
         this.area = area;
+    }
+
+    public void initializeNullPlotOption(){
+        if(area == null)        area = new PlotOption();
+        if(areaspline == null)  areaspline = new PlotOption();
+        if(bar == null)         bar = new PlotOption();
+        if(column == null)      column = new PlotOption();
+        if(line == null)        line = new PlotOption();
+        if(pie == null)         pie = new PlotOption();
+        if(scatter == null)     scatter = new PlotOption();
+        if(spline == null)      spline = new PlotOption();
+    }
+
+    public List<PlotOption> getPlotOptions(){
+        List<PlotOption> plotOptions = new ArrayList<PlotOption>();
+        if(area != null)        plotOptions.add(area);
+        if(areaspline != null)  plotOptions.add(areaspline);
+        if(bar != null)         plotOptions.add(bar);
+        if(column != null)      plotOptions.add(column);
+        if(line != null)        plotOptions.add(line);
+        if(pie != null)         plotOptions.add(pie);
+        if(scatter != null)     plotOptions.add(scatter);
+        if(spline != null)      plotOptions.add(spline);
+        return plotOptions;
     }
 }
