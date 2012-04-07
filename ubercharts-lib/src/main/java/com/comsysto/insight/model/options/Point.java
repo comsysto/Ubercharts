@@ -35,6 +35,7 @@ public class Point implements Serializable {
     private Boolean mSliced;
     private Number mX;
     private Number mY;
+    private Events events;
 
     public Point(Number pX, Number pY) {
         mX = pX;
@@ -102,5 +103,13 @@ public class Point implements Serializable {
     public Point setY(Number pY) {
         mY = pY;
         return this;
+    }
+
+    public void setEvents(Events events) {
+        this.events = events;
+    }
+
+    public Events getEvents() {
+        return events;
     }
 }

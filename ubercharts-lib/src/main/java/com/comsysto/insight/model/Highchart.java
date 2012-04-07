@@ -35,6 +35,7 @@ import java.util.List;
 public class Highchart implements Serializable {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(Highchart.class);
+    private static final long serialVersionUID = -6047138856976090314L;
 
     private Chart chart;
     private String[] colors;
@@ -283,6 +284,7 @@ public class Highchart implements Serializable {
             if(mapper == null){
                 mapper = new ObjectMapper();
                 mapper.setAnnotationIntrospector(new JacksonAnnotationIntrospector());
+
             }
             return mapper;
         }

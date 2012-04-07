@@ -16,14 +16,13 @@
 
 package com.comsysto.insight.model;
 
-import com.comsysto.insight.model.options.PlotOption;
-import com.comsysto.insight.model.options.PlotOptions;
+import com.comsysto.insight.model.options.*;
+import org.apache.commons.lang.StringUtils;
 import org.junit.Test;
 
 import java.util.List;
 
-import static junit.framework.Assert.assertFalse;
-import static junit.framework.Assert.assertNotNull;
+import static junit.framework.Assert.*;
 
 /**
  * @author zutherb
@@ -47,5 +46,29 @@ public class HighchartTest {
         for (PlotOption option : plotOptionList){
             assertFalse(option.getAnimation());
         }
+    }
+
+    @Test
+    public void testPlotOptionCallbackFunction(){
+        Highchart highchart = new Highchart();
+        PlotOptions plotOptions = new PlotOptions();
+        Events events = new Events();
+        String clickFunction = "function () { alert('Hello'); }";
+        events.setClick(clickFunction);
+
+        Series series = new Series();
+        series.setCursor("pointer");
+        series.setEvents(events);
+
+        plotOptions.setSeries(series);
+        highchart.setPlotOptions(plotOptions);
+        String json = highchart.toJson();
+        assertTrue("JS-Script Function do not contains the json object", json.contains(clickFunction));
+
+        int position = json.indexOf(clickFunction)-1;
+        String functionStart = json.substring(position);
+        String functionEnd = functionStart.substring(clickFunction.length()+1); //substring starts by zero so only one must be added
+        assertFalse("JS-Script Function must not be wrapped in quotes", StringUtils.startsWith(functionStart, "\""));
+        assertFalse("JS-Script Function must not be wrapped in quotes", StringUtils.startsWith(functionEnd, "\""));
     }
 }

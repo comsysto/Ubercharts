@@ -12,14 +12,15 @@ import java.util.List;
  */
 @JsonSerialize(include= JsonSerialize.Inclusion.NON_NULL)
 public class PlotOptions implements Serializable {
-    PlotOption area;
-    PlotOption areaspline;
-    PlotOption bar;
-    PlotOption column;
-    PlotOption line;
-    PlotOption pie;
-    PlotOption scatter;
-    PlotOption spline;
+    private PlotOption area;
+    private PlotOption areaspline;
+    private PlotOption bar;
+    private PlotOption column;
+    private PlotOption line;
+    private PlotOption pie;
+    private PlotOption scatter;
+    private PlotOption spline;
+    private Series series;
 
     public PlotOption getSpline() {
         return spline;
@@ -83,6 +84,14 @@ public class PlotOptions implements Serializable {
 
     public void setArea(PlotOption area) {
         this.area = area;
+    }
+
+    public Series getSeries() {
+        return series;
+    }
+
+    public void setSeries(Series series) {
+        this.series = series;
     }
 
     public void initializeNullPlotOption(){
