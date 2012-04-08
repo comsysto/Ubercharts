@@ -24,6 +24,8 @@ import com.comsysto.insight.model.options.series.generic.ISeries;
 import com.comsysto.insight.model.options.series.impl.*;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.model.IModel;
+
 
 /** Homepage */
 public class HomePage extends WebPage {
@@ -93,6 +95,57 @@ public class HomePage extends WebPage {
         add(new HighchartsPanel("chart7", Model.of(highchart7)));
         add(new HighchartsPanel("chart8", Model.of(highchart8)));
         add(new HighchartsPanel("chart9", Model.of(highchart9)));
+        add(new HighchartsPanel("chart10", liveChartModel()));
+    }
+
+    public IModel<Highchart> liveChartModel(){
+        Chart chart = new SplineChart();
+        chart.setMarginRight(10);
+        Events events = new Events();
+        events.setLoad("function() {\n" +
+                "           // set up the updating of the chart each second\n" +
+                "           var series = this.series[0];\n" +
+                "           setInterval(function() {\n" +
+                "               var x = (new Date()).getTime(), // current time\n" +
+                "               y = Math.random();\n" +
+                "               series.addPoint([x, y], true, true);\n" +
+                "               }, 1000);\n" +
+                "       }");
+        chart.setEvents(events);
+        PlotLine plotLine = new PlotLine().setValue(0).setWidth(1).setColor("#808080");
+        Tooltip pTooltip = new Tooltip();
+        pTooltip.setFormatter("function() {\n" +
+                "                    return '<b>'+ this.series.name +'</b><br/>'+\n" +
+                "                            Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) +'<br/>'+\n" +
+                "                            Highcharts.numberFormat(this.y, 2);\n" +
+                "                }");
+
+        FunctionSeries functionSeries = new FunctionSeries("Random data");
+        functionSeries.setData("(function() {\n" +
+                "                    // generate an array of random data\n" +
+                "                    var data = [],\n" +
+                "                    time = (new Date()).getTime(),\n" +
+                "                            i;\n" +
+                "                    for (i = -19; i <= 0; i++) {\n" +
+                "                        data.push({\n" +
+                "                                x: time + i * 1000,\n" +
+                "                                y: Math.random()\n" +
+                "                        });\n" +
+                "                    }\n" +
+                "                    return data;\n" +
+                "                })()");
+
+        Credits credits = new Credits("comSysto GmbH").setHref("http://www.comsysto.com");
+
+        Highchart highchart = new Highchart(chart, functionSeries);
+        highchart.setCredits(credits);
+        highchart.setTitle(new ChartTitle("Live random data"));
+        highchart.getXAxis().setType(AxisType.datetime).setTickPixelInterval(Integer.valueOf(150));
+        highchart.getYAxis().setTitle(new AxisTitle("Value")).setPlotLines(plotLine);
+        highchart.setTooltip(pTooltip);
+        highchart.setLegend(new Legend().setEnabled(false));
+        highchart.setExporting(new Exporting().setEnabled(false));
+        return Model.of(highchart);
     }
 
 
