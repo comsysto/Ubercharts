@@ -17,6 +17,7 @@
 package com.comsysto.insight.model.charts;
 
 import com.comsysto.insight.model.options.ChartType;
+import com.comsysto.insight.model.options.Events;
 import com.comsysto.insight.model.options.ZoomType;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
@@ -30,6 +31,8 @@ import java.util.Map;
  */
 @JsonSerialize(include= JsonSerialize.Inclusion.NON_NULL)
 public class Chart implements Serializable {
+
+    private Events events;
 
     public Chart(ChartType pType) {
         defaultSeriesType = pType;
@@ -377,4 +380,12 @@ public class Chart implements Serializable {
         return this;
     }
 
+    public Chart setEvents(Events event) {
+        this.events = event;
+        return this;
+    }
+
+    public Events getEvents() {
+        return events;
+    }
 }

@@ -284,7 +284,6 @@ public class Highchart implements Serializable {
             if(mapper == null){
                 mapper = new ObjectMapper();
                 mapper.setAnnotationIntrospector(new JacksonAnnotationIntrospector());
-
             }
             return mapper;
         }

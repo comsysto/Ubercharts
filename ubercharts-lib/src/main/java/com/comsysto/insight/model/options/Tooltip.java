@@ -16,6 +16,7 @@
 
 package com.comsysto.insight.model.options;
 
+import org.codehaus.jackson.annotate.JsonRawValue;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 import java.io.Serializable;
@@ -34,6 +35,8 @@ public class Tooltip implements Serializable {
     private Boolean mShared;
     private Integer mSnap;
     private Map<String, String> mStyle;
+    @JsonRawValue
+    private String formatter;
 
     public String getBackgroundColor() {
         return mBackgroundColor;
@@ -134,5 +137,14 @@ public class Tooltip implements Serializable {
     public Tooltip setStyle(Map<String, String> pStyle) {
         mStyle = pStyle;
         return this;
+    }
+
+    public Tooltip setFormatter(String formatter) {
+        this.formatter = formatter;
+        return this;
+    }
+
+    public String getFormatter() {
+        return formatter;
     }
 }

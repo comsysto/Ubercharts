@@ -324,7 +324,7 @@ public class Axis implements Serializable {
         return mPlotLines;
     }
 
-    public Axis setPlotLines(PlotLine[] pPlotLines) {
+    public Axis setPlotLines(PlotLine ... pPlotLines) {
         mPlotLines = pPlotLines;
         return this;
     }

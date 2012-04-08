@@ -25,6 +25,8 @@ public class Events implements Serializable {
     private String unselect;
     @JsonRawValue
     private String update;
+    @JsonRawValue
+    private String load;
 
     public String getClick() {
         return click;
@@ -80,5 +82,13 @@ public class Events implements Serializable {
 
     public void setUpdate(String update) {
         this.update = update;
+    }
+
+    public String getLoad() {
+        return load;
+    }
+
+    public void setLoad(String load) {
+        this.load = load;
     }
 }
