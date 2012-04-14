@@ -386,6 +386,9 @@ public class Chart implements Serializable {
     }
 
     public Events getEvents() {
+        if(events == null){
+            events = new Events();
+        }
         return events;
     }
 }
