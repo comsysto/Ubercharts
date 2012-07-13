@@ -14,9 +14,20 @@
  limitations under the License.
  */
 
-package com.comsysto.insight.model.options;
+package com.comsysto.insight.model.charts;
 
-public enum ChartType {
+import com.comsysto.insight.model.options.ChartType;
 
-    area, areaspline, bar, column, line, pie, scatter, spline, funnel
+/**
+ * This is a shorthand for {@code new Chart(Type.funnel)} or {@code new Chart().setDefaultSeriesType(Type.area)}.
+ * <p/>
+ *
+ * @author Bernd Zuther
+ * @see com.comsysto.insight.model.charts.Chart
+ */
+public class FunnelChart extends Chart {
+
+    public FunnelChart() {
+        super(ChartType.funnel);
+    }
 }

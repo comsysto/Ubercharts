@@ -54,6 +54,7 @@ public class Highchart implements Serializable {
     private Exporting exporting;
     private Navigation navigation;
     private PlotOptions plotOptions;
+    private int[] margin;
 
     public Highchart() {
 
@@ -264,6 +265,15 @@ public class Highchart implements Serializable {
 
     public void setPlotOptions(PlotOptions plotOptions) {
         this.plotOptions = plotOptions;
+    }
+
+    public int[] getMargin() {
+        return margin;
+    }
+
+    public Highchart setMargin(int[] margin) {
+        this.margin = margin;
+        return this;
     }
 
     public void disableAllAnimations(){

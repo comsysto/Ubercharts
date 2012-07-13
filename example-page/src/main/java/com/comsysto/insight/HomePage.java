@@ -22,9 +22,11 @@ import com.comsysto.insight.model.charts.*;
 import com.comsysto.insight.model.options.*;
 import com.comsysto.insight.model.options.series.generic.ISeries;
 import com.comsysto.insight.model.options.series.impl.*;
+import org.apache.wicket.markup.html.IHeaderResponse;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.request.resource.JavaScriptResourceReference;
 
 
 /** Homepage */
@@ -96,6 +98,41 @@ public class HomePage extends WebPage {
         add(new HighchartsPanel("chart8", Model.of(highchart8)));
         add(new HighchartsPanel("chart9", Model.of(highchart9)));
         add(new HighchartsPanel("chart10", liveChartModel()));
+        add(new HighchartsPanel("chart11", funnelChart()){
+            @Override
+            public void renderHead(IHeaderResponse response) {
+                super.renderHead(response);
+                response.renderJavaScriptReference(new JavaScriptResourceReference(HighchartsPanel.class, "funnel.js"));
+            }
+        });
+    }
+
+    private IModel<Highchart> funnelChart() {
+        Chart chart = new FunnelChart();
+        ISeries<Object [][]> c = new LabeledNumberSeries("Browser share")
+                .setData(new Object[][]{new Object[]{"Website visits", 15654},
+                        new Object[]{"Downloads", 4064},
+                        new Object[]{"Requested price list", 1987},
+                        new Object[]{"Invoice sent", 976},
+                        new Object[]{"Finalized", 846}});
+        Highchart highchart = new Highchart(chart, c)
+                .setTitle(new ChartTitle("Sales funnel"))
+                .setTooltip(new Tooltip().setFormatter("function() {\n" +
+                "            return '<b>'+ this.point.name +'</b>: '+ Highcharts.numberFormat(this.y, 0);\n" +
+                "        }"))
+                .setMargin(new int[]{50, 10, 60, 170});
+        DataLabels dataLabels = new DataLabels()
+                .setAlign(Align.left)
+                .setColor(Color.black)
+                .setEnabled(true)
+                .setX(-300)
+                .setFormatter("function() {\n" +
+                        "   return '<b>'+ this.point.name +'</b> ('+ Highcharts.numberFormat(this.point.y, 0) +')';\n" +
+                        "}");
+        Series series = new Series().setDataLabels(dataLabels);
+        highchart.setPlotOptions(new PlotOptions().setSeries(series));
+        highchart.setLegend(new Legend().setEnabled(false));
+        return Model.of(highchart);
     }
 
     public IModel<Highchart> liveChartModel(){

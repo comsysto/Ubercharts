@@ -90,8 +90,9 @@ public class PlotOptions implements Serializable {
         return series;
     }
 
-    public void setSeries(Series series) {
+    public PlotOptions setSeries(Series series) {
         this.series = series;
+        return this;
     }
 
     public void initializeNullPlotOption(){

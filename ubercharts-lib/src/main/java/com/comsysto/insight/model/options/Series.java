@@ -13,6 +13,7 @@ public class Series implements Serializable {
 
     private String cursor;
     private Events events;
+    private DataLabels dataLabels;
 
     public String getCursor() {
         return cursor;
@@ -28,5 +29,14 @@ public class Series implements Serializable {
 
     public void setEvents(Events events) {
         this.events = events;
+    }
+
+    public DataLabels getDataLabels() {
+        return dataLabels;
+    }
+
+    public Series setDataLabels(DataLabels dataLabels) {
+        this.dataLabels = dataLabels;
+        return this;
     }
 }
