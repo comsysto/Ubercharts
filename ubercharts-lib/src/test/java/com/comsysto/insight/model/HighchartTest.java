@@ -16,7 +16,10 @@
 
 package com.comsysto.insight.model;
 
-import com.comsysto.insight.model.options.*;
+import com.comsysto.insight.model.options.Events;
+import com.comsysto.insight.model.options.PlotOption;
+import com.comsysto.insight.model.options.PlotOptions;
+import com.comsysto.insight.model.options.Series;
 import org.apache.commons.lang.StringUtils;
 import org.junit.Test;
 

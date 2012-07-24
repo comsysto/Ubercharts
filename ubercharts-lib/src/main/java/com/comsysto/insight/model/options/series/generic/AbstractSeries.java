@@ -20,8 +20,6 @@ import com.comsysto.insight.model.options.ChartType;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
-import java.io.Serializable;
-
 /**
  * Abstract implementation of ISeries, implementing all needed methods, except for {@link ISeries#setData(Object)}. You
  * should not need to implement this class by your own as the existing implementations should cover all possible

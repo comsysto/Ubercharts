@@ -18,14 +18,11 @@ package com.comsysto.insight;
 
 import com.comsysto.insight.component.HighchartsPanel;
 import com.comsysto.insight.model.Highchart;
-import com.comsysto.insight.model.charts.*;
-import com.comsysto.insight.model.options.*;
 import com.comsysto.insight.model.options.series.generic.ISeries;
-import com.comsysto.insight.model.options.series.impl.*;
 import org.apache.wicket.markup.html.IHeaderResponse;
 import org.apache.wicket.markup.html.WebPage;
-import org.apache.wicket.model.Model;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
 import org.apache.wicket.request.resource.JavaScriptResourceReference;
 
 
