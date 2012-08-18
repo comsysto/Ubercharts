@@ -44,11 +44,11 @@ sourceSets {
     }
     test {
         java {
-            srcDir 'src/main/java'
+            srcDir 'src/test/java'
         }
         resources {
-            srcDir 'src/main/resources'
-            srcDir 'src/main/java'
+            srcDir 'src/test/resources'
+            srcDir 'src/test/java'
         }
     }
 }
