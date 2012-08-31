@@ -22,12 +22,12 @@ import com.comsysto.insight.model.charts.*;
 import com.comsysto.insight.model.options.*;
 import com.comsysto.insight.model.options.series.generic.ISeries;
 import com.comsysto.insight.model.options.series.impl.*;
+import com.comsysto.insight.resource.HighchartsFunnelModuleResourcesReference;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
-import org.apache.wicket.request.resource.JavaScriptResourceReference;
 
 
 /**
@@ -106,7 +106,7 @@ public class HomePage extends WebPage {
             public void renderHead(IHeaderResponse response) {
 
                 super.renderHead(response);
-                response.render(JavaScriptHeaderItem.forReference(new JavaScriptResourceReference(HighchartsPanel.class, "funnel.js")));
+                response.render(JavaScriptHeaderItem.forReference(HighchartsFunnelModuleResourcesReference.get()));
 
             }
 

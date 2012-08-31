@@ -17,6 +17,9 @@
 package com.comsysto.insight.component;
 
 import com.comsysto.insight.model.Highchart;
+import com.comsysto.insight.resource.HighchartsExportingModuleResourcesReference;
+import com.comsysto.insight.resource.HighchartsResourcesReference;
+import org.apache.wicket.Application;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.html.WebMarkupContainer;
@@ -24,7 +27,7 @@ import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.LoadableDetachableModel;
-import org.apache.wicket.request.resource.JavaScriptResourceReference;
+import org.apache.wicket.request.resource.ResourceReference;
 
 
 public class HighchartsPanel extends Panel {
@@ -84,12 +87,20 @@ public class HighchartsPanel extends Panel {
     @Override
     public void renderHead(IHeaderResponse response) {
 
+        final ResourceReference jQueryReference =
+                Application.get().getJavaScriptLibrarySettings().getJQueryReference();
+
         if (!jqueryProvided) {
-            response.render(JavaScriptHeaderItem.forReference(new JavaScriptResourceReference(this.getClass(), "jquery-1.4.4.min.js")));
+
+            response.render(JavaScriptHeaderItem.forReference(jQueryReference));
+
         }
+
         if (!highchartProvided) {
-            response.render(JavaScriptHeaderItem.forReference(new JavaScriptResourceReference(this.getClass(), "highcharts.js")));
-            response.render(JavaScriptHeaderItem.forReference(new JavaScriptResourceReference(this.getClass(), "exporting.js")));
+
+            response.render(JavaScriptHeaderItem.forReference(HighchartsResourcesReference.get()));
+            response.render(JavaScriptHeaderItem.forReference(HighchartsExportingModuleResourcesReference.get()));
+
         }
     }
 
