@@ -18,7 +18,10 @@ package com.comsysto.insight;
 
 import com.comsysto.insight.component.HighchartsPanel;
 import com.comsysto.insight.model.Highchart;
+import com.comsysto.insight.model.charts.*;
+import com.comsysto.insight.model.options.*;
 import com.comsysto.insight.model.options.series.generic.ISeries;
+import com.comsysto.insight.model.options.series.impl.*;
 import org.apache.wicket.markup.html.IHeaderResponse;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.model.IModel;
@@ -26,14 +29,15 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.request.resource.JavaScriptResourceReference;
 
 
-/** Homepage */
+/**
+ * Homepage
+ */
 public class HomePage extends WebPage {
 
     private static final long serialVersionUID = 1L;
 
     /**
      * Constructor that is invoked when page is invoked without a session.
-     *
      */
     public HomePage() {
 
@@ -41,15 +45,15 @@ public class HomePage extends WebPage {
 
         Credits credits = new Credits("comSysto GmbH").setHref("http://www.comsysto.com");
 
-        ISeries<Number []> a = new NumberSeries("Number").setData(new Number[]{7.0, 6.9, 9.5, 10.2, 12.2, 13.9});
+        ISeries<Number[]> a = new NumberSeries("Number").setData(new Number[]{7.0, 6.9, 9.5, 10.2, 12.2, 13.9});
 
-        ISeries<Object []> b = new MixedSeries("Mixed").setData(new Object[]{-0.2, 0.8, 4.4, new Object[]{"max", 50}, new Integer[]{4, 1}});
+        ISeries<Object[]> b = new MixedSeries("Mixed").setData(new Object[]{-0.2, 0.8, 4.4, new Object[]{"max", 50}, new Integer[]{4, 1}});
 
-        ISeries<Object [][]> c = new LabeledNumberSeries("LabeledNumber").setData(new Object[][]{new Object[]{"max", 20}, new Object[]{"min", -5}});
+        ISeries<Object[][]> c = new LabeledNumberSeries("LabeledNumber").setData(new Object[][]{new Object[]{"max", 20}, new Object[]{"min", -5}});
 
-        ISeries<Number [][]> d = new CoordinateSeries("Coords").setData(new Number[]{3.9, 4.2, 5.7, 7.5, 2.3}, new Number[]{3.9, 4.2, 5.7, 7.5, 2.3});
+        ISeries<Number[][]> d = new CoordinateSeries("Coords").setData(new Number[]{3.9, 4.2, 5.7, 7.5, 2.3}, new Number[]{3.9, 4.2, 5.7, 7.5, 2.3});
 
-        ISeries<Point []> e = new PointSeries("Points").setData(new Point[]{new Point(1, 5), new Point(3, 4), new Point(6, 7)});
+        ISeries<Point[]> e = new PointSeries("Points").setData(new Point[]{new Point(1, 5), new Point(3, 4), new Point(6, 7)});
 
         Highchart highchart1 = new Highchart(new AreaChart(), a, c, d, e);
         highchart1.setTitle(new ChartTitle("AreaChart")).setCredits(credits).getXAxis().setCategories(categories);
@@ -95,7 +99,7 @@ public class HomePage extends WebPage {
         add(new HighchartsPanel("chart8", Model.of(highchart8)));
         add(new HighchartsPanel("chart9", Model.of(highchart9)));
         add(new HighchartsPanel("chart10", liveChartModel()));
-        add(new HighchartsPanel("chart11", funnelChart()){
+        add(new HighchartsPanel("chart11", funnelChart()) {
             @Override
             public void renderHead(IHeaderResponse response) {
                 super.renderHead(response);
@@ -106,7 +110,7 @@ public class HomePage extends WebPage {
 
     private IModel<Highchart> funnelChart() {
         Chart chart = new FunnelChart();
-        ISeries<Object [][]> c = new LabeledNumberSeries("Browser share")
+        ISeries<Object[][]> c = new LabeledNumberSeries("Browser share")
                 .setData(new Object[][]{new Object[]{"Website visits", 15654},
                         new Object[]{"Downloads", 4064},
                         new Object[]{"Requested price list", 1987},
@@ -115,8 +119,8 @@ public class HomePage extends WebPage {
         Highchart highchart = new Highchart(chart, c)
                 .setTitle(new ChartTitle("Sales funnel"))
                 .setTooltip(new Tooltip().setFormatter("function() {\n" +
-                "            return '<b>'+ this.point.name +'</b>: '+ Highcharts.numberFormat(this.y, 0);\n" +
-                "        }"))
+                        "            return '<b>'+ this.point.name +'</b>: '+ Highcharts.numberFormat(this.y, 0);\n" +
+                        "        }"))
                 .setMargin(new int[]{50, 10, 60, 170});
         DataLabels dataLabels = new DataLabels()
                 .setAlign(Align.left)
@@ -132,7 +136,7 @@ public class HomePage extends WebPage {
         return Model.of(highchart);
     }
 
-    public IModel<Highchart> liveChartModel(){
+    public IModel<Highchart> liveChartModel() {
         Chart chart = new SplineChart();
         chart.setMarginRight(10);
         Events events = new Events();
@@ -174,7 +178,7 @@ public class HomePage extends WebPage {
         Highchart highchart = new Highchart(chart, functionSeries);
         highchart.setCredits(credits);
         highchart.setTitle(new ChartTitle("Live random data"));
-        highchart.getXAxis().setType(AxisType.datetime).setTickPixelInterval(Integer.valueOf(150));
+        highchart.getXAxis().setType(AxisType.datetime).setTickPixelInterval(150);
         highchart.getYAxis().setTitle(new AxisTitle("Value")).setPlotLines(plotLine);
         highchart.setTooltip(pTooltip);
         highchart.setLegend(new Legend().setEnabled(false));
