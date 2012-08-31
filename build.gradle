@@ -19,7 +19,7 @@ apply plugin: 'idea'
 subprojects {
 
     ext.compileDeps = [
-        "org.apache.wicket:wicket-core:1.5.4",
+        "org.apache.wicket:wicket-core:6.0.0",
         "org.slf4j:slf4j-simple:1.6.4",
         "commons-lang:commons-lang:2.6",
         "org.codehaus.jackson:jackson-mapper-asl:1.9.4"

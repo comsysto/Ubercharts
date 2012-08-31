@@ -22,7 +22,8 @@ import com.comsysto.insight.model.charts.*;
 import com.comsysto.insight.model.options.*;
 import com.comsysto.insight.model.options.series.generic.ISeries;
 import com.comsysto.insight.model.options.series.impl.*;
-import org.apache.wicket.markup.html.IHeaderResponse;
+import org.apache.wicket.markup.head.IHeaderResponse;
+import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
@@ -100,11 +101,15 @@ public class HomePage extends WebPage {
         add(new HighchartsPanel("chart9", Model.of(highchart9)));
         add(new HighchartsPanel("chart10", liveChartModel()));
         add(new HighchartsPanel("chart11", funnelChart()) {
+
             @Override
             public void renderHead(IHeaderResponse response) {
+
                 super.renderHead(response);
-                response.renderJavaScriptReference(new JavaScriptResourceReference(HighchartsPanel.class, "funnel.js"));
+                response.render(JavaScriptHeaderItem.forReference(new JavaScriptResourceReference(HighchartsPanel.class, "funnel.js")));
+
             }
+
         });
     }
 
