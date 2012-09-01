@@ -14,8 +14,6 @@ import org.apache.wicket.model.Model;
  */
 public class TestPage extends WebPage {
 
-    Type type = Type.line;
-
     public TestPage() {
 
         final Highcharts highcharts = new Highcharts();
