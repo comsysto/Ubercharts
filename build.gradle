@@ -19,19 +19,20 @@ apply plugin: 'idea'
 subprojects {
 
     ext.compileDeps = [
-        "org.apache.wicket:wicket-core:6.0.0",
-        "org.slf4j:slf4j-simple:1.6.4",
-        "commons-lang:commons-lang:2.6",
-        "org.codehaus.jackson:jackson-mapper-asl:1.9.4"
+            "org.apache.wicket:wicket-core:6.0.0",
+            "org.slf4j:slf4j-simple:1.6.4",
+            "commons-lang:commons-lang:2.6",
+            "org.codehaus.jackson:jackson-mapper-asl:1.9.4",
+            "com.google.guava:guava:13.0.1"
     ]
 
     ext.testDeps = [
-        "junit:junit:4.10"
+            "junit:junit:4.10"
     ]
 
     ext.jettyDeps = [
-        "org.mortbay.jetty:jetty-util:6.1.25",
-        "org.mortbay.jetty:jetty-management:6.1.25"
+            "org.mortbay.jetty:jetty-util:6.1.25",
+            "org.mortbay.jetty:jetty-management:6.1.25"
     ]
 }
 
