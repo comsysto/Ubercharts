@@ -28,6 +28,10 @@ public class DemoPage extends WebPage {
         highcharts.credits.position.y = 0;
         highcharts.credits.text = "comSysto GmbH";
 
+        highcharts.labels.label().withText("First label").placeAt(100, 100);
+        highcharts.labels.label().withText("Second label").placeAt(50, 50);
+        highcharts.labels.label().withText("Third label").placeAt(150, 150);
+
 
         final Chart chart = new Chart("chart", Model.of(highcharts));
         //chart.add(new AjaxSelfUpdatingTimerBehavior(Duration.seconds(5)));
@@ -37,16 +41,7 @@ public class DemoPage extends WebPage {
             @Override
             public void onClick(AjaxRequestTarget target) {
 
-                if (highcharts.chart.polar) {
-
-                    highcharts.chart.polar = false;
-
-
-                } else {
-
-                    highcharts.chart.polar = true;
-
-                }
+                highcharts.chart.polar = !highcharts.chart.polar;
 
                 target.add(chart);
 

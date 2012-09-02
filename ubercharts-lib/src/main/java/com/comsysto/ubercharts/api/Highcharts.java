@@ -40,6 +40,11 @@ public class Highcharts implements Serializable {
     public Credits credits = new Credits();
 
     /**
+     * HTML labels that can be positioined anywhere in the chart area.
+     */
+    public Labels labels = new Labels();
+
+    /**
      * The actual series to append to the chart. In addition to the members listed below, any member of the plotOptions for
      * that specific type of plot can be added to a series individually.
      * <p/>
