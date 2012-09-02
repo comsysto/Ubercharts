@@ -45,6 +45,11 @@ public class Highcharts implements Serializable {
     public Labels labels = new Labels();
 
     /**
+     * The legend is a box containing a symbol and name for each series item or point item in the chart.
+     */
+    public Legend legend = new Legend();
+
+    /**
      * The actual series to append to the chart. In addition to the members listed below, any member of the plotOptions for
      * that specific type of plot can be added to a series individually.
      * <p/>

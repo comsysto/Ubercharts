@@ -32,6 +32,12 @@ public class DemoPage extends WebPage {
         highcharts.labels.label().withText("Second label").placeAt(50, 50);
         highcharts.labels.label().withText("Third label").placeAt(150, 150);
 
+        highcharts.legend.align = Align.center;
+        highcharts.legend.verticalAlign = VerticalAlign.middle;
+        highcharts.legend.floating = true;
+        highcharts.legend.x = 10;
+        highcharts.legend.y = 10;
+
 
         final Chart chart = new Chart("chart", Model.of(highcharts));
         //chart.add(new AjaxSelfUpdatingTimerBehavior(Duration.seconds(5)));
