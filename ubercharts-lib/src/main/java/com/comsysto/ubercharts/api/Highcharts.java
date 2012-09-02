@@ -34,6 +34,12 @@ public class Highcharts implements Serializable {
     public Chart chart = new Chart();
 
     /**
+     * Highchart by default puts a credits label in the lower right corner of the chart.
+     * This can be changed using these options.
+     */
+    public Credits credits = new Credits();
+
+    /**
      * The actual series to append to the chart. In addition to the members listed below, any member of the plotOptions for
      * that specific type of plot can be added to a series individually.
      * <p/>

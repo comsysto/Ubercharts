@@ -16,7 +16,7 @@
 
 package com.comsysto.insight;
 
-import com.comsysto.ubercharts.ui.TestPage;
+import com.comsysto.ubercharts.ui.DemoPage;
 import org.apache.wicket.protocol.http.WebApplication;
 
 /**
@@ -34,9 +34,9 @@ public class WicketApplication extends WebApplication {
     /**
      * @see org.apache.wicket.Application#getHomePage()
      */
-    public Class<TestPage> getHomePage() {
+    public Class<DemoPage> getHomePage() {
         //return HomePage.class;
-        return TestPage.class;
+        return DemoPage.class;
     }
 
 }
