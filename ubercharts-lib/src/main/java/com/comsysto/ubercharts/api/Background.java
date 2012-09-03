@@ -16,11 +16,29 @@
 
 package com.comsysto.ubercharts.api;
 
+import org.codehaus.jackson.map.annotate.JsonSerialize;
+
+import java.io.Serializable;
+
 /**
+ * An object, or array of objects, for backgrounds.
+ * Sub options include backgroundColor (which can be solid or gradient), innerWidth, outerWidth, borderWidth, borderColor.
+ * <p/>
+ * <i>Only solid {@link #backgroundColor} currently supported by Ubercharts</i>
+ *
  * @author Daniel Bartl
  */
-public enum Type {
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
+public class Background implements Serializable {
 
-    line, spline, area, areaspline, column, bar, pie, scatter, arearange, areasplinerange, columnrange, gauge
+    public String backgroundColor;
+
+    public int borderWidth;
+
+    public String borderColor;
+
+    public String outerRadius;
+
+    public String innerRadius;
 
 }
