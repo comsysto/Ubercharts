@@ -38,6 +38,18 @@ public class DemoPage extends WebPage {
         highcharts.legend.x = 10;
         highcharts.legend.y = 10;
 
+        highcharts.title.text = "DemoPage Chart 1";
+        highcharts.title.floating = true;
+        highcharts.title.margin = 10;
+        highcharts.title.align = Align.left;
+        highcharts.title.x = 10;
+        highcharts.title.y = 10;
+        highcharts.subtitle.text = "First Sample Chart For The Demo Page";
+        highcharts.subtitle.floating = true;
+        highcharts.subtitle.align = Align.left;
+        highcharts.subtitle.x = 10;
+        highcharts.subtitle.y = 30;
+
 
         final Chart chart = new Chart("chart", Model.of(highcharts));
         //chart.add(new AjaxSelfUpdatingTimerBehavior(Duration.seconds(5)));

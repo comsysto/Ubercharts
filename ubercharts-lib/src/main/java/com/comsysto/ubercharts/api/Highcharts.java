@@ -50,12 +50,29 @@ public class Highcharts implements Serializable {
     public Legend legend = new Legend();
 
     /**
+     * Applies only to polar charts and angular gauges.
+     * This configuration object holds general options for the combined X and Y axes set.
+     * Each xAxis or yAxis can reference the pane by index.
+     */
+    public Pane pane = new Pane();
+
+    /**
      * The actual series to append to the chart. In addition to the members listed below, any member of the plotOptions for
      * that specific type of plot can be added to a series individually.
      * <p/>
      * For example, even though a general lineWidth is specified in plotOptions.series, an individual lineWidth can be specified for each series.
      */
     public List<Series> series = new ArrayList<Series>();
+
+    /**
+     * A chart's subtitle.
+     */
+    public Subtitle subtitle = new Subtitle();
+
+    /**
+     * A chart's main title.
+     */
+    public Title title = new Title();
 
     /**
      * The X axis or category axis. Normally this is the horizontal axis, though if the chart is inverted this is the vertical axis.
