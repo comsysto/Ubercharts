@@ -50,6 +50,10 @@ public class DemoPage extends WebPage {
         highcharts.subtitle.x = 10;
         highcharts.subtitle.y = 30;
 
+        highcharts.tooltip.crosshairs = true;
+        highcharts.tooltip.valuePrefix = "€";
+        highcharts.tooltip.valueSuffix = ",-";
+
 
         final Chart chart = new Chart("chart", Model.of(highcharts));
         //chart.add(new AjaxSelfUpdatingTimerBehavior(Duration.seconds(5)));
