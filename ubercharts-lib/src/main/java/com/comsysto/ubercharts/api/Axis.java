@@ -138,4 +138,212 @@ public class Axis implements Serializable {
      */
     public Long minRange;
 
+    /**
+     * The minimum tick interval allowed in axis values.
+     * For example on zooming in on an axis with daily data, this can be used to prevent the axis from showing hours.
+     * <p/>
+     * Defaults to undefined.
+     */
+    public Long minTickInterval;
+
+    /**
+     * Color of the minor, secondary grid lines.
+     * <p/>
+     * Defaults to #E0E0E0.
+     */
+    public String minorGridLineColor = "#E0E0E0";
+
+    /**
+     * The dash or dot style of the minor grid lines.
+     * <p/>
+     * Defaults to Solid.
+     */
+    public DashStyle minorGridLineDashStyle = DashStyle.Solid;
+
+    /**
+     * Width of the minor, secondary grid lines.
+     * <p/>
+     * Defaults to 1.
+     */
+    public int minorGridLineWidth = 1;
+
+    /**
+     * Color for the minor tick marks.
+     * <p/>
+     * Defaults to #A0A0A0.
+     */
+    public String minorTickColor = "#A0A0A0";
+
+    /**
+     * Tick interval in scale units for the minor ticks.
+     * On a linear axis, if "auto", the minor tick interval is calculated as a fifth of the tickInterval.
+     * If null, minor ticks are not shown.
+     * <p/>
+     * On logarithmic axes, the unit is the power of the value.
+     * For example, setting the minorTickInterval to 1 puts one tick on each of 0.1, 1, 10, 100 etc.
+     * Setting the minorTickInterval to 0.1 produces 9 ticks between 1 and 10, 10 and 100 etc.
+     * A minorTickInterval of "auto" on a log axis results in a best guess,
+     * attempting to enter approximately 5 minor ticks between each major tick.
+     * <p/>
+     * <i>'Auto' as value not supported by Ubercharts.</i>
+     * <p/>
+     * Defaults to null.
+     */
+    public Double minorTickInterval;
+
+    /**
+     * The pixel length of the minor tick marks.
+     * Defaults to 2.
+     */
+    public int minorTickLength = 2;
+
+    /**
+     * The position of the minor tick marks relative to the axis line.
+     * Can be one of inside and outside.
+     * <p/>
+     * Defaults to outside.
+     */
+    public TickPosition minorTickPosition = TickPosition.outside;
+
+    /**
+     * The pixel width of the minor tick mark.
+     * <p/>
+     * Defaults to 0.
+     */
+    public int minorTickWidth = 0;
+
+    /**
+     * The distance in pixels from the plot area to the axis line.
+     * A positive offset moves the axis with it's line, labels and ticks away from the plot area.
+     * This is typically used when two or more axes are displayed on the same side of the plot.
+     * <p/>
+     * Defaults to 0.
+     */
+    public int offset = 0;
+
+    /**
+     * Whether to display the axis on the opposite side of the normal.
+     * The normal is on the left side for vertical axes and bottom for horizontal, so the opposite sides will be right and top respectively.
+     * This is typically used with dual or multiple axes.
+     * <p/>
+     * Defaults to false.
+     */
+    public boolean opposite = false;
+
+    /**
+     * A colored band stretching across the plot area marking an interval on the axis.
+     */
+    public PlotBands plotBands = new PlotBands();
+
+    /**
+     * A line streching across the plot area, marking a specific value on one of the axes.
+     */
+    public PlotLines plotLines = new PlotLines();
+
+    /**
+     * Whether to reverse the axis so that the highest number is closest to origo.
+     * If the chart is inverted, the x axis is reversed by default.
+     * <p/>
+     * Defaults to false.
+     */
+    public boolean reversed = false;
+
+    /**
+     * Whether to show the axis line and title when the axis has no data.
+     * <p/>
+     * Defaults to true.
+     */
+    public boolean showEmpty = true;
+
+    /**
+     * Whether to show the first tick label.
+     * <p/>
+     * Defaults to true.
+     */
+    public boolean showFirstLabel = true;
+
+    /**
+     * Whether to show the last tick label.
+     * <p/>
+     * Defaults to false.
+     */
+    public boolean showLastLabel = false;
+
+    /**
+     * For datetime axes, this decides where to put the tick between weeks.
+     * 0 = Sunday, 1 = Monday.
+     * <p/>
+     * Defaults to 1.
+     */
+    public Integer startOfWeek = 1;
+
+    /**
+     * Whether to force the axis to start on a tick.
+     * Use this option with the maxPadding option to control the axis start.
+     * <p/>
+     * Defaults to false.
+     */
+    public boolean startOnTick = false;
+
+    /**
+     * Color for the main tick marks.
+     * <p/>
+     * Defaults to #C0D0E0.
+     */
+    public String tickColor = "#C0D0E0";
+
+    /**
+     * The pixel length of the main tick marks.
+     * <p/>
+     * Defaults to 5.
+     */
+    public int tickLength = 5;
+
+    /**
+     * If tickInterval is null this option sets the approximate pixel interval of the tick marks.
+     * Not applicable to categorized axis.
+     * <p/>
+     * Defaults to 72 for the Y axis and 100 for the X axis.
+     * <p/>
+     * <i>Defaults provided in this case by Highcharts itself.</i>
+     */
+    public Integer tickPixelInterval;
+
+    /**
+     * The position of the major tick marks relative to the axis line. Can be one of inside and outside.
+     * <p/>
+     * Defaults to "outside".
+     */
+    public TickPosition tickPosition = TickPosition.outside;
+
+    /**
+     * The pixel width of the major tick marks.
+     * <p/>
+     * Defaults to 1.
+     */
+    public int tickWidth = 1;
+
+    /**
+     * For categorized axes only.
+     * If "on" the tick mark is placed in the center of the category,
+     * if "between" the tick mark is placed between categories. Defaults to "between".
+     */
+    public TickmarkPlacement tickmarkPlacement = TickmarkPlacement.between;
+
+    /**
+     * The axis title, showing next to the axis line.
+     * <p/>
+     * TODO db requires Title for Axis here!
+     */
+    public Title title = new Title();
+
+    /**
+     * The type of axis. Can be one of "linear", "logarithmic" or "datetime".
+     * In a datetime axis, the numbers are given in milliseconds, and tick marks are placed on appropriate values like full hours or days.
+     * <p/>
+     * Defaults to "linear".
+     */
+    public AxisType type = AxisType.linear;
+
+
 }
