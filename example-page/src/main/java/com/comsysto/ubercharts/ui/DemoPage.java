@@ -54,6 +54,9 @@ public class DemoPage extends WebPage {
         highcharts.tooltip.valuePrefix = "€";
         highcharts.tooltip.valueSuffix = ",-";
 
+        highcharts.xAxis.type = Axis.Type.linear;
+        highcharts.yAxis.type = Axis.Type.linear;
+
 
         final Chart chart = new Chart("chart", Model.of(highcharts));
         //chart.add(new AjaxSelfUpdatingTimerBehavior(Duration.seconds(5)));

@@ -20,10 +20,14 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Daniel Bartl
+ *         <p/>
+ *         TODO db Provide support for tickInterval: Mixed also.
  */
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public class Axis implements Serializable {
@@ -60,6 +64,27 @@ public class Axis implements Serializable {
     public List<String> categories = new ArrayList<String>();
 
     /**
+     * For a datetime axis, the scale will automatically adjust to the appropriate unit.
+     * This member gives the default string representations used for each unit. For an overview of the replacement codes, see dateFormat.
+     * <p/>
+     * Defaults to:
+     * <pre>
+     *  {
+     *      second: '%H:%M:%S',
+     *      minute: '%H:%M',
+     *      hour: '%H:%M',
+     *      day: '%e. %b',
+     *      week: '%e. %b',
+     *      month: '%b \'%y',
+     *      year: '%Y'
+     * }
+     * </pre>
+     * <p/>
+     * Defaults provided by Highcharts library itself.
+     */
+    public Map<String, String> dateTimeLabelFormats = new LinkedHashMap<String, String>();
+
+    /**
      * Whether to force the axis to end on a tick. Use this option with the maxPadding option to control the axis end.
      * <p/>
      * Defaults to false.
@@ -88,6 +113,11 @@ public class Axis implements Serializable {
     public int gridLineWidth = 0;
 
     /**
+     * The axis labels show the number or category for each tick.
+     */
+    public AxisLabel labels = new AxisLabel();
+
+    /**
      * The color of the line marking the axis itself.
      * <p/>
      * Defaults to "#C0D0E0".
@@ -111,14 +141,6 @@ public class Axis implements Serializable {
     public Long max;
 
     /**
-     * The minimum value of the axis. If null the min value is automatically calculated.
-     * If the startOnTick option is true, the min value might be rounded down.
-     * <p/>
-     * Defaults to null.
-     */
-    public Long mix;
-
-    /**
      * Padding of the max value relative to the length of the axis. A padding of 0.05 will make a 100px axis 5px longer.
      * This is useful when you don't want the highest data value to appear on the edge of the plot area.
      * When the axis' max option is set or a max extreme is set using axis.setExtremes(), the maxPadding will be ignored.
@@ -126,6 +148,23 @@ public class Axis implements Serializable {
      * Defaults to 0.01.
      */
     public double maxPadding = 0.01;
+
+    /**
+     * The minimum value of the axis. If null the min value is automatically calculated.
+     * If the startOnTick option is true, the min value might be rounded down.
+     * <p/>
+     * Defaults to null.
+     */
+    public Long min;
+
+    /**
+     * Padding of the min value relative to the length of the axis. A padding of 0.05 will make a 100px axis 5px longer.
+     * This is useful when you don't want the lowest data value to appear on the edge of the plot area.
+     * When the axis' min option is set or a min extreme is set using axis.setExtremes(), the minPadding will be ignored.
+     * <p/>
+     * Defaults to 0.01.
+     */
+    public double minPadding = 0.01;
 
     /**
      * The minimum range to display on this axis. The entire axis will not be allowed to span over a smaller interval than this.
@@ -332,10 +371,8 @@ public class Axis implements Serializable {
 
     /**
      * The axis title, showing next to the axis line.
-     * <p/>
-     * TODO db requires Title for Axis here!
      */
-    public Title title = new Title();
+    public AxisTitle title = new AxisTitle();
 
     /**
      * The type of axis. Can be one of "linear", "logarithmic" or "datetime".
@@ -343,7 +380,28 @@ public class Axis implements Serializable {
      * <p/>
      * Defaults to "linear".
      */
-    public AxisType type = AxisType.linear;
+    public Type type = Type.linear;
+
+
+    /**
+     * The position of the major tick marks relative to the axis line.
+     * Can be one of inside and outside.
+     */
+    public enum TickPosition {
+
+        inside, outside
+    }
+
+    /**
+     * The type of axis. Can be one of "linear", "logarithmic" or "datetime".
+     * In a datetime axis, the numbers are given in milliseconds,
+     * and tick marks are placed on appropriate values like full hours or days.
+     */
+    public enum Type {
+
+        linear, logarithmic, datetime
+
+    }
 
 
 }

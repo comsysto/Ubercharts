@@ -17,11 +17,12 @@
 package com.comsysto.ubercharts.api;
 
 /**
- * The type of axis. Can be one of "linear", "logarithmic" or "datetime".
- * In a datetime axis, the numbers are given in milliseconds, and tick marks are placed on appropriate values like full hours or days.
+ * Alignment of the title relative to the axis values. Possible values are "low", "middle" or "high". Defaults to "middle".
  *
  * @author Daniel Bartl
  */
-public enum AxisType {
-    linear, logarithmic, datetime
+public enum AxisTitleAlign {
+
+    low, middle, high
+
 }
