@@ -25,10 +25,11 @@ import java.io.Serializable;
 public class DataLabels implements Serializable {
     private Align align;
     private Boolean enabled;
-    private Color color;
+    private String color;
     private int x;
     @JsonRawValue
     private String formatter;
+    private String connectorColor;
 
     public Align getAlign() {
         return align;
@@ -48,12 +49,12 @@ public class DataLabels implements Serializable {
         return this;
     }
 
-    public Color getColor() {
+    public String getColor() {
         return color;
     }
 
     public DataLabels setColor(Color color) {
-        this.color = color;
+        this.color = color.name();
         return this;
     }
 
@@ -73,5 +74,13 @@ public class DataLabels implements Serializable {
     public DataLabels setX(int x) {
         this.x = x;
         return this;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public void setConnectorColor(String connectorColor) {
+        this.connectorColor = connectorColor;
     }
 }

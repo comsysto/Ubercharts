@@ -19,6 +19,7 @@ package com.comsysto.insight.model.options;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 import java.io.Serializable;
+import java.util.HashMap;
 
 @JsonSerialize(include= JsonSerialize.Inclusion.NON_NULL)
 public class Axis implements Serializable {
@@ -66,6 +67,7 @@ public class Axis implements Serializable {
     private Integer mTickWidth;
     private AxisTitle mTitle;
     private AxisType mType;
+    private HashMap<String, String> mStyle;
 
 
     public Boolean getAllowDecimals() {
@@ -453,6 +455,14 @@ public class Axis implements Serializable {
     public Axis setType(AxisType pType) {
         mType = pType;
         return this;
+    }
+
+    public HashMap<String, String> getStyle() {
+        return mStyle;
+    }
+
+    public void setStyle(HashMap<String,String> style) {
+        this.mStyle = style;
     }
 }
 

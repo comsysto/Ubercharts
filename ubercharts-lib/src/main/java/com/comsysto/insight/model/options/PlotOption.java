@@ -13,6 +13,9 @@ public class PlotOption implements Serializable {
 
     private Point point;
     private Boolean animation;
+    private Boolean allowPointSelect;
+    private String cursor;
+    private DataLabels dataLabels;
 
     public Boolean getAnimation() {
         return animation;
@@ -28,5 +31,33 @@ public class PlotOption implements Serializable {
 
     public void setPoint(Point point) {
         this.point = point;
+    }
+
+    public void setAllowPointSelect(boolean allowPointSelect) {
+        this.allowPointSelect = allowPointSelect;
+    }
+
+    public Boolean getAllowPointSelect() {
+        return allowPointSelect;
+    }
+
+    public void setAllowPointSelect(Boolean allowPointSelect) {
+        this.allowPointSelect = allowPointSelect;
+    }
+
+    public String getCursor() {
+        return cursor;
+    }
+
+    public void setCursor(String cursor) {
+        this.cursor = cursor;
+    }
+
+    public DataLabels getDataLabels() {
+        return dataLabels;
+    }
+
+    public void setDataLabels(DataLabels dataLabels) {
+        this.dataLabels = dataLabels;
     }
 }
