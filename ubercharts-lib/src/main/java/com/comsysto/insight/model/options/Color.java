@@ -8,5 +8,5 @@ package com.comsysto.insight.model.options;
  * To change this template use File | Settings | File Templates.
  */
 public enum Color {
-    black
+    black;
 }
