@@ -14,6 +14,7 @@ public class Series implements Serializable {
     private String cursor;
     private Events events;
     private DataLabels dataLabels;
+    private Stacking stacking;
 
     public String getCursor() {
         return cursor;
@@ -38,5 +39,13 @@ public class Series implements Serializable {
     public Series setDataLabels(DataLabels dataLabels) {
         this.dataLabels = dataLabels;
         return this;
+    }
+
+    public void setStacking(Stacking stacking) {
+        this.stacking = stacking;
+    }
+
+    public Stacking getStacking() {
+        return stacking;
     }
 }

@@ -7,8 +7,7 @@ package com.comsysto.insight.model.options;
  * Time: 18:56
  * To change this template use File | Settings | File Templates.
  */
-public enum Color {
-    black,
-    white,
-    yellow;
+public enum Stacking {
+    normal,
+    percent
 }
