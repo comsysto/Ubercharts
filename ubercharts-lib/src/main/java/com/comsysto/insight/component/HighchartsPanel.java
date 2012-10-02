@@ -90,27 +90,12 @@ public class HighchartsPanel extends Panel {
         final ResourceReference jQueryReference =
                 Application.get().getJavaScriptLibrarySettings().getJQueryReference();
 
-        if (!jqueryProvided) {
-
-            response.render(JavaScriptHeaderItem.forReference(jQueryReference));
-
-        }
-
-        if (!highchartProvided) {
-
-            response.render(JavaScriptHeaderItem.forReference(HighchartsResourcesReference.get()));
-            response.render(JavaScriptHeaderItem.forReference(HighchartsExportingModuleResourcesReference.get()));
-
-        }
+        response.render(JavaScriptHeaderItem.forReference(jQueryReference));
+        response.render(JavaScriptHeaderItem.forReference(HighchartsResourcesReference.get()));
+        response.render(JavaScriptHeaderItem.forReference(HighchartsExportingModuleResourcesReference.get()));
     }
 
-    public HighchartsPanel setJQueryProvided(boolean jqueryProvided) {
-        this.jqueryProvided = jqueryProvided;
-        return this;
-    }
-
-    public HighchartsPanel setHighchartProvided(boolean highchartProvided) {
-        this.highchartProvided = highchartProvided;
-        return this;
+    public String getHighchartJSVariable(){
+        return chartDiv.getMarkupId();
     }
 }
