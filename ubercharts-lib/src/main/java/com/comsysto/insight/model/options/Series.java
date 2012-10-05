@@ -15,6 +15,8 @@ public class Series implements Serializable {
     private Events events;
     private DataLabels dataLabels;
     private Stacking stacking;
+    private  String  neckWidth;
+    private String neckHeight;
 
     public String getCursor() {
         return cursor;
@@ -47,5 +49,21 @@ public class Series implements Serializable {
 
     public Stacking getStacking() {
         return stacking;
+    }
+
+    public String getNeckHeight() {
+        return neckHeight;
+    }
+
+    public void setNeckHeight(String neckHeight) {
+        this.neckHeight = neckHeight;
+    }
+
+    public String getNeckWidth() {
+        return neckWidth;
+    }
+
+    public void setNeckWidth(String neckWidth) {
+        this.neckWidth = neckWidth;
     }
 }
