@@ -28,6 +28,9 @@ public class Events implements Serializable {
     @JsonRawValue
     private String load;
 
+    @JsonRawValue
+    private String legendItemClick;
+
     public String getClick() {
         return click;
     }
@@ -90,5 +93,13 @@ public class Events implements Serializable {
 
     public void setLoad(String load) {
         this.load = load;
+    }
+
+    public String getLegendItemClick() {
+        return legendItemClick;
+    }
+
+    public void setLegendItemClick(String legendItemClick) {
+        this.legendItemClick = legendItemClick;
     }
 }
