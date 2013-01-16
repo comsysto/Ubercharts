@@ -56,6 +56,11 @@ abstract public class AbstractSeries<DataType> implements ISeries<DataType> {
     /** {@link ISeries#getYAxis()} */
     private Integer mYAxis;
 
+
+
+    /** {@link ISeries#isVisible()} */
+    private boolean visible=true;
+
     /**
      * Default Constructor for this series.
      * <p/>
@@ -135,5 +140,18 @@ abstract public class AbstractSeries<DataType> implements ISeries<DataType> {
     public DataType getData() {
         return mData;
     }
+
+    /** {@link com.comsysto.insight.model.options.series.generic.ISeries#isVisible()} ()} */
+    public boolean isVisible() {
+        return visible;
+    }
+
+    /** {@link ISeries#setVisible(Boolean)} */
+    public  ISeries<DataType> setVisible(boolean  visible) {
+        this.visible = visible;
+        return (ISeries<DataType>) this;
+    }
+
+
 
 }

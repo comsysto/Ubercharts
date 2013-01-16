@@ -100,6 +100,11 @@ public interface ISeries<DataType> extends Serializable {
      */
     Integer getXAxis();
 
+
+    boolean isVisible();
+
+    ISeries<DataType> setVisible(boolean visible);
+
     /**
      * Sets the id of the connected xAxis. When using dual or multiple xAxes, this number defines which xAxis the
      * particular series is connected to. It refers to the index of the axis in the xAxis array, which begins with 0. The
