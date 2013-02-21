@@ -32,12 +32,6 @@ public class WicketApplication extends WebApplication {
     public WicketApplication() {
     }
 
-    @Override
-    protected void init(){
-        super.init();
-        setJavaScriptLibrarySettings(new JavaScriptLibrarySettings());
-    }
-
     /**
      * @see org.apache.wicket.Application#getHomePage()
      */

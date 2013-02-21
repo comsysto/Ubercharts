@@ -15,7 +15,7 @@
   limitations under the License.
   -->
 
-<web-app>
+<web-app >
 
 	<display-name>charting</display-name>
 
@@ -28,10 +28,14 @@
 	      The value might be either "development" (reloading when templates change)
 	      or "deployment". If no configuration is found, "development" is the default.
 	-->
+
     <filter>
         <filter-name>WicketApplication</filter-name>
-       <!-- enable when update to wicket websockets 0.6 : -->
+        <!--<filter-class>org.apache.wicket.protocol.http.Jetty7WebSocketFilter</filter-class>-->
+        <!--<filter-class>org.apache.wicket.protocol.http.Tomcat7WebSocketFilter</filter-class>-->
+        <!-- enable when update to wicket websockets 0.6 : -->
         <filter-class>org.apache.wicket.protocol.ws.jetty.Jetty7WebSocketFilter</filter-class>
+        <!--<filter-class>org.apache.wicket.protocol.ws.tomcat7.Tomcat7WebSocketFilter</filter-class>&ndash;&gt;-->
         <init-param>
             <param-name>applicationClassName</param-name>
             <param-value>com.comsysto.insight.WicketApplication</param-value>
@@ -46,5 +50,9 @@
         <filter-name>WicketApplication</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+
+
+
+
 
 </web-app>
