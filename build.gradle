@@ -20,10 +20,13 @@ subprojects {
 
     ext.compileDeps = [
             "org.apache.wicket:wicket-core:6.5.0",
-            "org.slf4j:slf4j-simple:1.6.4",
+            "org.apache.wicket:wicket-native-websocket-jetty:0.6",
+            "org.apache.wicket:wicket-native-websocket-tomcat:0.6",
+            "org.slf4j:slf4j-simple:1.6.6",
             "commons-lang:commons-lang:2.6",
+            "commons-io:commons-io:2.1",
             "org.codehaus.jackson:jackson-mapper-asl:1.9.4",
-            "com.google.guava:guava:13.0.1"
+            "com.google.guava:guava:13.0.1",
     ]
 
     ext.testDeps = [
@@ -31,8 +34,12 @@ subprojects {
     ]
 
     ext.jettyDeps = [
-            "org.mortbay.jetty:jetty-util:6.1.25",
-            "org.mortbay.jetty:jetty-management:6.1.25"
+            "org.mortbay.jetty:jetty-util:6.1.26",
+            "org.mortbay.jetty:jetty-management:6.1.26",
+            "org.eclipse.jetty.aggregate:jetty-all-server:8.1.7.v20120910",
+            "org.eclipse.jetty.orbit:javax.servlet:3.0.0.v201112011016@jar",
+            "org.eclipse.jetty:jetty-continuation:8.1.7.v20120910",
+            "org.eclipse.jetty:jetty-http:8.1.7.v20120910"
     ]
 }
 

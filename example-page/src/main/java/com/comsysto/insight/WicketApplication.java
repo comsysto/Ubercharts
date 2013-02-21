@@ -18,6 +18,7 @@ package com.comsysto.insight;
 
 import com.comsysto.ubercharts.ui.DemoPage;
 import org.apache.wicket.protocol.http.WebApplication;
+import org.apache.wicket.settings.def.JavaScriptLibrarySettings;
 
 /**
  * Application object for your web application. If you want to run this application without deploying, run the Start class.
@@ -29,6 +30,12 @@ public class WicketApplication extends WebApplication {
      * Constructor
      */
     public WicketApplication() {
+    }
+
+    @Override
+    protected void init(){
+        super.init();
+        setJavaScriptLibrarySettings(new JavaScriptLibrarySettings());
     }
 
     /**
