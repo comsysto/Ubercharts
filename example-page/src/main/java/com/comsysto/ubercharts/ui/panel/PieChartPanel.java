@@ -116,20 +116,20 @@ public class PieChartPanel extends HighchartsPanel {
 
     private void setProductCategories() {
 
-        setGenreDetail( MusikGenre.Urban.values());
-        setGenreDetail( MusikGenre.BluesJazz.values());
-        setGenreDetail( MusikGenre.Electronic.values());
-        setGenreDetail( MusikGenre.Pop.values());
-        setGenreDetail( MusikGenre.Rock.values());
+        setGenreDetail(MusikGenre.URBAN, MusikGenre.Urban.values());
+        setGenreDetail(MusikGenre.BLUES_JAZZ, MusikGenre.BluesJazz.values());
+        setGenreDetail(MusikGenre.ELECTRONIC, MusikGenre.Electronic.values());
+        setGenreDetail(MusikGenre.POP, MusikGenre.Pop.values());
+        setGenreDetail(MusikGenre.ROCK, MusikGenre.Rock.values());
     }
 
-    private void setGenreDetail(IMusikTypeGenre[] genreType) {
+    private void setGenreDetail(MusikGenre musikGenre,IMusikTypeGenre[] genreType) {
 
         List<String> categorie = new ArrayList<String>(MusikGenre.values().length);
         for (IMusikTypeGenre type : genreType) {
             categorie.add(type.getName());
         }
-        musikGenreMap.put(selectedType, categorie.toArray(new String[MusikGenre.values().length]));
+        musikGenreMap.put(musikGenre, categorie.toArray(new String[MusikGenre.values().length]));
     }
 
     private Number getRandom() {
