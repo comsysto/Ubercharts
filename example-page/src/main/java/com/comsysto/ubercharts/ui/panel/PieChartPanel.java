@@ -2,19 +2,23 @@ package com.comsysto.ubercharts.ui.panel;
 
 import com.comsysto.insight.component.HighchartsPanel;
 import com.comsysto.insight.model.Highchart;
+import com.comsysto.ubercharts.ui.model.types.IMusikTypeGenre;
+import com.comsysto.ubercharts.ui.model.types.MusikGenre;
 import com.comsysto.ubercharts.ui.socket.Message;
 import com.comsysto.ubercharts.ui.socket.MessageType;
 import org.apache.wicket.Application;
-import org.apache.wicket.protocol.ws.api.IWebSocketConnection;
-import org.apache.wicket.protocol.ws.api.IWebSocketConnectionRegistry;
-import org.apache.wicket.protocol.ws.api.SimpleWebSocketConnectionRegistry;
-import org.apache.wicket.protocol.ws.api.WebSocketBehavior;
+import org.apache.wicket.behavior.Behavior;
+import org.apache.wicket.protocol.ws.api.*;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.protocol.ws.api.message.ConnectedMessage;
+import org.apache.wicket.protocol.ws.api.message.TextMessage;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.type.TypeReference;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -28,15 +32,44 @@ import java.util.concurrent.TimeUnit;
  */
 public class PieChartPanel extends HighchartsPanel {
 
-    private Map<String, Number> chartData;
+    private MusikGenre selectedType = MusikGenre.ROCK;
 
+    private Map<MusikGenre, String[]> musikGenreMap;
 
     public PieChartPanel(String id, IModel<Highchart> highchartsModel) {
         super(id, highchartsModel);
+        musikGenreMap = new HashMap<MusikGenre, String[]>();
+        setProductCategories();
         add(new ChartUpdatingBehavior());
-        chartData = new HashMap<String, Number>(8);
+        add(getWebSocketBehaviorForClicks());
+//        setProductCategories();
 
-//        objectMapper.setAnnotationIntrospector(new JacksonAnnotationIntrospector());
+    }
+
+    private Behavior getWebSocketBehaviorForClicks() {
+        return new WebSocketBehavior() {
+            @Override
+            protected void onMessage(WebSocketRequestHandler handler, TextMessage message) {
+                try {
+                    ObjectMapper objectMapper = new ObjectMapper();
+                    Message<String> parsedMsg = objectMapper.readValue(message.getText(), new TypeReference<Message<String>>() {
+                    });
+                    if (parsedMsg.getType() == MessageType.PRODUCT_COLUMN_LEGEND_CLICK)
+                        selectedType = MusikGenre.valueOf(parsedMsg.getDataName().toUpperCase());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+    }
+
+    public Number[] getDownloads() {
+        Number[] downloads = new Number[musikGenreMap.get(selectedType).length];
+        for(int i = 0; i < musikGenreMap.get(selectedType).length; i++){
+            downloads[i] = getRandom();
+
+        }
+        return downloads;
     }
 
     private class ChartUpdatingBehavior extends WebSocketBehavior {
@@ -49,11 +82,21 @@ public class PieChartPanel extends HighchartsPanel {
                 @Override
                 protected void updateFunction(IWebSocketConnection connection) throws IOException {
                     ObjectMapper objectMapper = new ObjectMapper();
-                    Map<String,Number> trackingEvents = getUpdatedChartData();
-                    Message<Map<String,Number> > message =
-                            new Message<Map<String,Number> >(MessageType.PIE_CHART_UPDATE,
-                                    "", trackingEvents);
+                    Message<Number[] > message = new Message<Number[]>(MessageType.PIE_CHART_UPDATE,
+                                    selectedType.getName(), getDownloads());
                     String json = objectMapper.writeValueAsString(message);
+                    connection.sendMessage(json);
+                }
+            };
+            UpdateTask updateCategoriesTask = new UpdateTask(message.getApplication(), message.getSessionId(), message.getPageId()) {
+                @Override
+                protected void updateFunction(IWebSocketConnection connection) throws IOException {
+
+                    ObjectMapper objectMapper = new ObjectMapper();
+                    Message<String[]> message = new Message<String[]>(MessageType.PRODUCT_COLUMN_GENRE_UPDATE,
+                            selectedType.name(), musikGenreMap.get(selectedType));
+                    String json = objectMapper.writeValueAsString(message);
+
                     connection.sendMessage(json);
                 }
             };
@@ -63,22 +106,34 @@ public class PieChartPanel extends HighchartsPanel {
                     connection.sendMessage("true");
                 }
             };
-            //Executors.newSingleThreadExecutor().submit(updateTask);
+
+            Executors.newScheduledThreadPool(1).schedule(updateCategoriesTask, 1, TimeUnit.SECONDS);
             Executors.newScheduledThreadPool(1).schedule(updateTask, 1, TimeUnit.SECONDS);
             Executors.newScheduledThreadPool(1).schedule(clearTask, 1, TimeUnit.SECONDS);
+
     }
 }
 
-    private Map<String, Number> getUpdatedChartData() {
-        chartData.put("Jazz", 1);
-        chartData.put("Blues", 1);
-        chartData.put("Raggae", 1);
-        chartData.put("Rock", 1);
-        chartData.put("Electronic", 1);
-        chartData.put("Drum & Bass", 1);
-        chartData.put("R&B", 1);
-        chartData.put("Hip Hop", 1);
-        return chartData;
+    private void setProductCategories() {
+
+        setGenreDetail( MusikGenre.Urban.values());
+        setGenreDetail( MusikGenre.BluesJazz.values());
+        setGenreDetail( MusikGenre.Electronic.values());
+        setGenreDetail( MusikGenre.Pop.values());
+        setGenreDetail( MusikGenre.Rock.values());
+    }
+
+    private void setGenreDetail(IMusikTypeGenre[] genreType) {
+
+        List<String> categorie = new ArrayList<String>(MusikGenre.values().length);
+        for (IMusikTypeGenre type : genreType) {
+            categorie.add(type.getName());
+        }
+        musikGenreMap.put(selectedType, categorie.toArray(new String[MusikGenre.values().length]));
+    }
+
+    private Number getRandom() {
+        return 10;
     }
 
     protected abstract class UpdateTask implements Runnable {

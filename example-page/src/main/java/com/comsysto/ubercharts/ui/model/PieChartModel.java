@@ -1,25 +1,23 @@
 package com.comsysto.ubercharts.ui.model;
 
 import com.comsysto.insight.model.Highchart;
+import com.comsysto.insight.model.charts.BarChart;
 import com.comsysto.insight.model.charts.PieChart;
 import com.comsysto.insight.model.options.*;
 import com.comsysto.insight.model.options.series.generic.ISeries;
 import com.comsysto.insight.model.options.series.impl.LabeledNumberSeries;
-import com.comsysto.insight.resource.HighchartsResourcesReference;
+import com.comsysto.insight.model.options.series.impl.NumberSeries;
+import com.comsysto.ubercharts.ui.model.types.MusikGenre;
 import com.comsysto.ubercharts.ui.socket.MessageType;
 import org.apache.commons.io.FileUtils;
 import org.apache.wicket.model.LoadableDetachableModel;
-import org.apache.wicket.protocol.ws.api.WicketWebSocketJQueryResourceReference;
-import org.apache.wicket.request.resource.JavaScriptResourceReference;
 
+import org.apache.wicket.request.cycle.RequestCycle;
 import org.apache.wicket.util.string.interpolator.MapVariableInterpolator;
+import org.codehaus.jackson.map.ObjectMapper;
 
 import java.io.*;
 import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,6 +30,7 @@ import java.util.Map;
  */
 public class PieChartModel extends LoadableDetachableModel<Highchart> {
     public static final String PIE_CHART_PANEL_JS_PATH = "/com/comsysto/ubercharts/ui/panel/PieChartPanel.js";
+    public static final String PIE_CHART_CLICK_JS_PATH = "/com/comsysto/ubercharts/ui/panel/ChartCategorySwitch.js";
 
 //    private JavaScriptResourceReference jsResourceReference;
 
@@ -44,25 +43,45 @@ public class PieChartModel extends LoadableDetachableModel<Highchart> {
     @Override
     protected Highchart load() {
 
-        ISeries<Object[][]> data = getChartData();
-        Highchart highchart = new Highchart(new PieChart(),data);
+        Map<String, String> pizzaUrls = new HashMap<String, String>();
+
+        Highchart highchart = initPieChart();
 
         setChartFontStyle();
         setChartTitle(highchart);
         setXandYAxis(highchart);
         setLookAndFeel(highchart);
 
-        Events events = new Events();
+        Events event = new Events();
+
+        event.setLegendItemClick(getClickScript());
         Series series = new Series();
         series.setCursor("pointer");
-        series.setEvents(events);
+        series.setEvents(event);
         highchart.getPlotOptions().setSeries(series);
         highchart.getChart().getEvents().setLoad(getScript());
-//        highchart.getChart().setWidth(600);
 
-
+        highchart.getChart().setWidth(600);
 
         return highchart;
+    }
+
+    private String getClickScript() {
+        try {
+            URI uri = PieChartModel.class.getResource(PIE_CHART_CLICK_JS_PATH).toURI();
+            String script = FileUtils.readFileToString(new File(uri));
+            Map<String, String> replacements = new HashMap<String, String>();
+            replacements.put("contextPath", getContextPath());
+            replacements.put("messageType", MessageType.PRODUCT_COLUMN_LEGEND_CLICK.name());
+            return new MapVariableInterpolator(script, replacements).toString();
+        } catch (Exception e) {
+            throw new IllegalStateException(e);
+        }
+    }
+
+
+    private String getContextPath() {
+        return RequestCycle.get().getRequest().getContextPath();
     }
 
     public String getScript() {
@@ -72,26 +91,34 @@ public class PieChartModel extends LoadableDetachableModel<Highchart> {
             URI uri = PieChartModel.class.getResource(PIE_CHART_PANEL_JS_PATH).toURI();
             script = FileUtils.readFileToString(new File(uri));
         } catch (Exception e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            e.printStackTrace();
         }
         Map<String, String> replacements = new HashMap<String, String>();
         replacements.put("messageType", MessageType.PIE_CHART_UPDATE.name());
         return new MapVariableInterpolator(script, replacements).toString();
 
     }
-    private ISeries<Object[][]> getChartData() {
+    private Highchart initPieChart() {
 
-        Map<String,Number> orderMap = new HashMap<String, Number>(6);
-        orderMap.put("Jazz", 1);
-        orderMap.put("Blues", 4);
-        orderMap.put("Raggae", 4);
-        orderMap.put("Rock", 3);
-        orderMap.put("Electronic", 5);
-        orderMap.put("Drum & Bass", 5);
-        orderMap.put("R&B", 6);
-        orderMap.put("Hip Hop", 6);
+        Map<String,Number> orderMap = new HashMap<String, Number>(MusikGenre.values().length);
+        for(MusikGenre.Rock genre: MusikGenre.Rock.values()){
+            orderMap.put(genre.getName(), 1);
+        }
 
-        return new LabeledNumberSeries("Browser share").setData(orderMap);
+
+        Map<String,Number> emptyMap = new HashMap<String, Number>();
+        ISeries<Object[][]> rock = new LabeledNumberSeries(MusikGenre.ROCK.name()).setData(orderMap);
+        ISeries<Object[][]> urban = new LabeledNumberSeries(MusikGenre.URBAN.name()).setData(emptyMap).setVisible(false);
+        ISeries<Object[][]> electronic = new LabeledNumberSeries(MusikGenre.ELECTRONIC.name()).setData(emptyMap).setVisible(false);
+        ISeries<Object[][]> bluesJazz = new LabeledNumberSeries(MusikGenre.BLUES_JAZZ.name()).setData(emptyMap).setVisible(false);
+        ISeries<Object[][]> pop = new LabeledNumberSeries(MusikGenre.POP.name()).setData(emptyMap).setVisible(false);
+
+        Highchart highchart = new Highchart(new BarChart(),rock, pop, urban, electronic, bluesJazz);
+
+        Legend legend = new Legend();
+        legend.setEnabled(true);
+        highchart.setLegend(legend);
+        return highchart;
     }
 
     private void setLookAndFeel(Highchart highchart) {
