@@ -2,10 +2,8 @@ package com.comsysto.ubercharts.ui.model;
 
 import com.comsysto.insight.model.Highchart;
 import com.comsysto.insight.model.charts.BarChart;
-import com.comsysto.insight.model.charts.PieChart;
 import com.comsysto.insight.model.options.*;
 import com.comsysto.insight.model.options.series.generic.ISeries;
-import com.comsysto.insight.model.options.series.impl.LabeledNumberSeries;
 import com.comsysto.insight.model.options.series.impl.NumberSeries;
 import com.comsysto.ubercharts.ui.model.types.MusikGenre;
 import com.comsysto.ubercharts.ui.socket.MessageType;
@@ -14,7 +12,6 @@ import org.apache.wicket.model.LoadableDetachableModel;
 
 import org.apache.wicket.request.cycle.RequestCycle;
 import org.apache.wicket.util.string.interpolator.MapVariableInterpolator;
-import org.codehaus.jackson.map.ObjectMapper;
 
 import java.io.*;
 import java.net.URI;
@@ -28,22 +25,19 @@ import java.util.Map;
  * Time: 14:03
  * To change this template use File | Settings | File Templates.
  */
-public class PieChartModel extends LoadableDetachableModel<Highchart> {
-    public static final String PIE_CHART_PANEL_JS_PATH = "/com/comsysto/ubercharts/ui/panel/PieChartPanel.js";
+public class DownloadChartModel extends LoadableDetachableModel<Highchart> {
+    public static final String PIE_CHART_PANEL_JS_PATH = "/com/comsysto/ubercharts/ui/panel/DownloadsChartPanel.js";
     public static final String PIE_CHART_CLICK_JS_PATH = "/com/comsysto/ubercharts/ui/panel/ChartCategorySwitch.js";
 
-//    private JavaScriptResourceReference jsResourceReference;
 
     private HashMap<String, String> chartFontStyle;
 
-    public PieChartModel() {
-//        jsResourceReference = new JavaScriptResourceReference(this.getClass(), "PieChartPanel.js");
+    public DownloadChartModel() {
     }
 
     @Override
     protected Highchart load() {
 
-        Map<String, String> pizzaUrls = new HashMap<String, String>();
 
         Highchart highchart = initPieChart();
 
@@ -51,7 +45,12 @@ public class PieChartModel extends LoadableDetachableModel<Highchart> {
         setChartTitle(highchart);
         setXandYAxis(highchart);
         setLookAndFeel(highchart);
+        setChartEvents(highchart);
 
+        return highchart;
+    }
+
+    private void setChartEvents(Highchart highchart) {
         Events event = new Events();
 
         event.setLegendItemClick(getClickScript());
@@ -60,19 +59,15 @@ public class PieChartModel extends LoadableDetachableModel<Highchart> {
         series.setEvents(event);
         highchart.getPlotOptions().setSeries(series);
         highchart.getChart().getEvents().setLoad(getScript());
-
-        highchart.getChart().setWidth(600);
-
-        return highchart;
     }
 
     private String getClickScript() {
         try {
-            URI uri = PieChartModel.class.getResource(PIE_CHART_CLICK_JS_PATH).toURI();
+            URI uri = DownloadChartModel.class.getResource(PIE_CHART_CLICK_JS_PATH).toURI();
             String script = FileUtils.readFileToString(new File(uri));
             Map<String, String> replacements = new HashMap<String, String>();
             replacements.put("contextPath", getContextPath());
-            replacements.put("messageType", MessageType.PRODUCT_COLUMN_LEGEND_CLICK.name());
+            replacements.put("messageType", MessageType.PRODUCT_COLUMN_GENRE_UPDATE.name());
             return new MapVariableInterpolator(script, replacements).toString();
         } catch (Exception e) {
             throw new IllegalStateException(e);
@@ -88,7 +83,7 @@ public class PieChartModel extends LoadableDetachableModel<Highchart> {
 
         String script = "";
         try {
-            URI uri = PieChartModel.class.getResource(PIE_CHART_PANEL_JS_PATH).toURI();
+            URI uri = DownloadChartModel.class.getResource(PIE_CHART_PANEL_JS_PATH).toURI();
             script = FileUtils.readFileToString(new File(uri));
         } catch (Exception e) {
             e.printStackTrace();
@@ -100,18 +95,20 @@ public class PieChartModel extends LoadableDetachableModel<Highchart> {
     }
     private Highchart initPieChart() {
 
-        Map<String,Number> orderMap = new HashMap<String, Number>(MusikGenre.values().length);
-        for(MusikGenre.Rock genre: MusikGenre.Rock.values()){
-            orderMap.put(genre.getName(), 1);
+
+        int i = 0;
+        Number[] orderArray = new Number[MusikGenre.Rock.values().length];
+        for (MusikGenre.Rock genre: MusikGenre.Rock.values()) {
+            orderArray[i] = 1;
+            i++;
         }
+        ISeries<Number[]>  rock = new NumberSeries(MusikGenre.ROCK.getName()).setData(orderArray);
 
-
-        Map<String,Number> emptyMap = new HashMap<String, Number>();
-        ISeries<Object[][]> rock = new LabeledNumberSeries(MusikGenre.ROCK.name()).setData(orderMap);
-        ISeries<Object[][]> urban = new LabeledNumberSeries(MusikGenre.URBAN.name()).setData(emptyMap).setVisible(false);
-        ISeries<Object[][]> electronic = new LabeledNumberSeries(MusikGenre.ELECTRONIC.name()).setData(emptyMap).setVisible(false);
-        ISeries<Object[][]> bluesJazz = new LabeledNumberSeries(MusikGenre.BLUES_JAZZ.name()).setData(emptyMap).setVisible(false);
-        ISeries<Object[][]> pop = new LabeledNumberSeries(MusikGenre.POP.name()).setData(emptyMap).setVisible(false);
+        Number[] emptyArray = {};
+        ISeries<Number[]>  urban = new NumberSeries(MusikGenre.URBAN.getName()).setData(emptyArray).setVisible(false);
+        ISeries<Number[]>  electronic = new NumberSeries(MusikGenre.ELECTRONIC.getName()).setData(emptyArray).setVisible(false);
+        ISeries<Number[]>  bluesJazz = new NumberSeries(MusikGenre.BLUES.getName()).setData(emptyArray).setVisible(false);
+        ISeries<Number[]>  pop = new NumberSeries(MusikGenre.POP.getName()).setData(emptyArray).setVisible(false);
 
         Highchart highchart = new Highchart(new BarChart(),rock, pop, urban, electronic, bluesJazz);
 
@@ -134,6 +131,7 @@ public class PieChartModel extends LoadableDetachableModel<Highchart> {
         highchart.disableAllAnimations();
         highchart.getChart().setBackgroundColor("transparent");
         highchart.getChart().setHeight(600);
+        highchart.getChart().setWidth(600);
     }
 
     private void setXandYAxis(Highchart highchart) {

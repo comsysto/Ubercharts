@@ -12,12 +12,12 @@ public enum MusikGenre {
     URBAN("Urban"),
     POP("Pop"),
     ROCK("Rock"),
-    BLUES_JAZZ("Blues & Jazz");
+    BLUES("Blues");
 
     private String name;
+    private static Number downloads;
 
     private MusikGenre(String name){
-
         this.name = name;
     }
 
