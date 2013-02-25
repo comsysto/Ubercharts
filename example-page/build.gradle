@@ -44,7 +44,16 @@ sourceSets {
     }
 }
 
-
+configurations.all {
+    resolutionStrategy.failOnVersionConflict()
+    resolutionStrategy {
+        force  "org.eclipse.jetty.aggregate:jetty-all-server:8.1.9.v20130131",
+              "org.slf4j:slf4j-simple:1.6.6",
+              "org.slf4j:slf4j-api:1.6.6"
+    }
+    all*.exclude group: "org.mortbay.jetty"
+    all*.exclude group: "tomcat"
+}
 
 dependencies {
 
@@ -53,13 +62,16 @@ dependencies {
     */
     compile project(':ubercharts-lib')
     compile compileDeps
+    //compile  "org.eclipse.jetty.aggregate:jetty-all-server:8.1.9.v20130131"
+    //compile  "org.apache.wicket:wicket-native-websocket-jetty:0.6",
 
     /*
-     These are the dependencies, which are needed to test the project.
+        These are the dependencies, which are needed to test the project.
     */
     testCompile testDeps
     testCompile jettyDeps
 
 }
+
 
 

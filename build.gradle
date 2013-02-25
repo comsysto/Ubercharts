@@ -27,6 +27,7 @@ subprojects {
             "commons-io:commons-io:2.1",
             "org.codehaus.jackson:jackson-mapper-asl:1.9.4",
             "com.google.guava:guava:13.0.1",
+            "org.eclipse.jetty.aggregate:jetty-all-server:8.1.9.v20130131"
     ]
 
     ext.testDeps = [
@@ -34,7 +35,12 @@ subprojects {
     ]
 
     ext.jettyDeps = [
-            "org.eclipse.jetty.aggregate:jetty-all-server:8.1.7.v20120910"
+            //"org.eclipse.jetty.aggregate:jetty-all-server:8.1.7.v20120910"
+            "org.eclipse.jetty.aggregate:jetty-all-server:8.1.9.v20130131",
+            //"org.apache.wicket:wicket-native-websocket-jetty:0.6",
+            //"org.eclipse.jetty.orbit:javax.servlet:3.0.0.v201112011016@jar",
+            //"org.eclipse.jetty:jetty-continuation:8.1.9.v2013013",
+            //"org.eclipse.jetty:jetty-http:8.1.9.v2013013"
     ]
 }
 

@@ -9,11 +9,7 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Created with IntelliJ IDEA.
  * User: alentolj
- * Date: 24.02.13
- * Time: 18:35
- * To change this template use File | Settings | File Templates.
  */
 public abstract class UpdateTask implements Runnable {
     /**
@@ -39,7 +35,7 @@ public abstract class UpdateTask implements Runnable {
             Application application = Application.get(applicationName);
             IWebSocketConnection connection = webSocketConnectionRegistry.getConnection(application, sessionId, pageId);
             if (connection == null || !connection.isOpen()) {
-                // stp if the web socket connection is closed
+                // stop if the web socket connection is closed
                 return;
             }
 

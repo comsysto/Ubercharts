@@ -24,11 +24,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Created with IntelliJ IDEA.
  * User: alentolj
  * Date: 20.02.13
- * Time: 14:16
- * To change this template use File | Settings | File Templates.
  */
 public class DownloadsChartPanel extends HighchartsPanel {
 
@@ -62,9 +59,9 @@ public class DownloadsChartPanel extends HighchartsPanel {
             protected void onMessage(WebSocketRequestHandler handler, TextMessage message) {
                 try {
                     ObjectMapper objectMapper = new ObjectMapper();
-                    Message<String> parsedMsg = objectMapper.readValue(message.getText(), new TypeReference<Message<String>>() {
-                    });
-                    if (parsedMsg.getType() == MessageType.PRODUCT_COLUMN_GENRE_UPDATE)
+                    Message<String> parsedMsg = objectMapper.readValue(message.getText(),
+                            new TypeReference<Message<String>>() {});
+                    if (parsedMsg.getType() == MessageType.GENRE_UPDATE)
                         selectedType = MusikGenre.valueOf(parsedMsg.getDataName().toUpperCase());
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -106,7 +103,7 @@ public class DownloadsChartPanel extends HighchartsPanel {
                 protected void updateFunction(IWebSocketConnection connection) throws IOException {
 
                     ObjectMapper objectMapper = new ObjectMapper();
-                    Message<String[]> message = new Message<String[]>(MessageType.PRODUCT_COLUMN_GENRE_UPDATE,
+                    Message<String[]> message = new Message<String[]>(MessageType.GENRE_UPDATE,
                             selectedType.name(), musikGenreMap.get(selectedType));
                     String json = objectMapper.writeValueAsString(message);
 

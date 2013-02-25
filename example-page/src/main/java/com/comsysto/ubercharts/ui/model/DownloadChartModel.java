@@ -19,15 +19,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created with IntelliJ IDEA.
  * User: alentolj
  * Date: 20.02.13
- * Time: 14:03
- * To change this template use File | Settings | File Templates.
  */
 public class DownloadChartModel extends LoadableDetachableModel<Highchart> {
-    public static final String PIE_CHART_PANEL_JS_PATH = "/com/comsysto/ubercharts/ui/panel/DownloadsChartPanel.js";
-    public static final String PIE_CHART_CLICK_JS_PATH = "/com/comsysto/ubercharts/ui/panel/ChartCategorySwitch.js";
+    public static final String CHART_UPDATE_JS_PATH = "/com/comsysto/ubercharts/ui/panel/DownloadsChartPanel.js";
+    public static final String CHART_CLICK_JS_PATH = "/com/comsysto/ubercharts/ui/panel/ChartCategorySwitch.js";
 
 
     private HashMap<String, String> chartFontStyle;
@@ -37,7 +34,6 @@ public class DownloadChartModel extends LoadableDetachableModel<Highchart> {
 
     @Override
     protected Highchart load() {
-
 
         Highchart highchart = initPieChart();
 
@@ -52,22 +48,20 @@ public class DownloadChartModel extends LoadableDetachableModel<Highchart> {
 
     private void setChartEvents(Highchart highchart) {
         Events event = new Events();
-
         event.setLegendItemClick(getClickScript());
         Series series = new Series();
-        series.setCursor("pointer");
         series.setEvents(event);
+
         highchart.getPlotOptions().setSeries(series);
         highchart.getChart().getEvents().setLoad(getScript());
     }
 
     private String getClickScript() {
         try {
-            URI uri = DownloadChartModel.class.getResource(PIE_CHART_CLICK_JS_PATH).toURI();
+            URI uri = DownloadChartModel.class.getResource(CHART_CLICK_JS_PATH).toURI();
             String script = FileUtils.readFileToString(new File(uri));
             Map<String, String> replacements = new HashMap<String, String>();
-            replacements.put("contextPath", getContextPath());
-            replacements.put("messageType", MessageType.PRODUCT_COLUMN_GENRE_UPDATE.name());
+            replacements.put("messageType", MessageType.GENRE_UPDATE.name());
             return new MapVariableInterpolator(script, replacements).toString();
         } catch (Exception e) {
             throw new IllegalStateException(e);
@@ -75,15 +69,11 @@ public class DownloadChartModel extends LoadableDetachableModel<Highchart> {
     }
 
 
-    private String getContextPath() {
-        return RequestCycle.get().getRequest().getContextPath();
-    }
-
-    public String getScript() {
+    private String getScript() {
 
         String script = "";
         try {
-            URI uri = DownloadChartModel.class.getResource(PIE_CHART_PANEL_JS_PATH).toURI();
+            URI uri = DownloadChartModel.class.getResource(CHART_UPDATE_JS_PATH).toURI();
             script = FileUtils.readFileToString(new File(uri));
         } catch (Exception e) {
             e.printStackTrace();
@@ -93,24 +83,17 @@ public class DownloadChartModel extends LoadableDetachableModel<Highchart> {
         return new MapVariableInterpolator(script, replacements).toString();
 
     }
+
     private Highchart initPieChart() {
 
-
-        int i = 0;
-        Number[] orderArray = new Number[MusikGenre.Rock.values().length];
-        for (MusikGenre.Rock genre: MusikGenre.Rock.values()) {
-            orderArray[i] = 1;
-            i++;
-        }
-        ISeries<Number[]>  rock = new NumberSeries(MusikGenre.ROCK.getName()).setData(orderArray);
-
         Number[] emptyArray = {};
-        ISeries<Number[]>  urban = new NumberSeries(MusikGenre.URBAN.getName()).setData(emptyArray).setVisible(false);
-        ISeries<Number[]>  electronic = new NumberSeries(MusikGenre.ELECTRONIC.getName()).setData(emptyArray).setVisible(false);
-        ISeries<Number[]>  bluesJazz = new NumberSeries(MusikGenre.BLUES.getName()).setData(emptyArray).setVisible(false);
-        ISeries<Number[]>  pop = new NumberSeries(MusikGenre.POP.getName()).setData(emptyArray).setVisible(false);
+        ISeries<Number[]> rock = new NumberSeries(MusikGenre.ROCK.getName()).setData(emptyArray);
+        ISeries<Number[]> urban = new NumberSeries(MusikGenre.URBAN.getName()).setData(emptyArray).setVisible(false);
+        ISeries<Number[]> electronic = new NumberSeries(MusikGenre.ELECTRONIC.getName()).setData(emptyArray).setVisible(false);
+        ISeries<Number[]> bluesJazz = new NumberSeries(MusikGenre.BLUES.getName()).setData(emptyArray).setVisible(false);
+        ISeries<Number[]> pop = new NumberSeries(MusikGenre.POP.getName()).setData(emptyArray).setVisible(false);
 
-        Highchart highchart = new Highchart(new BarChart(),rock, pop, urban, electronic, bluesJazz);
+        Highchart highchart = new Highchart(new BarChart(), rock, pop, urban, electronic, bluesJazz);
 
         Legend legend = new Legend();
         legend.setEnabled(true);
