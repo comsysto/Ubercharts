@@ -8,9 +8,9 @@ import com.comsysto.insight.model.options.series.impl.NumberSeries;
 import com.comsysto.ubercharts.ui.model.types.MusikGenre;
 import com.comsysto.ubercharts.ui.socket.MessageType;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang.ArrayUtils;
 import org.apache.wicket.model.LoadableDetachableModel;
 
-import org.apache.wicket.request.cycle.RequestCycle;
 import org.apache.wicket.util.string.interpolator.MapVariableInterpolator;
 
 import java.io.*;
@@ -79,7 +79,8 @@ public class DownloadChartModel extends LoadableDetachableModel<Highchart> {
             e.printStackTrace();
         }
         Map<String, String> replacements = new HashMap<String, String>();
-        replacements.put("messageType", MessageType.PIE_CHART_UPDATE.name());
+        replacements.put("messageType", MessageType.SERIES_UPDATE.name());
+        replacements.put("messageSeriesType", MessageType.CATEGORIES_UPDATE.name());
         return new MapVariableInterpolator(script, replacements).toString();
 
     }
@@ -123,6 +124,7 @@ public class DownloadChartModel extends LoadableDetachableModel<Highchart> {
         HashMap<String, String> xAxisStyle = new HashMap<String, String>(chartFontStyle);
         xAxisStyle.put("fontSize", "20px");
         highchart.getXAxis().setStyle(xAxisStyle);
+        highchart.getXAxis().setCategories(new String[]{"Hard Rock", "Classic Rock", "Rock & Roll", "Punk"});
 
         HashMap<String, String> yAxisTitleStyle = new HashMap<String, String>(chartFontStyle);
         yAxisTitleStyle.put("fontSize", "14px");
@@ -145,7 +147,6 @@ public class DownloadChartModel extends LoadableDetachableModel<Highchart> {
         chartFontStyle.put("color", "#555");
         chartFontStyle.put("fontWeight", "normal");
         chartFontStyle.put("fontSize", "24px");
-
 
     }
 

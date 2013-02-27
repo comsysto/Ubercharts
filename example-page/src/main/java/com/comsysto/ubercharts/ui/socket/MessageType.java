@@ -7,6 +7,6 @@ package com.comsysto.ubercharts.ui.socket;
  */
 public enum MessageType {
     GENRE_UPDATE,
-    PIE_CHART_UPDATE
+    CATEGORIES_UPDATE, SERIES_UPDATE
 }
 

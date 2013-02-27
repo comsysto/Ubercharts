@@ -2,7 +2,6 @@ package com.comsysto.ubercharts.ui.panel;
 
 import com.comsysto.insight.component.HighchartsPanel;
 import com.comsysto.insight.model.Highchart;
-import com.comsysto.ubercharts.ui.model.types.IMusikTypeGenre;
 import com.comsysto.ubercharts.ui.model.types.MusikGenre;
 import com.comsysto.ubercharts.ui.socket.Message;
 import com.comsysto.ubercharts.ui.socket.MessageType;
@@ -16,10 +15,7 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.type.TypeReference;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
@@ -35,10 +31,10 @@ public class DownloadsChartPanel extends HighchartsPanel {
 
     private Map<MusikGenre, Number[]> downloads;
 
+
     public DownloadsChartPanel(String id, IModel<Highchart> highchartsModel) {
         super(id, highchartsModel);
-        musikGenreMap = new HashMap<MusikGenre, String[]>();
-        setProductCategories();
+        setCategories();
         initDownloads();
         add(new ChartUpdatingBehavior());
         add(getWebSocketBehaviorForClicks());
@@ -61,8 +57,13 @@ public class DownloadsChartPanel extends HighchartsPanel {
                     ObjectMapper objectMapper = new ObjectMapper();
                     Message<String> parsedMsg = objectMapper.readValue(message.getText(),
                             new TypeReference<Message<String>>() {});
-                    if (parsedMsg.getType() == MessageType.GENRE_UPDATE)
+                    if (parsedMsg.getType() == MessageType.GENRE_UPDATE){
                         selectedType = MusikGenre.valueOf(parsedMsg.getDataName().toUpperCase());
+                        Message<String[]> msg = new Message<String[]>(MessageType.CATEGORIES_UPDATE,
+                                selectedType.name(), musikGenreMap.get(selectedType));
+                        String json = objectMapper.writeValueAsString(msg);
+                        handler.push(json);
+                    }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -92,58 +93,29 @@ public class DownloadsChartPanel extends HighchartsPanel {
                 @Override
                 protected void updateFunction(IWebSocketConnection connection) throws IOException {
                     ObjectMapper objectMapper = new ObjectMapper();
-                    Message<Number[] > message = new Message<Number[]>(MessageType.PIE_CHART_UPDATE,
+                    Message<Number[] > message = new Message<Number[]>(MessageType.SERIES_UPDATE,
                                     selectedType.name(), getDownloads());
                     String json = objectMapper.writeValueAsString(message);
                     connection.sendMessage(json);
                 }
             };
-            UpdateTask updateCategoriesTask = new UpdateTask(message.getApplication(), message.getSessionId(), message.getPageId()) {
-                @Override
-                protected void updateFunction(IWebSocketConnection connection) throws IOException {
-
-                    ObjectMapper objectMapper = new ObjectMapper();
-                    Message<String[]> message = new Message<String[]>(MessageType.GENRE_UPDATE,
-                            selectedType.name(), musikGenreMap.get(selectedType));
-                    String json = objectMapper.writeValueAsString(message);
-
-                    connection.sendMessage(json);
-                }
-            };
-            UpdateTask clearTask = new UpdateTask(message.getApplication(), message.getSessionId(), message.getPageId()) {
-                @Override
-                protected void updateFunction(IWebSocketConnection connection) throws IOException {
-                    connection.sendMessage("true");
-                }
-            };
-
-            Executors.newScheduledThreadPool(1).schedule(updateCategoriesTask, 1, TimeUnit.SECONDS);
             Executors.newScheduledThreadPool(1).schedule(updateTask, 1, TimeUnit.SECONDS);
-            Executors.newScheduledThreadPool(1).schedule(clearTask, 1, TimeUnit.SECONDS);
 
     }
 }
 
-    private void setProductCategories() {
-
-        setGenreDetail(MusikGenre.URBAN, MusikGenre.Urban.values());
-        setGenreDetail(MusikGenre.BLUES, MusikGenre.BluesJazz.values());
-        setGenreDetail(MusikGenre.ELECTRONIC, MusikGenre.Electronic.values());
-        setGenreDetail(MusikGenre.POP, MusikGenre.Pop.values());
-        setGenreDetail(MusikGenre.ROCK, MusikGenre.Rock.values());
+    private void setCategories() {
+        musikGenreMap = new HashMap<MusikGenre, String[]>();
+        musikGenreMap.put(MusikGenre.URBAN,new String[]{"R&B", "Rap", "Soul", "Hip Hop"});
+        musikGenreMap.put(MusikGenre.BLUES,new String[]{"Jazz", "Latin Jazz", "Blues Rock", "Blues"});
+        musikGenreMap.put(MusikGenre.ELECTRONIC,new String[]{"House","Minimal","Brum & Bass","Techno"});
+        musikGenreMap.put(MusikGenre.POP,new String[]{"Indie Pop","Ballads","Acoustic","New Wave"});
+        musikGenreMap.put(MusikGenre.ROCK,new String[]{"Hard Rock", "Classic Rock", "Rock & Roll", "Punk"});
     }
 
-    private void setGenreDetail(MusikGenre musikGenre,IMusikTypeGenre[] genreType) {
-
-        List<String> categorie = new ArrayList<String>(genreType.length);
-        for (IMusikTypeGenre type : genreType) {
-            categorie.add(type.getName());
-        }
-        musikGenreMap.put(musikGenre, categorie.toArray(new String[genreType.length]));
-    }
 
     private Number getRandom() {
-        return Math.random() * 4;
+        return new Random().nextInt(4);
     }
 
 
